@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="" />
+  <title>Document</title>
+</head>
+
+<body>
+  <header id="head">
+       
+  </header>
+    <div id="Customer">
+      <form id="Create_Account" #Registration="ngForm" (ngSubmit)="registerUser()">  
+          <h1 id="Account">CREATE ACCOUNT</h1>
+          <label for="FirstName">FIRST NAME</label>
+          <div>
+            <input type="text" id="FirstName" name="name" [(ngModel)]="user.name">
+          </div>
+          <label for="LastName">LAST NAME</label>
+          <div>
+            <input type="text" id="LastName" name="surname" [(ngModel)]="user.surname">
+          </div>
+          <label for="PhoneNumber">PHONE NUMBER</label>
+          <div>
+            <input type="tel" id="PhoneNumber" name="phoneNumber" [(ngModel)]="user.phoneNumber">
+          </div>
+          <label for="Email">EMAIL</label>
+          <div>
+            <input type="text" id="Email" name="emailId" [(ngModel)]="user.emailId">
+          </div>
+          <label for="Password">PASSWORD</label>
+          <div>
+            <input type="password" id="Password" name="password" [(ngModel)]="user.password">
+          </div>
+          <label for="Gender">GENDER</label>
+          <div>
+            <input class="no-style" type="radio" id="male" name="gender" value="male" [(ngModel)]="user.gender">
+            <label class="no-style" for="male">Male</label>
+          </div>
+          <div>
+            <input class="no-style" type="radio" id="female" name="gender" value="female" [(ngModel)]="user.gender">
+            <label class="no-style" for="female">Female</label>
+          </div>
+          <input type="submit" value="CREATE" id="Submit">
+          <p id="Login">
+            <a routerLink="/login" style="text-decoration: none;color: var(--darkBlue);">Already registered? Click to Login!</a>
+          </p>
+      </form>
+    </div> 
+    <hr>
+</body>
+</html>
+
+

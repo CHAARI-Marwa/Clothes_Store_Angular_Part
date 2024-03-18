@@ -33,7 +33,7 @@
 #Create_Account input:not(.no-style){
     width: 95%;
     height: 44px;
-    margin: 10px 0px 30px;
+    margin: 10px 0px 10px;
     border: 1px solid var(--Grey);
 }
 #Create_Account input.no-style {
@@ -46,6 +46,7 @@
     color: white;
     letter-spacing: 5px;
     cursor: pointer;
+    margin: 10px 5px 30px;
 }
 #Login{
     text-align: center;
@@ -60,3 +61,8 @@
     text-decoration: underline;
     color: var(--darkBlue);
 }
+/* #Create_Account .error-message {
+    margin-bottom: 60px;
+    color: red;
+    font-size: 14px;
+  } */

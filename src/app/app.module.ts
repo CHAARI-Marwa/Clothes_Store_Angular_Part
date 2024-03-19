@@ -8,13 +8,17 @@ import { SignupComponent } from './vue/signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import {  HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './vue/home/home.component';
+import { FooterComponent } from './vue/footer/footer.component';
+import { HeaderComponent } from './vue/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

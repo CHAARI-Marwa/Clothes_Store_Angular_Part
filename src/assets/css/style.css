@@ -332,6 +332,20 @@ ol {
 /*------------------
   Header section
 ---------------------*/
+.header-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999; /* Ensure the header stays above other content */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#initialImage,
+#slideshowImage {
+  position: relative;
+  top: -20px; /* Ajustez la valeur selon vos besoins */
+}
 
 .header-top {
   background-color: #E7ECEF;
@@ -429,11 +443,20 @@ ol {
 .main-menu li a {
 	display: inline-block;
 	font-size: 16px;
-	color: #ffffff;
+	/*color: #ffffff;*/
 	margin-right: 50px;
 	line-height: 1;
 	padding: 17px 0;
 	position: relative;
+  color: #282828;
+  transition: color 0.3s, font-size 0.3s;
+  font-size: 16px;
+
+}
+
+.main-menu li a:hover {
+  color: #4C90A6; /* Couleur du texte en bleu au survol */
+  font-size: 21px;
 }
 
 .main-menu li a .new {

@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 
-// Ajoutez cette importation pour Chart.js
-import 'chart.js';
+
+
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './vue/login/login.component';
 import { SignupComponent } from './vue/signup/signup.component';
+import { FormsModule } from '@angular/forms';
+import {  HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './vue/home/home.component';
+import { FooterComponent } from './vue/footer/footer.component';
+import { HeaderComponent } from './vue/header/header.component';
 
 
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -42,6 +46,8 @@ import { MatSelectModule } from '@angular/material/select';
    
   
     
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +65,8 @@ import { MatSelectModule } from '@angular/material/select';
        MatFormFieldModule,
        MatSelectModule,
     
+    ReactiveFormsModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

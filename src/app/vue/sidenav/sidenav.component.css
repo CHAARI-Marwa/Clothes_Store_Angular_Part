@@ -1,0 +1,56 @@
+
+
+
+  .mat-icon {
+    vertical-align: center;
+    margin: right 1rem ;
+  }
+
+  .mat-divider{
+    border-top-width: 2px;
+    border-color: white;
+  }
+
+  .custom-list-item{
+    color: white !important; 
+    font-size: 0.8rem;
+    height: 44px !important;
+    margin-bottom: 4px;
+    margin-top: 2px;
+    border-radius: 5px;
+    margin:0 8px;
+    font-family: var(--font-label);
+    &:hover{
+      background-color: #A3CEF1!important;
+    }
+    
+  }
+   .list-item-active{
+    color: #f2f5f7 !important;
+    ::ng-deep{
+      .custom-list-item{
+        background-color: #A3CEF1 ;
+        &:hover{
+          background-color: #A3CEF1!important;
+        }
+      }
+    }
+
+
+}
+.titre {
+  color: #E7ECEF; /* Couleur du texte */
+  font-size: 1.8rem; /* Taille de la police (plus grande) */
+  font-weight: 400; /* Poids de la police (plus gras) */
+  letter-spacing: 2px; /* Espacement entre les lettres */
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Style de police */
+  text-transform: uppercase; /* Mettre en majuscules */
+}
+
+
+  .custom-list-item mat-icon {
+    font-size: 25px; /* Changer la taille de l'icône */
+    vertical-align: middle; /* Aligner verticalement avec l'icône */
+    margin-right: 8px; /* Ajouter un peu d'espace à droite de l'icône */
+  }
+ 

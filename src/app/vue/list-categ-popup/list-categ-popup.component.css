@@ -1,0 +1,21 @@
+.popup-content {
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+}
+.list-group-item:hover {
+  background-color:#E7ECEF; /* Couleur foncée que vous souhaitez appliquer au survol */
+}
+
+.selected {
+  background-color: #A3CEF1; /* Couleur rouge pour l'élément sélectionné */
+}

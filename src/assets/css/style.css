@@ -91,7 +91,7 @@ ol {
 }
 
 .section-title h2 {
-	font-size: 36px;
+	font-size: 100px;
 }
 
 .set-bg {
@@ -149,23 +149,20 @@ ol {
 	color: #111111;
 }
 
-.site-btn.sb-line {
-	background: transparent;
-	color: #fff;
-	-webkit-box-shadow: inset 0 0 0 1px #fff;
-	box-shadow: inset 0 0 0 1px #fff;
+/* CSS pour le bouton "Load More" */
+.site-btn.sb-line.sb-dark {
+  font-family: var(--font-label);
+  background-color: #E7ECEF; /* Couleur de fond par défaut */
+  color: #111111; /* Couleur du texte par défaut */
+  border: none; /* Supprimer la bordure par défaut */
+  transition: background-color 0.3s ease; /* Transition en douceur pour le changement de couleur */
 }
 
-.site-btn.sb-dark {
-	background: #413a3a;
+.site-btn.sb-line.sb-dark:hover {
+  font-family: var(--font-label);
+  background-color: #0E4A6C; /* Nouvelle couleur de fond lorsque survolé */
 }
 
-.site-btn.sb-dark.sb-line {
-	background-color: transparent;
-	color: #111111;
-	-webkit-box-shadow: inset 0 0 0 1px #111111;
-	box-shadow: inset 0 0 0 1px #111111;
-}
 
 /* Preloder */
 
@@ -333,6 +330,7 @@ ol {
   Header section
 ---------------------*/
 .header-section {
+  font-family: var(--font-label);
   position: fixed;
   top: 0;
   left: 0;
@@ -348,6 +346,7 @@ ol {
 }
 
 .header-top {
+  font-family: var(--font-label);
   background-color: #E7ECEF;
 	padding: 18px 0 14px;
 }
@@ -357,12 +356,14 @@ ol {
 }
 
 .header-search-form {
+  font-family: var(--font-label);
 	width: 100%;
 	position: relative;
 	padding: 0 10px;
 }
 
 .header-search-form input {
+  font-family: var(--font-label);
 	width: 100%;
 	height: 38px;
 	font-size: 14px;
@@ -373,6 +374,7 @@ ol {
 }
 
 .header-search-form button {
+  font-family: var(--font-label);
 	position: absolute;
 	height: 100%;
 	right: 18px;
@@ -385,29 +387,35 @@ ol {
 }
 
 .user-panel .up-item {
+  font-family: var(--font-label);
 	display: inline-block;
 	font-size: 14px;
 }
 
 .user-panel .up-item i {
+  font-family: var(--font-label);
 	font-size: 22px;
 }
 
 .user-panel .up-item a {
+  font-family: var(--font-label);
 	font-size: 14px;
 	color: #000;
 }
 
 .user-panel .up-item:first-child {
+  font-family: var(--font-label);
 	margin-right: 29px;
 }
 
 .shopping-card {
+  font-family: var(--font-label);
 	display: inline-block;
 	position: relative;
 }
 
 .shopping-card span {
+  font-family: var(--font-label);
 	position: absolute;
 	top: -4px;
 	left: 100%;
@@ -436,11 +444,13 @@ ol {
 }
 
 .main-menu li {
+  font-family: var(--font-label);
 	display: inline-block;
 	position: relative;
 }
 
 .main-menu li a {
+  font-family: var(--font-label);
 	display: inline-block;
 	font-size: 16px;
 	/*color: #ffffff;*/
@@ -838,6 +848,19 @@ ol {
 	left: -92px;
 }
 
+.pi-pic {
+  position: relative;
+  overflow: hidden;
+}
+
+.pi-pic img {
+  transition: transform 0.3s ease;
+}
+
+.pi-pic:hover img {
+  transform: scale(1.1); /* Augmente la taille de l'image */
+}
+
 .product-item .pi-pic {
 	position: relative;
 	display: block;
@@ -930,21 +953,24 @@ ol {
 }
 
 .product-item .pi-text {
+  font-family: var(--font-label);
 	padding-top: 22px;
 	height: 87px;
 }
 
 .product-item .pi-text h6 {
+  font-family: var(--font-label);
 	float: right;
-	padding-left: 40px;
+	padding-left: 20px;
 	overflow: hidden;
-	font-weight: 700;
-	color: #111111;
+	font-weight: 500;
+	color: #383a3a;
 }
 
 .product-item .pi-text p {
-	font-size: 16px;
-	color: #111111;
+  font-family: var(--font-label);
+	font-size: 14px;
+	color: #5b5e5e;
 	margin-bottom: 0;
 }
 
@@ -957,31 +983,40 @@ ol {
 }
 
 .product-filter-section .section-title {
-	margin-bottom: 70px;
+	margin-bottom: 90px;
+  font-family: var(--font-h1);
 }
 
 .product-filter-menu {
-	list-style: none;
-	margin: 0 -10px;
-	padding-bottom: 15px;
+  font-family: var(--font-label);
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .product-filter-menu li {
-	margin: 0 10px 10px;
-	display: inline-block;
+  display: inline-block;
+  margin: 0 10px 10px 0;
 }
 
-.product-filter-menu li a {
-	color: #111111;
-	font-size: 12px;
-	font-weight: 700;
-	text-transform: uppercase;
-	background: #E7ECEF;
-	display: block;
-	width: 100%;
-	padding: 10px 34px;
-	border-radius: 31px;
+.product-filter-menu li button {
+  font-family: var(--font-label);
+  color: #111111;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #E7ECEF;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 31px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
+.product-filter-menu li button:hover {
+  background-color: #A3CEF1;
+}
+
 
 /* ----------------
   Banner section
@@ -1726,7 +1761,7 @@ ol {
 }
 
 .related-product-section .section-title h2 {
-	font-size: 24px;
+	font-size: 100px;
 	margin-bottom: 60px;
 }
 
@@ -2252,6 +2287,7 @@ ol {
 	}
 	.header-search-form {
 		margin-bottom: 15px;
+    font-family: var(--font-label);
 	}
 	.user-panel {
 		text-align: center;
@@ -2311,11 +2347,13 @@ ol {
 	}
 	.header-search-form {
 		margin-bottom: 15px;
+    font-family: var(--font-label);
 	}
 	.user-panel {
 		text-align: center;
 	}
 	.main-menu {
+    font-family: var(--font-label);
 		display: none;
 	}
 	.slicknav_btn {
@@ -2408,6 +2446,7 @@ ol {
 
 /* Small Mobile :320px. */
 
+
 @media only screen and (max-width: 479px) {
 	.hero-slider .slider-nav-warp {
 		max-width: 510px;
@@ -2419,8 +2458,8 @@ ol {
 	.hero-slider .hs-item .sb-line {
 		margin-bottom: 15px;
 	}
-	.section-title h2 {
-		font-size: 28px;
+	.section-title h1 {
+		font-size: 300px;
 	}
 	.feature h2 {
 		font-size: 18px;

@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
 
   toggleWomenPopup() {
     const dialogRef = this.dialog.open(ListCategPopupComponent, {
-      width: '400px',height:'400px'
+      width: '400px',height:'410px'
     });
   }
 

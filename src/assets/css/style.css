@@ -125,7 +125,8 @@ ol {
 /* buttons */
 
 .site-btn {
-	display: inline-block;
+  font-family: var(--font-label);
+  display: inline-block;
 	border: none;
 	font-size: 14px;
 	font-weight: 600;
@@ -133,7 +134,7 @@ ol {
 	padding: 18px 47px 14px;
 	border-radius: 50px;
 	text-transform: uppercase;
-	background: #A3CEF1;
+	background: #0E4A6C;
 	color: #fff;
 	line-height: normal;
 	cursor: pointer;
@@ -874,7 +875,7 @@ ol {
 	font-size: 10px;
 	font-weight: 700;
 	color: #E7ECEF;
-	background: #50e550;
+	background: #B97989;
 	line-height: 1;
 	text-transform: uppercase;
 	padding: 5px 9px 1px;
@@ -1035,7 +1036,7 @@ ol {
 	font-size: 24px;
 	font-weight: 700;
 	color: #E7ECEF;
-	background: #50e550;
+	background: #A3CEF1;
 	line-height: 1;
 	text-transform: uppercase;
 	padding: 7px 16px 1px;
@@ -1043,7 +1044,7 @@ ol {
 }
 
 .banner span {
-	font-size: 18px;
+	font-size: 20px;
 	text-transform: uppercase;
 	font-weight: 600;
 	letter-spacing: 3px;
@@ -1051,8 +1052,8 @@ ol {
 	display: block;
 }
 
-.banner h2 {
-	font-size: 48px;
+.banner h1 {
+	font-size: 100px;
 	text-transform: uppercase;
 	font-weight: 700;
 	margin-bottom: 10px;

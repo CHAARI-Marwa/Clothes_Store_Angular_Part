@@ -3,10 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
-
-
-
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './vue/login/login.component';
 import { SignupComponent } from './vue/signup/signup.component';
@@ -16,7 +12,6 @@ import { HomeComponent } from './vue/home/home.component';
 import { FooterComponent } from './vue/footer/footer.component';
 import { HeaderComponent } from './vue/header/header.component';
 
-
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
@@ -25,14 +20,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
-
-
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderDashComponent } from './vue/header-dash/header-dash.component';
 import { SidenavComponent } from './vue/sidenav/sidenav.component';
 import { DashboardComponent } from './vue/dashboard/dashboard.component';
 import { MatSelectModule } from '@angular/material/select';
+import { CartComponent } from './vue/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -43,11 +36,9 @@ import { MatSelectModule } from '@angular/material/select';
     HeaderDashComponent,
     SidenavComponent,
     DashboardComponent,
-   
-  
-    
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

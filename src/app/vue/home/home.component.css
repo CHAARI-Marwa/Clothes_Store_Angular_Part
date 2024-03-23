@@ -1,65 +1,152 @@
-.Section_top{
+.content-wrapper {
+  margin-top: 40px !important;
+  position: relative;
+  background-color: #E7ECEF;
+  padding: 10px;
+  text-align: center;
+}
+
+.content-image {
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.content-text {
+  font-family: var(--font-label);
+  position: absolute;
+  top: 45%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: bold;
+  color: #181818;
+}
+
+.content-subtext {
+  font-family: var(--font-label);
+  position: absolute;
+  top: 55%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: #181818;
+}
+
+.content-button {
+  font-family: var(--font-label);
+  background-color: #0E4A6C;
+  color: white;
+  border: none;
+  padding: 10px 40px;
+  border-radius: 50px;
+  position: absolute;
+  top: 75%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+/* les 3 cards de categories */
+.container1 {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+.row1 {
+  display: flex;
+}
+.col-lg-4 {
+  flex: 1;
+  padding: 0 10px; /* Ajoutez un espacement horizontal entre les colonnes si nécessaire */
+}
+.product-item1 {
+  border: 1px solid #ccc; /* Ajoutez une bordure pour séparer visuellement les cartes */
+  border-radius: 5px; /* Facultatif : ajoutez des coins arrondis aux cartes */
+  overflow: hidden; /* Assurez-vous que le contenu de la carte ne dépasse pas */
+  width: 340px; /* Définir la largeur de la carte */
+  height: 210px; /* Définir la hauteur de la carte */
+}
+.pi-pic1 img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Assurez-vous que l'image remplit complètement la carte */
+}
+
+/* CSS mtee 3 cards w fazet shop now */
+.product-item1 {
+  position: relative;
+}
+
+.product-item1 .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  position: relative;
-  background-image: url(src/assets/img/h11.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  text-align: center;
-  justify-content: center;
-  animation: change 10s infinite ease-in-out;
+  padding: 10px;
+  background-color: rgba(119, 115, 115, 0.5); /* Fond gris avec transparence */
+  display: none;
+
 }
-.content{
+
+.product-item1:hover .overlay {
+  display: block; /* Affiche l'overlay lors du survol */
+}
+
+.product-item1 .shop-now {
+  color: white;
+  text-decoration: underline;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-transform: uppercase;
+  bottom: 10px;
+  left: 10px;
 }
-.content h1{
-  color: #fff;
-  font-size: 60px;
-  letter-spacing: 15px;
+
+/*bannersection*/
+.banner-section {
+  position: relative;
 }
-.content h1 span{
-  color: #111;
+
+.banner {
+  position: relative;
 }
-.content a{
-  background: #85c1ee;
-  padding: 10px 24px;
-  text-decoration: none;
-  font-size: 18px;
-  border-radius: 20px;
+
+.banner img {
+  width: 100%;
 }
-.content a:hover{
-  background: #034e88;
-  color: #fff;
+
+.text-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
-@keyframes change{
-  0%
-  {
-    background-image: url(src/assets/img/h11.png);
-  }
-  20%
-  {
-    background-image: url(src/assets/img/h22.png);
-  }
-  40%
-  {
-    background-image: url(src/assets/img/h11.png);
-  }
-  60%
-  {
-    background-image: url(src/assets/img/h22.png);
-  }
-  80%
-  {
-    background-image: url(src/assets/img/h11.png);
-  }
-  100%
-  {
-    background-image: url(src/assets/img/h22.png);
-  }
+
+.text-overlay div {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.tag-new {
+  float: right;
+}
+
+h1 {
+  display: block;
+  font-size: 55px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+span {
+  display: block;
+  margin-bottom: 40px;
+}
+
+.site-btn {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 14px;
 }

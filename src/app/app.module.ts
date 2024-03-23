@@ -26,6 +26,9 @@ import { SidenavComponent } from './vue/sidenav/sidenav.component';
 import { DashboardComponent } from './vue/dashboard/dashboard.component';
 import { MatSelectModule } from '@angular/material/select';
 import { CartComponent } from './vue/cart/cart.component';
+import { ListCategPopupComponent } from './vue/list-categ-popup/list-categ-popup.component';
+
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import { CartComponent } from './vue/cart/cart.component';
     DashboardComponent,
     FooterComponent,
     HeaderComponent,
-    CartComponent
+    CartComponent,
+    ListCategPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,9 +59,10 @@ import { CartComponent } from './vue/cart/cart.component';
        MatListModule,
        MatFormFieldModule,
        MatSelectModule,
-    
+       MatDialogModule,
+
     ReactiveFormsModule,
-  
+
   ],
   providers: [],
   bootstrap: [AppComponent]

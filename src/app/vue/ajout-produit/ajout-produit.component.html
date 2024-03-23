@@ -1,0 +1,30 @@
+<form  id="ajout_produit" (ngSubmit)="submitForm()" #productForm="ngForm">
+    <div class="form-group">
+      <label for="name">Nom du produit:</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="product.name" required>
+    </div>
+    <div class="form-group">
+      <label for="price">Prix:</label>
+      <input type="number" class="form-control" id="price" name="price" [(ngModel)]="product.price" required>
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantité:</label>
+      <input type="number" class="form-control" id="quantity" name="quantity" [(ngModel)]="product.quantity" required>
+    </div>
+    <div class="form-group">
+      <label for="promotion">Promotion:</label>
+      <input type="number" class="form-control" id="promotion" name="promotion" [(ngModel)]="product.promotion">
+    </div>
+    <div class="form-group">
+      <label for="fcategory_id">ID de la catégorie principale:</label>
+      <input type="number" class="form-control" id="fcategory_id" name="fcategory_id" [(ngModel)]="product.fcategory_id" required>
+    </div>
+    <div class="form-group">
+      <label for="scategory_id">ID de la sous-catégorie:</label>
+      <input type="number" class="form-control" id="scategory_id" name="scategory_id" [(ngModel)]="product.scategory_id" required>
+    </div>
+  
+    <button type="submit" class="CREATE" >Ajouter Produit</button>
+    
+  </form>
+  

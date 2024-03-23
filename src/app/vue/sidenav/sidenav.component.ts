@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SharedService } from 'src/app/controller/shared.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent {
+  constructor(private sharedService: SharedService) {}
 
+  onClick() {
+    this.sharedService.toggleFormulaire();
+  }
 }

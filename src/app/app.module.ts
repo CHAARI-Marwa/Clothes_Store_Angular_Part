@@ -33,6 +33,8 @@ import { HeaderDashComponent } from './vue/header-dash/header-dash.component';
 import { SidenavComponent } from './vue/sidenav/sidenav.component';
 import { DashboardComponent } from './vue/dashboard/dashboard.component';
 import { MatSelectModule } from '@angular/material/select';
+import { AjoutProduitComponent } from './vue/ajout-produit/ajout-produit.component';
+
 
 @NgModule({
   declarations: [
@@ -43,11 +45,10 @@ import { MatSelectModule } from '@angular/material/select';
     HeaderDashComponent,
     SidenavComponent,
     DashboardComponent,
-   
-  
-    
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    AjoutProduitComponent,
+    
   ],
   imports: [
     BrowserModule,

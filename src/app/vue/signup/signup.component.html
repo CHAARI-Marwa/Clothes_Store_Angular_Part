@@ -20,7 +20,7 @@
         <div>
           <input type="text" id="FirstName" formControlName="name">
           <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
-            <span *ngIf="userForm.get('name')?.errors?.['required']" class="error-message">First Name is required</span>
+            <span *ngIf="userForm.get('name')?.errors?.['required']" >First Name is required</span>
           </div>
         </div>
         <label for="LastName">LAST NAME</label>

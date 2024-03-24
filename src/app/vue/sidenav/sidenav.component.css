@@ -1,6 +1,4 @@
 
-
-
   .mat-icon {
     vertical-align: center;
     margin: right 1rem ;
@@ -12,7 +10,7 @@
   }
 
   .custom-list-item{
-    color: white !important; 
+    color: white !important;
     font-size: 0.8rem;
     height: 44px !important;
     margin-bottom: 4px;
@@ -23,7 +21,7 @@
     &:hover{
       background-color: #A3CEF1!important;
     }
-    
+
   }
    .list-item-active{
     color: #f2f5f7 !important;
@@ -53,4 +51,3 @@
     vertical-align: middle; /* Aligner verticalement avec l'icône */
     margin-right: 8px; /* Ajouter un peu d'espace à droite de l'icône */
   }
- 

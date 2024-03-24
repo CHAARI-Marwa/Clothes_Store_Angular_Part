@@ -1,3 +1,4 @@
+
 mat-toolbar {
   position: sticky;
   top: 0;
@@ -43,4 +44,3 @@ mat-toolbar {
     left: 0;
     z-index: 101; /* assure que le menu s'affiche au-dessus des autres éléments */
   }
-  

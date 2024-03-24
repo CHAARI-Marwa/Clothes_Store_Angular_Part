@@ -491,7 +491,7 @@ ol {
 }
 
 .accordion-area .panel-link {
-  background-image: url("C:\Users\Asus\Downloads\Clothes_Store_Angular_Part\src\assets\img\arrow-down.png");
+  background-image: url("../../../assets/img/arrow-down.png");
   background-repeat: no-repeat;
   background-position: right 10px top 30px;
 }
@@ -506,11 +506,11 @@ ol {
 }
 
 .accordion-area .panel-header .panel-link.collapsed {
-  background-image: url("C:\Users\Asus\Downloads\Clothes_Store_Angular_Part\src\assets\img\arrow-down.png");
+  background-image: url("../../../assets/img/arrow-down.png");
 }
 
 .accordion-area .panel-link.active {
-  background-image: url("C:\Users\Asus\Downloads\Clothes_Store_Angular_Part\src\assets\img\arrow-up.png");
+  background-image: url("../../../assets/img/arrow-up.png");
 }
 
 .accordion-area .panel-link.active {

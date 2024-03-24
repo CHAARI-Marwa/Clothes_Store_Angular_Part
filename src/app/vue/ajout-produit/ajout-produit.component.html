@@ -1,30 +1,44 @@
+<br> <br>
+
 <form  id="ajout_produit" (ngSubmit)="submitForm()" #productForm="ngForm">
     <div class="form-group">
-      <label for="name">Nom du produit:</label>
+      <label for="name">PRODUCT NAME</label>
       <input type="text" class="form-control" id="name" name="name" [(ngModel)]="product.name" required>
     </div>
     <div class="form-group">
-      <label for="price">Prix:</label>
+      <label for="price">PRICE (dinars) :</label>
       <input type="number" class="form-control" id="price" name="price" [(ngModel)]="product.price" required>
     </div>
     <div class="form-group">
-      <label for="quantity">Quantité:</label>
+      <label for="quantity">QUANTITY</label>
       <input type="number" class="form-control" id="quantity" name="quantity" [(ngModel)]="product.quantity" required>
     </div>
     <div class="form-group">
-      <label for="promotion">Promotion:</label>
-      <input type="number" class="form-control" id="promotion" name="promotion" [(ngModel)]="product.promotion">
+      <label for="promotion">PROMOTION</label>
+      <select class="form-control" id="promotion" name="promotion" [(ngModel)]="product.promotion">
+        <option value="0">0%</option>
+        <option value="10">10%</option>
+        <option value="20">20%</option>
+        <option value="30">30%</option>
+        <option value="40">40%</option>
+        <option value="50">50%</option>
+        <option value="60">60%</option>
+        <option value="70">70%</option>
+        <option value="80">80%</option>
+        <option value="90">90%</option>
+      </select>
     </div>
+    
     <div class="form-group">
-      <label for="fcategory_id">ID de la catégorie principale:</label>
+      <label for="fcategory_id">PRINCIPAL CATEGORY</label>
       <input type="number" class="form-control" id="fcategory_id" name="fcategory_id" [(ngModel)]="product.fcategory_id" required>
     </div>
     <div class="form-group">
-      <label for="scategory_id">ID de la sous-catégorie:</label>
+      <label for="scategory_id">SECOND CATEGORY</label>
       <input type="number" class="form-control" id="scategory_id" name="scategory_id" [(ngModel)]="product.scategory_id" required>
     </div>
   
-    <button type="submit" class="CREATE" >Ajouter Produit</button>
+    <button type="submit" class="CREATE" >ADD PRODUCT </button>
     
   </form>
   

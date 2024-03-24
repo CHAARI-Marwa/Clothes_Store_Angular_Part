@@ -5,12 +5,32 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedService {
-  private afficherFormulaireSubject = new BehaviorSubject<boolean>(false);
-  afficherFormulaire$ = this.afficherFormulaireSubject.asObservable();
+  private afficherFormulaireProduitSubject = new BehaviorSubject<boolean>(false);
+  afficherFormulaireProduit$ = this.afficherFormulaireProduitSubject.asObservable();
+
+  private afficherFormulaireCategorieSubject = new BehaviorSubject<boolean>(false);
+  afficherFormulaireCategorie$ = this.afficherFormulaireCategorieSubject.asObservable();
+
+  private afficherFormulaireSousCategorieSubject = new BehaviorSubject<boolean>(false);
+  afficherFormulaireSousCategorie$ = this.afficherFormulaireSousCategorieSubject.asObservable();
 
   constructor() {}
 
-  toggleFormulaire() {
-    this.afficherFormulaireSubject.next(true);
+  toggleFormulaireProduit() {
+    this.afficherFormulaireProduitSubject.next(true);
+    this.afficherFormulaireCategorieSubject.next(false);
+    this.afficherFormulaireSousCategorieSubject.next(false);
+  }
+
+  toggleFormulaireCategorie() {
+    this.afficherFormulaireCategorieSubject.next(true);
+    this.afficherFormulaireProduitSubject.next(false); 
+    this.afficherFormulaireSousCategorieSubject.next(false);
+  }
+
+  toggleFormulaireSousCategorie() {
+    this.afficherFormulaireSousCategorieSubject.next(true);
+    this.afficherFormulaireProduitSubject.next(false); 
+    this.afficherFormulaireCategorieSubject.next(false);
   }
 }

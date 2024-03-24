@@ -1,0 +1,10 @@
+<br> <br>
+
+<form  id="addsous_category" (ngSubmit)="submitForm()" #souscategoryForm="ngForm">
+    <div class="form-group">
+        <label for="name">NAME SECOND CATEGORY:</label>
+        <input type="text" class="form-control" id="namesc" name="namesc" [(ngModel)]="souscategory.namesC" required>
+      </div>
+
+      <button type="submit" class="CREATE" >ADD SECOND CATEGORY</button>
+</form>

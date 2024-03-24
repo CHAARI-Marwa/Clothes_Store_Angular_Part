@@ -9,7 +9,7 @@
     border-color: white;
   }
 
-  .custom-list-item{
+  #custom-nav-list .custom-list-item{
     color: white !important;
     font-size: 0.8rem;
     height: 44px !important;
@@ -19,11 +19,11 @@
     margin:0 8px;
     font-family: var(--font-label);
     &:hover{
-      background-color: #A3CEF1!important;
+    background-color: #A3CEF1!important;
     }
 
   }
-   .list-item-active{
+  #custom-nav-list .list-item-active{
     color: #f2f5f7 !important;
     ::ng-deep{
       .custom-list-item{
@@ -51,3 +51,4 @@
     vertical-align: middle; /* Aligner verticalement avec l'icône */
     margin-right: 8px; /* Ajouter un peu d'espace à droite de l'icône */
   }
+  

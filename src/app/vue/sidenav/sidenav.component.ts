@@ -9,7 +9,14 @@ import { SharedService } from 'src/app/controller/shared.service';
 export class SidenavComponent {
   constructor(private sharedService: SharedService) {}
 
-  onClick() {
-    this.sharedService.toggleFormulaire();
+  onClick(type: string) {
+    if (type === 'product') {
+      this.sharedService.toggleFormulaireProduit();
+    } else if (type === 'category') {
+      this.sharedService.toggleFormulaireCategorie();
+    }
+    else if (type === 'souscategory') {
+      this.sharedService.toggleFormulaireSousCategorie();
+    }
   }
 }

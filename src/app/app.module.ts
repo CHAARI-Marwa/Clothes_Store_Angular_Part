@@ -31,6 +31,9 @@ import { CartComponent } from './vue/cart/cart.component';
 import { ListCategPopupComponent } from './vue/list-categ-popup/list-categ-popup.component';
 
 import {MatDialogModule} from '@angular/material/dialog';
+import { AddProductModalComponent } from './vue/add-product-modal/add-product-modal.component';
+import { AddCategoryComponent } from './vue/add-category/add-category.component';
+import { AddSousCategoryComponent } from './vue/add-sous-category/add-sous-category.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     
     CartComponent,
     ListCategPopupComponent,
+    AddProductModalComponent,
+    AddCategoryComponent,
+    AddSousCategoryComponent,
   ],
   imports: [
     BrowserModule,

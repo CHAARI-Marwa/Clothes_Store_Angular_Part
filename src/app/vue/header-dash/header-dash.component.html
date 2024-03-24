@@ -1,27 +1,41 @@
 <mat-toolbar>
-    <mat-toolbar-row class="justify-content-between">
-      <button mat-icon-button (click)="toggleSidebar()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      
-      <div class="row mr-2 ml-auto">
-        <ul>
-          <li>
-            <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center">
-              <img src="./assets/user.webp" alt="" class="user-image mr-1 p-2" />
-              User Name
-              <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
-            
+  <mat-toolbar-row class="justify-content-between">
+    <button mat-icon-button (click)="toggleSidebar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div class="d-flex align-items-center custom-search-bar">
+      <form class="mr-auto">
+        <div class="input-group no-border">
+          <input type="text" value="" class="form-control" placeholder="Search...">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <mat-icon>search</mat-icon>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+
+    <div class="row mr-2 ml-auto">
+      <ul>
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center">
+            <img src="./assets/user.webp" alt="" class="user-image mr-1 p-2" />
+            User Name
+            <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+          
             <mat-menu #menu="matMenu" class="logout-menu">
-                <button mat-menu-item>
-                  <mat-icon>exit_to_app</mat-icon>
-                  Logout
-                </button>
-              </mat-menu>
-            </button>
-          </li>
-        </ul>
-      </div>
-      
-    </mat-toolbar-row>
-  </mat-toolbar>
+              <button mat-menu-item>
+                <mat-icon>exit_to_app</mat-icon>
+                Logout
+              </button>
+            </mat-menu>
+          </button>
+        </li>
+      </ul>
+    </div>
+  
+  </mat-toolbar-row>
+</mat-toolbar>

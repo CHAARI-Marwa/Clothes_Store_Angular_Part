@@ -1,19 +1,8 @@
-/* styles.css */
-
-#ajout_produit {
+#add_category{
     max-width: 400px;
     margin: auto;
 }
-  
-.form-group {
-    margin-bottom: 15px;
-}
-  
-label {
-    display: block;
-    font-weight: bold;
-}
-  
+
 input[type="text"],
 input[type="number"] {
     width: 100%;
@@ -22,7 +11,6 @@ input[type="number"] {
     border-radius: 8px; /* Augmenter le rayon de la bordure */
     box-sizing: border-box;
 }
-  
 button.CREATE {
     background-color: #4C90A6;
     color: white;

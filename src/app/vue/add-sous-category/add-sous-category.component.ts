@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { SouscategoryService } from 'src/app/controller/souscategory.service';
+
 
 @Component({
   selector: 'app-add-sous-category',
@@ -7,21 +9,26 @@ import { SouscategoryService } from 'src/app/controller/souscategory.service';
   styleUrls: ['./add-sous-category.component.css']
 })
 export class AddSousCategoryComponent {
- 
-  souscategory: any={}; 
-  souscategoryService: any;
-  constructor(private souscategoryservice : SouscategoryService) { }
+  toppings = this._formBuilder.group({
+    man: false,
+    women: false,
+    younggirl: false,
+    youngboy: false,
+  });
+
+  souscategory: any = {}; 
+  constructor(private souscategoryService: SouscategoryService, private _formBuilder: FormBuilder) { }
 
   submitForm() {
-    this.souscategoryservice.addsouscategory(this.souscategory).subscribe(
+    this.souscategoryService.addsouscategory(this.souscategory).subscribe(
       response => {
         console.log('Category added');
-       
       },
       error => {
         console.error('error', error);
-    
       }
     );
   }
+
+ 
 }

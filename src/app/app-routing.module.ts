@@ -5,6 +5,7 @@ import { LoginComponent } from './vue/login/login.component';
 import { HomeComponent } from './vue/home/home.component';
 import { DashboardComponent } from './vue/dashboard/dashboard.component';
 import { CartComponent } from './vue/cart/cart.component';
+import { UserProfileComponent } from './vue/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
-  {path:'cart', component:CartComponent}  
+  {path:'cart', component:CartComponent} ,
+  {path:'profile', component:UserProfileComponent}  
 ];
 
 @NgModule({

@@ -18,5 +18,9 @@ export class SidenavComponent {
     else if (type === 'souscategory') {
       this.sharedService.toggleFormulaireSousCategorie();
     }
+
+    else if (type === 'userprofile') {
+      this.sharedService.toggleFormulaireuserprofile();
+    }
   }
 }

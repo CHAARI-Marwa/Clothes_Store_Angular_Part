@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { ModalService } from 'src/app/controller/modal.service';
 import { ProductService } from 'src/app/controller/product.service';
 
@@ -8,10 +9,11 @@ import { ProductService } from 'src/app/controller/product.service';
   styleUrls: ['./ajout-produit.component.css']
 })
 export class AjoutProduitComponent {
+  
   product: any = {};
   afficherFormulaire: boolean = false;
-
-  constructor(private productService: ProductService, private modalService: ModalService) { }
+  
+  constructor(private productService: ProductService, private modalService: ModalService,private fb: FormBuilder) { }
 
   toggleFormulaire() {
     this.afficherFormulaire = !this.afficherFormulaire;
@@ -24,9 +26,27 @@ export class AjoutProduitComponent {
         this.modalService.openSuccessModal();
       },
       error => {
-        console.error('Erreur lors de l\'ajout du produit:', error);
+        console.error('Error', error);
         this.modalService.openFailureModal();
       }
     );
   }
+
+  onFileSelected(event: any) {
+    const selectedFile: File = event.target.files.item(0)!;
+   
+    if (selectedFile) {
+      const extension: string = this.getFileExtension(selectedFile.name);
+      console.log('File name:', selectedFile.name);
+      console.log('File extension:', extension);
+    }
+  }
+
+  getFileExtension(fileName: string): string {
+    return fileName.split('.').pop()!.toLowerCase(); 
+  }
+
+
+
+
 }

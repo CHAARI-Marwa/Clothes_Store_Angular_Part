@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
   afficherFormulaireProduit: boolean = false;
   afficherFormulaireCategorie: boolean = false;
   afficherFormulaireSousCategorie: boolean = false;
+  afficherFormulaireuserprofile: boolean = false;
 
   constructor(private sharedService: SharedService) {}
 
@@ -29,6 +30,10 @@ export class DashboardComponent implements OnInit {
 
     this.sharedService.afficherFormulaireSousCategorie$.subscribe((afficher) => {
       this.afficherFormulaireSousCategorie = afficher;
+    });
+
+    this.sharedService.afficherFormulaireuserprofile$.subscribe((afficher) => {
+      this.afficherFormulaireuserprofile = afficher;
     });
   }
 }

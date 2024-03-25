@@ -13,6 +13,6 @@ export class ProductService {
   addProduct(product: Product): Observable<any> {
  
     console.log('Ajout de produit:', product);
-    return this.http.post<any>('http://localhost:8080/product', product);
+    return this.http.post<any>('http://localhost:8080/product/add', product);
   }
 }

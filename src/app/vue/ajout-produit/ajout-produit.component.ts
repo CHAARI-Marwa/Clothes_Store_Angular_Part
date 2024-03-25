@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ModalService } from 'src/app/controller/modal.service';
 import { ProductService } from 'src/app/controller/product.service';
 
 @Component({
@@ -8,25 +7,36 @@ import { ProductService } from 'src/app/controller/product.service';
   styleUrls: ['./ajout-produit.component.css']
 })
 export class AjoutProduitComponent {
+
   product: any = {};
-  afficherFormulaire: boolean = false;
+  image: File | null = null;
 
-  constructor(private productService: ProductService, private modalService: ModalService) { }
+  constructor(private productService: ProductService) {}
 
-  toggleFormulaire() {
-    this.afficherFormulaire = !this.afficherFormulaire;
+  onSubmit() {
+    const formData = new FormData();
+    formData.append('name', this.product.name);
+    formData.append('price', this.product.price);
+    formData.append('quantity', this.product.quantity);
+    formData.append('promotion', this.product.promotion);
+    formData.append('fcategory_id', this.product.fcategoryId);
+    formData.append('scategory_id', this.product.scategoryId);
+    if (this.image) {
+      formData.append('image_name', this.image, this.image.name);
+    }
+    this.productService.addProduct(formData)
+      .subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.error(error);
+        }
+      );
   }
 
-  submitForm() {
-    this.productService.addProduct(this.product).subscribe(
-      response => {
-        console.log('Product added');
-        this.modalService.openSuccessModal();
-      },
-      error => {
-        console.error('Erreur lors de l\'ajout du produit:', error);
-        this.modalService.openFailureModal();
-      }
-    );
+  handleFileInput(event: any) {
+    this.image = event.target.files[0];
   }
+
 }

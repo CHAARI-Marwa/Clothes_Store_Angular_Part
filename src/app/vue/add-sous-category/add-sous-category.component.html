@@ -1,10 +1,11 @@
-<br> <br>
-
-<form  id="addsous_category" (ngSubmit)="submitForm()" #souscategoryForm="ngForm">
-    <div class="form-group">
-        <label for="name">NAME SECOND CATEGORY:</label>
-        <input type="text" class="form-control" id="namesc" name="namesc" [(ngModel)]="souscategory.namesC" required>
-      </div>
-
-      <button type="submit" class="CREATE" >ADD SECOND CATEGORY</button>
-</form>
+<form id="addsous_category" #Souscategory="ngForm" [formGroup]="souscategoryForm" (ngSubmit)="addsouscategory()">
+  <div class="form-group">
+    <label for="name">NAME SECOND CATEGORY:</label>
+    <input type="text" id="name" class="form-control" formControlName="name" required>
+    <h4>Select categories:</h4>
+    <div *ngFor="let category of categories">
+      <p><mat-checkbox [formControlName]="'category_' + category.id" (change)="updateSelectedCategories(category.id, $event.checked)">{{ category.name }}</mat-checkbox></p>
+    </div>
+  </div>
+<button type="submit" class="CREATE">ADD SECOND CATEGORY</button>
+</form> 

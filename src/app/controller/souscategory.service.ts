@@ -10,6 +10,12 @@ import { souscategory } from '../model/souscategory';
 export class SouscategoryService {
 
   constructor(private http: HttpClient) { }
-  addsouscategory(souscategory:   souscategory):Observable<any>{
-    return this.http.post<any>('http://localhost:8080/souscategory',souscategory);
-}}
+
+  public addsouscategory(souscategory: souscategory):Observable<any>{
+    return this.http.post<any>('http://localhost:8080/category/sous',souscategory);
+  }
+
+  public getcategory():Observable<any>{
+    return this.http.get<any>('http://localhost:8080/category/first');
+  }
+}

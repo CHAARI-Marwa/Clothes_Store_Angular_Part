@@ -35,6 +35,7 @@ import { AddProductModalComponent } from './vue/add-product-modal/add-product-mo
 import { AddCategoryComponent } from './vue/add-category/add-category.component';
 import { AddSousCategoryComponent } from './vue/add-sous-category/add-sous-category.component';
 import { UserProfileComponent } from './vue/user-profile/user-profile.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -73,8 +74,17 @@ import { UserProfileComponent } from './vue/user-profile/user-profile.component'
        MatSelectModule,
        MatDialogModule,
    
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatDividerModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDialogModule,
     ReactiveFormsModule,
-
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

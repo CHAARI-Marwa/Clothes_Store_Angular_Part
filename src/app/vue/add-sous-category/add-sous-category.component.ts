@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+
 import { SouscategoryService } from 'src/app/controller/souscategory.service';
+import { souscategory } from 'src/app/model/souscategory';
+import {  FormControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -8,27 +10,71 @@ import { SouscategoryService } from 'src/app/controller/souscategory.service';
   templateUrl: './add-sous-category.component.html',
   styleUrls: ['./add-sous-category.component.css']
 })
+
 export class AddSousCategoryComponent {
-  toppings = this._formBuilder.group({
-    man: false,
-    women: false,
-    younggirl: false,
-    youngboy: false,
-  });
+  souscategory: souscategory = new souscategory();
+  souscategoryForm: FormGroup;
+  categories: any[] = [];
+  selectedCategories: number[] = [];
+  selectedCategoryIds: number[] = []; 
 
-  souscategory: any = {}; 
-  constructor(private souscategoryService: SouscategoryService, private _formBuilder: FormBuilder) { }
+  ngOnInit(): void {
+    this.getCategories();
+  }
+  
+  constructor(
+    private fb: FormBuilder,
+    private _service: SouscategoryService,
+  ) {
+    this.souscategoryForm = this.fb.group({
+      name: ['', Validators.required]
+    });
+  }
+  
+  addsouscategory() {
+    if (this.souscategoryForm.valid) {
+      this.souscategory.list_category_id = this.selectedCategoryIds; 
+      this.souscategory.name = this.souscategoryForm.value.name;
+      this._service.addsouscategory(this.souscategory).subscribe(
+        response => {
+          console.log('Category added'); 
+        },
+        error => {
+          console.error('error', error);
+        }
+      );
+    }
+  }
 
-  submitForm() {
-    this.souscategoryService.addsouscategory(this.souscategory).subscribe(
-      response => {
-        console.log('Category added');
+  getCategories(): void {
+    this._service.getcategory().subscribe(
+      (data: any[]) => {
+        this.categories = data.map(category => ({ id: category.id, name: category.name }));
+        console.log(this.categories);
+        this.createFormControls();
+        console.log(this.categories);
       },
-      error => {
-        console.error('error', error);
+      (error: any) => {
+        console.log('Erreur lors de la récupération des catégories : ', error);
       }
     );
   }
 
- 
+  createFormControls(): void {
+    this.categories.forEach(category => {
+      this.souscategoryForm.addControl(`category_${category.id}`, new FormControl(false));
+    });
+  }
+
+  updateSelectedCategories(categoryId: number, isChecked: boolean) {
+    if (isChecked) {
+      this.selectedCategoryIds.push(categoryId); // Add category ID to the selected list
+    } else {
+      const index = this.selectedCategoryIds.indexOf(categoryId);
+      if (index !== -1) {
+        this.selectedCategoryIds.splice(index, 1); // Remove category ID from the selected list
+      }
+    }
+  }
+  
 }

@@ -10,5 +10,12 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
   addCategory(Category:   Category):Observable<any>{
-    return this.http.post<any>('http://localhost:8080/category',Category);
-}}
+    return this.http.post<any>('http://localhost:8080/category/first',Category);
+}
+
+getCategories(): Observable<any[]> {
+  return this.http.get<any[]>('http://localhost:8080/category/first');
+}
+
+
+}

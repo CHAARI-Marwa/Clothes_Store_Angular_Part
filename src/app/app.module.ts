@@ -34,6 +34,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AddProductModalComponent } from './vue/add-product-modal/add-product-modal.component';
 import { AddCategoryComponent } from './vue/add-category/add-category.component';
 import { AddSousCategoryComponent } from './vue/add-sous-category/add-sous-category.component';
+import { UserProfileComponent } from './vue/user-profile/user-profile.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DetailsProdPopupComponent } from './vue/details-prod-popup/details-prod-popup.component';
 
 @NgModule({
@@ -56,6 +58,7 @@ import { DetailsProdPopupComponent } from './vue/details-prod-popup/details-prod
     AddSousCategoryComponent,
     DetailsProdPopupComponent,
 
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,8 +77,17 @@ import { DetailsProdPopupComponent } from './vue/details-prod-popup/details-prod
        MatSelectModule,
        MatDialogModule,
 
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatDividerModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDialogModule,
     ReactiveFormsModule,
-
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -25,3 +25,7 @@ button.CREATE {
 button.CREATE:hover {
     background-color: #4C90A6;
 }
+
+.example-section {
+    margin: 12px 0;
+  }

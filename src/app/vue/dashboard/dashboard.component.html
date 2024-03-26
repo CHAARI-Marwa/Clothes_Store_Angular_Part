@@ -4,11 +4,13 @@
   </mat-drawer>
   <mat-drawer-content>
     <app-header-dash (toggleSidebarForMe)="sideBarToggler()"></app-header-dash>
-
     <app-ajout-produit *ngIf="afficherFormulaireProduit"></app-ajout-produit>
     <app-add-category *ngIf="afficherFormulaireCategorie"></app-add-category>
+
     <app-add-sous-category *ngIf="afficherFormulaireSousCategorie"></app-add-sous-category>
+    <app-user-profile *ngIf="afficherFormulaireuserprofile"></app-user-profile>
     
+
 
   </mat-drawer-content>
 </mat-drawer-container>

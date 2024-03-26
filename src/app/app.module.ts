@@ -34,6 +34,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AddProductModalComponent } from './vue/add-product-modal/add-product-modal.component';
 import { AddCategoryComponent } from './vue/add-category/add-category.component';
 import { AddSousCategoryComponent } from './vue/add-sous-category/add-sous-category.component';
+import { DetailsProdPopupComponent } from './vue/details-prod-popup/details-prod-popup.component';
 
 @NgModule({
   declarations: [
@@ -47,12 +48,14 @@ import { AddSousCategoryComponent } from './vue/add-sous-category/add-sous-categ
     FooterComponent,
     HeaderComponent,
     AjoutProduitComponent,
-    
+
     CartComponent,
     ListCategPopupComponent,
     AddProductModalComponent,
     AddCategoryComponent,
     AddSousCategoryComponent,
+    DetailsProdPopupComponent,
+
   ],
   imports: [
     BrowserModule,

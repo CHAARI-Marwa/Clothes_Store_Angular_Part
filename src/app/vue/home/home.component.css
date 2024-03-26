@@ -452,6 +452,7 @@ pi-pic {
   background-color: #E7ECEF; /* Couleur de fond */
   color: #4C90A6; /* Couleur du texte */
   padding: 6px 12px; /* Ajustez la taille du bouton */
+  border: none; /* Supprime le contour */
   border-radius: 20px; /* Rend le bouton arrondi */
   text-decoration: none;
   opacity: 0; /* Masque le bouton par défaut */
@@ -461,9 +462,11 @@ pi-pic {
 .pi-pic:hover .quick-view-btn {
   opacity: 1; /* Affiche le bouton au survol de l'image */
 }
+
 .quick-view-btn:hover {
   background-color: #4C90A6; /* Couleur de fond */
-  color: #E7ECEF;}
+  color: #E7ECEF;
+}
 img {
   max-width: 100%;
 }

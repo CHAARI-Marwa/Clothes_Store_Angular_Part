@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {timer} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {ListCategPopupComponent} from "../list-categ-popup/list-categ-popup.component";
+import {DetailsProdPopupComponent} from "../details-prod-popup/details-prod-popup.component";
 
 @Component({
   selector: 'app-home',
@@ -27,6 +28,12 @@ export class HomeComponent implements OnInit {
   toggleWomenPopup() {
     const dialogRef = this.dialog.open(ListCategPopupComponent, {
       width: '400px',height:'410px'
+    });
+  }
+
+  togglePopup() {
+    const dialogRef = this.dialog.open(DetailsProdPopupComponent, {
+      width: '2000px',height:'700px'
     });
   }
 

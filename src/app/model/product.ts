@@ -6,6 +6,8 @@ export interface Product {
     promotion: number;
     fcategory_id: number;
     scategory_id: number;
-    image_name: string;
+    size: string[];
+    color: string[];
+    image_name: string[];
   }
   

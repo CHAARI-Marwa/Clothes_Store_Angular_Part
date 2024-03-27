@@ -52,6 +52,8 @@ export class HomeComponent implements OnInit {
           promotion: product.promotion,
           fcategory_id: product.fcategory_id,
           scategory_id: product.scategory_id,
+          size:product.size,
+          color:product.color,
           image_name: product.image_name,
         }));
       },

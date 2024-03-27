@@ -13,13 +13,15 @@ export class LoginComponent {
   user = new User();
   msg = '';
 
-  constructor(private _service: RegistrationService, private _route: Router) {}
+  constructor(
+    private registrationService: RegistrationService, 
+    private _route: Router) {}
 
   loginUser() {
     console.log('Email:', this.user.emailId);
     console.log('Password:', this.user.password);
     
-    this._service.loginUserFromRemote(this.user.emailId, this.user.password)
+    this.registrationService.loginUserFromRemote(this.user.emailId, this.user.password)
       .subscribe(
         data => {
           console.log("Response received", data);

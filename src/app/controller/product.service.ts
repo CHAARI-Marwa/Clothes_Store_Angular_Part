@@ -14,4 +14,9 @@ export class ProductService {
     return this.http.post<any>('http://localhost:8080/product/add', formData);
 
   }
+
+  public getproducts():Observable<any>{
+    return this.http.get<any>('http://localhost:8080/product');
+  }
+  
 }

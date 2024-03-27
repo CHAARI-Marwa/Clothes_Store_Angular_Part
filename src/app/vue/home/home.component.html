@@ -63,141 +63,18 @@
     </ul><br>
 
     <div class="row">
-      <div class="col-lg-3 col-sm-6">
+      <div class="col-lg-3 col-sm-6" *ngFor="let product of products">
         <div class="product-item">
           <div class="pi-pic">
-            <img src="./assets/img/product/5.jpg" alt="">
-            <button class="quick-view-btn" (click)="togglePopup()">Quick View</button>
-<!--            <a href="#" class="quick-view-btn">Quick View</a>-->
-            <!--            <div class="pi-links">-->
-<!--              <a href="#" class="add-card"><i class="flaticon-bag" ></i><span>ADD TO CART</span></a>-->
-<!--              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>-->
-<!--            </div>-->
+            <img [src]="'assets/img/product/' + product.id + product.image_name" alt="{{ product.name }}">
+            <div class="pi-links">
+              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+            </div>
           </div>
           <div class="pi-text">
-            <p style="display: inline-block; margin-right: 10px;">Flamboyant Pink Top</p>
-            <p style="display: inline-block; margin-left: 95px;"><a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a></p>
-            <p>$35,00</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <div class="tag-sale">ON SALE</div>
-            <img src="./assets/img/product/6.jpg" alt="">
-            <a href="#" class="quick-view-btn">Quick View</a>
-            <!--            <div class="pi-links">-->
-<!--              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
-<!--              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>-->
-<!--            </div>-->
-          </div>
-          <div class="pi-text">
-            <p style="display: inline-block; margin-right: 10px;">Black and White Stripes Dress</p>
-            <p style="display: inline-block; margin-left: 30px;"><a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a></p>
-            <p>$35,00</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="./assets/img/product/7.jpg" alt="">
-            <a href="#" class="quick-view-btn">Quick View</a>
-<!--            <div class="pi-links">-->
-<!--              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
-<!--              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>-->
-<!--            </div>-->
-          </div>
-          <div class="pi-text">
-            <p style="display: inline-block; margin-right: 10px;">Flamboyant Pink Top </p>
-            <p style="display: inline-block; margin-left: 95px;"><a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a></p>
-            <p>$35,00</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="./assets/img/product/8.jpg" alt="">
-            <a href="#" class="quick-view-btn">Quick View</a>
-<!--            <div class="pi-links">-->
-<!--              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
-<!--              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>-->
-<!--            </div>-->
-          </div>
-          <div class="pi-text">
-            <p style="display: inline-block; margin-right: 10px;">Flamboyant Pink Top </p>
-            <p style="display: inline-block; margin-left: 95px;"><a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a></p>
-            <p>$35,00</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="./assets/img/product/9.jpg" alt="">
-            <a href="#" class="quick-view-btn">Quick View</a>
-<!--            <div class="pi-links">-->
-<!--              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
-<!--              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>-->
-<!--            </div>-->
-          </div>
-          <div class="pi-text">
-            <p style="display: inline-block; margin-right: 10px;">Flamboyant Pink Top </p>
-            <p style="display: inline-block; margin-left: 95px;"><a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a></p>
-            <p>$35,00</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="./assets/img/product/10.jpg" alt="">
-            <a href="#" class="quick-view-btn">Quick View</a>
-<!--            <div class="pi-links">-->
-<!--              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
-<!--              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>-->
-<!--            </div>-->
-          </div>
-          <div class="pi-text">
-            <p style="display: inline-block; margin-right: 10px;">Black and White Stripes Dress</p>
-            <p style="display: inline-block; margin-left: 30px;"><a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a></p>
-            <p>$35,00</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="./assets/img/product/11.jpg" alt="">
-            <a href="#" class="quick-view-btn">Quick View</a>
-<!--            <div class="pi-links">-->
-<!--              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
-<!--              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>-->
-<!--            </div>-->
-          </div>
-          <div class="pi-text">
-            <p style="display: inline-block; margin-right: 10px;">Flamboyant Pink Top </p>
-            <p style="display: inline-block; margin-left: 95px;"><a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a></p>
-            <p>$35,00</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="./assets/img/product/12.jpg" alt="">
-            <a href="#" class="quick-view-btn">Quick View</a>
-<!--            <div class="pi-links">-->
-<!--              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
-<!--              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>-->
-<!--            </div>-->
-          </div>
-          <div class="pi-text">
-            <p style="display: inline-block; margin-right: 10px;">Flamboyant Pink Top </p>
-            <p style="display: inline-block; margin-left: 95px;"><a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a></p>
-            <p>$35,00</p>
+            <p>{{ product.name }}</p>
+            <p>{{ product.price }}DT</p>
           </div>
         </div>
       </div>

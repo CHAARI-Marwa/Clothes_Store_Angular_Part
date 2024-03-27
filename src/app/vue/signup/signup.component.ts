@@ -15,7 +15,7 @@ export class SignupComponent {userForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private _service: RegistrationService,
+    private registrationService: RegistrationService,
     private _route: Router
   ) {
     this.userForm = this.fb.group({
@@ -37,7 +37,7 @@ export class SignupComponent {userForm: FormGroup;
       this.user.password = this.userForm.value.password;
       this.user.gender = this.userForm.value.gender;
 
-      this._service.registerUserFromRemote(this.user).subscribe(
+      this.registrationService.registerUserFromRemote(this.user).subscribe(
         data => {
           console.log("response received");
           this._route.navigate(['login']);

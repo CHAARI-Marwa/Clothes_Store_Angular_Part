@@ -52,7 +52,6 @@ export class AddSousCategoryComponent {
         this.categories = data.map(category => ({ id: category.id, name: category.name }));
         console.log(this.categories);
         this.createFormControls();
-        console.log(this.categories);
       },
       (error: any) => {
         console.log('Erreur lors de la récupération des catégories : ', error);

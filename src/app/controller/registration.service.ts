@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { jwtDecode } from "jwt-decode";
 import { User } from '../model/user';
 
 
@@ -12,10 +14,46 @@ export class RegistrationService {
   constructor(private _http: HttpClient) { }
 
 
-  public loginUserFromRemote(email: string, password: string):Observable<any>{
+  public loginUser(email: string, password: string):Observable<any>{
     const body = { emailId: email, password: password };
     return this._http.post<any>("http://localhost:8080/login",body)
+    .pipe(
+      tap(response => {
+        localStorage.setItem('token', response.token);
+      })
+    );
+  }
 
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+  getUserId(token: string): string | null {
+    try {
+      const decodedToken: any = jwtDecode(token);
+      return decodedToken.sub;
+    } catch (error) {
+      console.error("Erreur lors du décodage du JWT :", error);
+      return null;
+    }
+  }
+
+  getUserName(token: string): string | null {
+    try {
+      const decodedToken: any = jwtDecode(token);
+      return decodedToken.name;
+    } catch (error) {
+      console.error("Erreur lors du décodage du JWT :", error);
+      return null;
+    }
+  }
+  
+  logout(): void {
+    localStorage.removeItem('token');
   }
 
   public registerUserFromRemote(user:User):Observable<any>{

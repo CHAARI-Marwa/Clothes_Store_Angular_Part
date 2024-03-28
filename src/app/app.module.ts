@@ -37,6 +37,7 @@ import { AddSousCategoryComponent } from './vue/add-sous-category/add-sous-categ
 import { UserProfileComponent } from './vue/user-profile/user-profile.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DetailsProdPopupComponent } from './vue/details-prod-popup/details-prod-popup.component';
+import { RegistrationService } from './controller/registration.service';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,9 @@ import { DetailsProdPopupComponent } from './vue/details-prod-popup/details-prod
     ReactiveFormsModule,
     MatCheckboxModule,
   ],
-  providers: [],
+  providers: [
+    RegistrationService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

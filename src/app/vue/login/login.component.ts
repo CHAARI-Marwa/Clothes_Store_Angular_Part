@@ -18,14 +18,19 @@ export class LoginComponent {
     private _route: Router) {}
 
   loginUser() {
-    console.log('Email:', this.user.emailId);
-    console.log('Password:', this.user.password);
-    
-    this.registrationService.loginUserFromRemote(this.user.emailId, this.user.password)
+    this.registrationService.loginUser(this.user.emailId, this.user.password)
       .subscribe(
         data => {
-          console.log("Response received", data);
-          this._route.navigate(['home']);
+          if (data && typeof data === 'object') {
+            //console.log("Response received", data);
+            // const userId = this.registrationService.getUserId(data.token);
+            // const username = this.registrationService.getUserName(data.token);
+            // console.log(userId);
+            // console.log(username);
+            this._route.navigate(['home']);
+          } else {
+            console.error("Invalid JSON response"/*, data*/);
+          }
         },
         error => {
           console.log("Login failed", error);

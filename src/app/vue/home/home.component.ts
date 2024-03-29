@@ -5,6 +5,7 @@ import {ListCategPopupComponent} from "../list-categ-popup/list-categ-popup.comp
 import {DetailsProdPopupComponent} from "../details-prod-popup/details-prod-popup.component";
 import { ProductService } from 'src/app/controller/product.service';
 import { Product } from 'src/app/model/product';
+import { CategoryService } from 'src/app/controller/category.service';
 
 @Component({
   selector: 'app-home',
@@ -14,13 +15,16 @@ import { Product } from 'src/app/model/product';
 export class HomeComponent implements OnInit {
   images: string[] = ['assets/img/h11.png', 'assets/img/h22.png']; // Liste des images
   currentIndex: number = 0; // Index de l'image actuellement affichée
+  categories: any[] = [];
   products: Product[] = [];
   constructor(
     public dialog: MatDialog,
     private productService: ProductService,
+    private categoryService: CategoryService
   ) { }
 
   ngOnInit(): void {
+    this.getCategories();
     this.getProducts();
     // Changer l'image toutes les 3 secondes
     timer(3000, 3000).subscribe(() => {
@@ -28,9 +32,11 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  toggleWomenPopup() {
+  toggleSousCategoriesPopup(categoryId: number) {
     const dialogRef = this.dialog.open(ListCategPopupComponent, {
-      width: '400px',height:'410px'
+      width: '400px',
+      height:'410px',
+      data: { categoryId: categoryId }
     });
   }
 
@@ -40,6 +46,20 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  getCategories(): void {
+    this.categoryService.getCategories().subscribe(
+      (data: any[]) => {
+        this.categories = data.map(category => ({
+          id: category.id,
+          name: category.name,
+          scategories: []
+        }));
+      },
+      (error: any) => {
+        console.log('Erreur lors de la récupération des catégories : ', error);
+      }
+    );
+  }
 
   getProducts(): void {
     this.productService.getproducts().subscribe(

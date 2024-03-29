@@ -57,9 +57,9 @@
     </div>
     <ul class="product-filter-menu">
       <li><button>All Products</button></li>
-      <li><button (click)="toggleWomenPopup()">Women</button></li>
-      <li><button (click)="toggleWomenPopup()">Men</button></li>
-      <li><button (click)="toggleWomenPopup()">Child</button></li>
+      <li *ngFor="let category of categories">
+        <button (click)="toggleSousCategoriesPopup(category.id)">{{ category.name }}</button>
+      </li>
     </ul><br>
 
     <div class="row">

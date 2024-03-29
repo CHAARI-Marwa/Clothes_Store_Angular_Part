@@ -13,8 +13,9 @@ export class AjoutProduitComponent implements OnInit {
   product: any = {};
   image: File | null = null;
   subcategories: any[] = [];
-  selectedSubcategory: any = null;
   categories: any[] = [];
+
+
 
   constructor(
     private souscategoryService: SouscategoryService,
@@ -23,53 +24,31 @@ export class AjoutProduitComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.fetchSubcategories();
-    this.fetchCategories();
+    this.souscategoryService.getSubcategories().subscribe(
+      (data: any) => {
+        this.subcategories = data;
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
 
-  fetchSubcategories() {
-    this.souscategoryService.getSubcategories()
-      .subscribe(
-        subcategories => {
-          this.subcategories = subcategories;
-          console.log(subcategories);
-        },
-        error => {
-          console.error(error);
-        }
-      );
-  }
-
-  fetchCategories() {
-    this.categoryService.getCategories()
-      .subscribe(
-        categories => {
-          this.categories = categories;
-          console.log(categories);
-        },
-        error => {
-          console.error(error);
-        }
-      );
-  }
-// garder une reference a la sous categorie selectionne 
-onSubcategorySelected() {
-  // Vérifier la valeur de this.product.scategory_id
-  console.log("Selected subcategory ID:", this.product.scategory_id);
-
-  // Trouver la sous-catégorie sélectionnée
-  this.selectedSubcategory = this.subcategories.find(subcategory => subcategory.id === this.product.scategory_id);
-  console.log("Selected subcategory:", this.selectedSubcategory);
-}
-
-
-  getCategoryNameById(categoryId: number): string {
-    const category = this.categories.find(cat => cat.id === categoryId);
-    console.log('Category ID:', categoryId);
-    console.log('Category:', category);
-    return category ? category.name : '';
+  onSubcategorySelected(event: any) {
+    const subcategoryId = event.target.value;
+    this.categoryService.getCategoriesBySubCategoryId(subcategoryId).subscribe(
+      (data: any) => {
+        this.categories = data;
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
   
+
+
+
  
   
 

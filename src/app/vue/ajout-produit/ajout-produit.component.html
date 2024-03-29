@@ -15,20 +15,23 @@
     <label>Promotion:</label>
     <input type="number" name="promotion" [(ngModel)]="product.promotion" required>
   </div>
+
   <div>
     <label>Subcategory:</label>
-    <select name="scategory_id" [(ngModel)]="product.scategory_id" required>
+    <select name="scategoryId" [(ngModel)]="product.scategoryId" (change)="onSubcategorySelected($event)" required>
+
       <option *ngFor="let subcategory of subcategories" [value]="subcategory.id">{{ subcategory.name }}</option>
     </select>
   </div>
   
-  <div *ngIf="selectedSubcategory">
+  <div>
     <label>Category:</label>
-    <select name="fcategory_id" [(ngModel)]="product.fcategory_id" required>
-      <option *ngFor="let categoryId of selectedSubcategory.list_category_id" [value]="categoryId">{{ getCategoryNameById(categoryId) }}</option>
+    <select name="fcategoryId" [(ngModel)]="product.fcategoryId" required>
+      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
     </select>
   </div>
   
+
   <div>
     <label>Image:</label>
     <input type="file" name="image_name" (change)="handleFileInput($event)" required>

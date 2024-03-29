@@ -1,4 +1,7 @@
+import { souscategory } from "./souscategory";
+
 export class Category {
-  id:number;
+  id?:number;
   name: string; 
+  subCategories: souscategory[];
   }

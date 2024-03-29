@@ -4,6 +4,7 @@ import { SouscategoryService } from 'src/app/controller/souscategory.service';
 import { souscategory } from 'src/app/model/souscategory';
 import {  FormControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Category } from 'src/app/model/category';
+import { CategoryService } from 'src/app/controller/category.service';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class AddSousCategoryComponent {
   
   constructor(
     private fb: FormBuilder,
-    private _service: SouscategoryService,
+    private sousCervice: SouscategoryService,
+    private categotyService: CategoryService,
   ) {
     this.souscategoryForm = this.fb.group({
       name: ['', Validators.required]
@@ -37,7 +39,7 @@ export class AddSousCategoryComponent {
       name: this.souscategoryForm.value.name,
       categories: this.selectedCategories
     };
-    this._service.addsouscategory(newSousCategory).subscribe(
+    this.sousCervice.addsouscategory(newSousCategory).subscribe(
       () => {
         console.log('Sous-catégorie ajoutée avec succès');
       },
@@ -48,7 +50,7 @@ export class AddSousCategoryComponent {
   }
 
   getCategories(): void {
-    this._service.getcategory().subscribe(
+    this.categotyService.getCategories().subscribe(
       (data: any[]) => {
         this.categories = data.map(category => ({
           id: category.id,

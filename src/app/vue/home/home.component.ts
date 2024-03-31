@@ -34,15 +34,12 @@ export class HomeComponent implements OnInit {
 
   toggleSousCategoriesPopup(categoryId: number) {
     const dialogRef = this.dialog.open(ListCategPopupComponent, {
-      width: '400px',
-      height:'410px',
       data: { categoryId: categoryId }
     });
   }
 
   togglePopup() {
     const dialogRef = this.dialog.open(DetailsProdPopupComponent, {
-      width: '2000px',height:'700px'
     });
   }
 

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CategoryService } from 'src/app/controller/category.service';
 import { RegistrationService } from 'src/app/controller/registration.service';
-import { SouscategoryService } from 'src/app/controller/souscategory.service';
 
 @Component({
   selector: 'app-header',

@@ -60,27 +60,34 @@ export class HomeComponent implements OnInit {
       }
     );
   }
+getProducts(): void {
+  this.productService.getproducts().subscribe(
+    (data: any[]) => {
+      this.products = data.map(product => ({ 
+        id: product.id, 
+        name: product.name,
+        price: product.price,
+        promotion: product.promotion,
+        fcategory_id: product.fcategory_id,
+        scategory_id: product.scategory_id,
+        image_name: product.image_name,
+        // Ajoutez les informations sur les tailles et quantités
+        sizeQuantityMap: {
+          'S': product.sizeQuantityMap['S']?.quantity || 0,
+          'M': product.sizeQuantityMap['M']?.quantity || 0,
+          'L': product.sizeQuantityMap['L']?.quantity || 0,
+          '4a': product.sizeQuantityMap['4a']?.quantity || 0,
+          '5a': product.sizeQuantityMap['5a']?.quantity || 0,
+          '6a': product.sizeQuantityMap['6a']?.quantity || 0,
+          // Ajoutez les autres tailles ici en fonction de votre modèle
+        }
+      }));
+    },
+    (error: any) => {
+      console.log('Erreur lors de la récupération des produits : ', error);
+    }
+  );
+}
 
-  getProducts(): void {
-    this.productService.getproducts().subscribe(
-      (data: any[]) => {
-        this.products = data.map(product => ({ 
-          id: product.id, 
-          name: product.name,
-          price: product.price,
-          quantity: product.quantity,
-          promotion: product.promotion,
-          fcategory_id: product.fcategory_id,
-          scategory_id: product.scategory_id,
-          size:product.size,
-          color:product.color,
-          image_name: product.image_name,
-        }));
-      },
-      (error: any) => {
-        console.log('Erreur lors de la récupération des catégories : ', error);
-      }
-    );
-  }
    
 }

@@ -1,21 +1,26 @@
 <mat-nav-list id="custom-nav-list">
-  <h2 matSubheader class="mt-2  titre">COZASTORE</h2>
+  <h2 matSubheader class="mt-2  titre">  COZASTORE</h2>
 
-  <mat-divider></mat-divider>
+ 
   
 
   <a mat-list-item class="custom-list-item" routerLinkActive="list-item-active" routerLink="/home"> <mat-icon>home</mat-icon> Home </a>
+  <mat-divider></mat-divider>
   <a mat-list-item class="custom-list-item"  routerLinkActive="list-item-active" routerLink="/dashboard"><mat-icon>dashboard</mat-icon> Dashboard</a>
+  <mat-divider></mat-divider>
   <a mat-list-item class="custom-list-item" (click)="onClick('product')">
     <mat-icon>add</mat-icon> Add Product
   </a>
+  <mat-divider></mat-divider>
   <a mat-list-item class="custom-list-item" (click)="onClick('category')">
     <mat-icon>add</mat-icon> Add Category
   </a>
+  <mat-divider></mat-divider>
   
   <a mat-list-item class="custom-list-item" (click)="onClick('souscategory')">
     <mat-icon>add</mat-icon> Add Second Category 
   </a>
+  <mat-divider></mat-divider>
   <a mat-list-item class="custom-list-item" (click)="onClick('userprofile')">
     <mat-icon>edit</mat-icon> user profile
   </a>

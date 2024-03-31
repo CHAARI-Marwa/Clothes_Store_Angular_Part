@@ -1,13 +1,20 @@
 
-  .mat-icon {
+
+
+ .mat-icon {
     vertical-align: center;
     margin: right 1rem ;
   }
 
-  .mat-divider{
-    border-top-width: 2px;
+  .mat-divider {
+    border-top-width: 3px;
     border-color: white;
-  }
+    width: 80%; /* Vous pouvez ajuster cette valeur en fonction de la largeur que vous souhaitez pour votre divider */
+    margin-left: 10%; /* Ajuste la position vers la gauche */
+    margin-right: 10%; /* Ajuste la position vers la droite */
+}
+
+
 
   #custom-nav-list .custom-list-item{
     color: white !important;
@@ -16,10 +23,12 @@
     margin-bottom: 4px;
     margin-top: 2px;
     border-radius: 5px;
-    margin:0 8px;
-    font-family: var(--font-label);
+    margin:0 10px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Exemple de police alternative */
+  
     &:hover{
-    background-color: #A3CEF1!important;
+    background-color: #6c757d!important;
+    margin-left: 0px;
     }
 
   }
@@ -36,13 +45,16 @@
 
 
 }
+
+
 .titre {
-  color: #E7ECEF; /* Couleur du texte */
+  color: black; /* Couleur du texte */
   font-size: 1.8rem; /* Taille de la police (plus grande) */
   font-weight: 400; /* Poids de la police (plus gras) */
   letter-spacing: 2px; /* Espacement entre les lettres */
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Style de police */
   text-transform: uppercase; /* Mettre en majuscules */
+  margin-left: 30px ;
 }
 
 
@@ -50,5 +62,8 @@
     font-size: 25px; /* Changer la taille de l'icône */
     vertical-align: middle; /* Aligner verticalement avec l'icône */
     margin-right: 8px; /* Ajouter un peu d'espace à droite de l'icône */
+
   }
   
+
+

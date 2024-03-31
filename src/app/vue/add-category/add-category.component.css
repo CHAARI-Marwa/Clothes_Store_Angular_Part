@@ -1,27 +1,29 @@
-#add_category{
+#add_category {
     max-width: 400px;
     margin: auto;
 }
 
 input[type="text"],
 input[type="number"] {
-    width: 100%;
+    width: 90%;
+    max-width: 400px;
     padding: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 8px; /* Augmenter le rayon de la bordure */
-    box-sizing: border-box;
+    border-radius: 5px;
 }
+
 button.CREATE {
-    background-color: #4C90A6;
+    background-color: #B97989;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 90%;
     border-radius: 4px;
 }
-  
+
 button.CREATE:hover {
-    background-color: #4C90A6;
+    background-color: #B97989;
 }

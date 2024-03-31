@@ -1,69 +1,31 @@
-#addsous_category{
-    max-width: 400px;
-    margin: auto;
+#addsous_category {
+  max-width: 400px;
+  margin: auto;
+  border: 2px solid #6c757d; /* Ajout de la bordure */
+  padding: 20px; /* Ajout du padding à l'intérieur de la bordure */
+  border-radius: 10px; /* Ajout d'un arrondi aux coins */
 }
 
 input[type="text"],
 input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px; /* Augmenter le rayon de la bordure */
-    box-sizing: border-box;
-    
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
+
 button.CREATE {
-    background-color: #B97989;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 4px;
+  background-color: #B97989;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
 }
-  
+
 button.CREATE:hover {
-    background-color: #B97989;
+  background-color: #B97989;
 }
-
-.example-section {
-    margin: 12px 0;
-  }
-
-  .form-container {
-    padding-top: 30px;
-  }
-
-
- 
-
-  
-  .mat-checkbox-label {
-    font-size: 20px; 
-    vertical-align: middle; 
-  }
-  
- 
-  
-  .mat-checkbox-disabled .mat-checkbox-inner-container {
-    background-color: #ccc; /* Couleur de fond lorsque la case est désactivée */
-    cursor: not-allowed; /* Curseur de souris lorsque la case est désactivée */
-  }
-  
- 
-  .mat-checkbox-inner-container::after {
-    content: ''; 
-    display: block;
-    width: 2px; 
-    height: 12px; 
-    border: solid white; 
-    border-width: 0 2px 2px 0; 
-    transform: rotate(45deg); 
-    position: absolute; 
-    top: 50%;
-    left: 50%; 
-    transform-origin: center; 
-    opacity: 0; 
-  }
-

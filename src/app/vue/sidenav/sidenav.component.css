@@ -7,8 +7,8 @@
   }
 
   .mat-divider {
-    border-top-width: 3px;
-    border-color: white;
+    border-top-width: 1px;
+    border-color: #e5e5e5;
     width: 80%; /* Vous pouvez ajuster cette valeur en fonction de la largeur que vous souhaitez pour votre divider */
     margin-left: 10%; /* Ajuste la position vers la gauche */
     margin-right: 10%; /* Ajuste la position vers la droite */

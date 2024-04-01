@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
 import { CategoryService } from 'src/app/controller/category.service';
 import { souscategory } from 'src/app/model/souscategory';
 
@@ -14,7 +15,7 @@ export class ListCategPopupComponent {
   selectedCategory: string | null = null; // Variable pour stocker la catégorie sélectionnée
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private categoryService: CategoryService) {
-    console.log('ID de la catégorie sélectionnée :', this.data.categoryId);
+    // console.log('ID de la catégorie sélectionnée :', this.data.categoryId);
   }
 
 
@@ -22,16 +23,16 @@ export class ListCategPopupComponent {
     this.categoryService.getSubCategoryIds(this.data.categoryId)
       .subscribe(data => {
         this.subCategory= data;
-        console.log('Identifiants des sous-catégories :', this.subCategory);
+        // console.log('Identifiants des sous-catégories :', this.subCategory);
       });
   }
 
-  // Méthode appelée lorsqu'un élément de la liste est cliqué
-  selectCategory(category: string) {
-    this.selectedCategory = category; // Mettre à jour la catégorie sélectionnée
+  @Output() categorySelection: EventEmitter<{ categoryId: number, subCategoryId: number }> = new EventEmitter();
+  selectCategory(subCategoryId: number) {
+    this.categorySelection.emit({ categoryId: this.data.categoryId, subCategoryId: subCategoryId });
+    // console.log(this.data.categoryId,subCategoryId);
   }
 
-  // Méthode pour vérifier si une catégorie est sélectionnée
   isCategorySelected(category: string): boolean {
     return this.selectedCategory === category;
   }

@@ -1,6 +1,6 @@
 <div>
 <app-header></app-header><br><br><br><br>
-<div class="content-wrapper">
+<div *ngIf="displayImages" class="content-wrapper">
   <img [src]="images[currentIndex]" class="content-image">
   <div class="content-text">
     {{ currentIndex === 0 ? 'Men Collection 2024' : 'Women Collection 2024' }}
@@ -12,10 +12,10 @@
  </div>
 </div>
 
-<div class="container1">
+<div *ngIf="displayImages" class="container1">
   <div class="row1">
     <div class="col-lg-4 col-sm-4_1">
-      <div class="product-item1" onmouseover="hoverEffect(this)" onmouseout="normalEffect(this)">
+      <div class="product-item1" >
         <div class="pi-pic1">
           <img src="./assets/img/womencategorie.png" alt="">
           <div class="overlay">
@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="col-lg-4 col-sm-4_1">
-      <div class="product-item1" onmouseover="hoverEffect(this)" onmouseout="normalEffect(this)">
+      <div class="product-item1" >
         <div class="pi-pic1">
           <img src="./assets/img/mencategorie.png" alt="">
           <div class="overlay">
@@ -35,7 +35,7 @@
       </div>
     </div>
     <div class="col-lg-4 col-sm-4_1">
-      <div class="product-item1" onmouseover="hoverEffect(this)" onmouseout="normalEffect(this)">
+      <div class="product-item1" >
         <div class="pi-pic1">
           <img src="./assets/img/mencategorie.png" alt="">
           <div class="overlay">
@@ -56,7 +56,7 @@
       <h1>PRODUCT OVERVIEW</h1>
     </div>
     <ul class="product-filter-menu">
-      <li><button>All Products</button></li>
+      <li><button (click)="getProducts(0)">All Products</button></li>
       <li *ngFor="let category of categories">
         <button (click)="toggleSousCategoriesPopup(category.id)">{{ category.name }}</button>
       </li>
@@ -66,7 +66,7 @@
       <div class="col-lg-3 col-sm-6" *ngFor="let product of products">
         <div class="product-item">
           <div class="pi-pic">
-            <img [src]="'assets/img/product/' + product.id + product.name+'/'+product.image_name[0]" alt="{{ product.name }}">
+            <img class="product-image" [src]="'assets/img/product/' + product.id + product.name+'/'+product.image_name[0]" alt="{{ product.name }}">
             <button class="quick-view-btn" (click)="togglePopup()">Quick View</button>
           </div>
           <div class="pi-text">
@@ -76,9 +76,9 @@
         </div>
       </div>
     </div>
-    <div class="text-center pt-5">
+    <!-- <div class="text-center pt-5">
       <button class="site-btn sb-line sb-dark">LOAD MORE</button>
-    </div>
+    </div> -->
   </div>
 </section>
 <!-- Product filter section end -->
@@ -93,7 +93,7 @@
           <div class="tag-new">NEW</div>
           <span>New Arrivals</span>
           <h1>STRIPED SHIRTS</h1>
-          <a href="#" class="site-btn">SHOP NOW</a>
+          <!-- <a href="#" class="site-btn">SHOP NOW</a> -->
         </div>
       </div>
     </div>

@@ -27,5 +27,12 @@ export class ProductService {
   getProductsByCategoryIds(fcategoryId: number, scategoryId: number): Observable<Product[]> {
     return this.http.get<Product[]>(`http://localhost:8080/product/bycategories?fcategoryId=${fcategoryId}&scategoryId=${scategoryId}`);
   }
-  
-}
+
+  deleteProduct(productId: number): Observable<any> {
+    return this.http.delete<any>(`http://localhost:8080/product/${productId}`);
+  }
+
+  getProductById(productId: number): Observable<any> {
+    return this.http.delete<any>(`http://localhost:8080/product/${productId}`);
+  }
+  }

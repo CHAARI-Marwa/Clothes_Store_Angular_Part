@@ -38,6 +38,9 @@ import { UserProfileComponent } from './vue/user-profile/user-profile.component'
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DetailsProdPopupComponent } from './vue/details-prod-popup/details-prod-popup.component';
 import { RegistrationService } from './controller/registration.service';
+import { ViewproductsComponent } from './vue/viewproducts/viewproducts.component';
+import { MatTableModule } from '@angular/material/table';
+import { EditProductComponent } from './vue/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,8 @@ import { RegistrationService } from './controller/registration.service';
     DetailsProdPopupComponent,
 
     UserProfileComponent,
+      ViewproductsComponent,
+      EditProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,6 +94,7 @@ import { RegistrationService } from './controller/registration.service';
     MatDialogModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+    MatTableModule,
   ],
   providers: [
     RegistrationService,

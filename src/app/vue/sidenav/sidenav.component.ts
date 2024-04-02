@@ -22,5 +22,11 @@ export class SidenavComponent {
     else if (type === 'userprofile') {
       this.sharedService.toggleFormulaireuserprofile();
     }
+
+    else if (type === 'viewproducts') {
+      this.sharedService.toggleafficherproducts();
+    }
+
+  
   }
 }

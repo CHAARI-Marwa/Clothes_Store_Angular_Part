@@ -1,0 +1,21 @@
+table {
+    width: 70%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 10%;
+  }
+
+  .product-image {
+    width: 80px; /* ajustez la largeur selon vos besoins */
+    height: auto; /* pour maintenir le rapport hauteur/largeur de l'image */
+}
+
+
+
+  

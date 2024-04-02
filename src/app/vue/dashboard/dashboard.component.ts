@@ -12,7 +12,8 @@ export class DashboardComponent implements OnInit {
   afficherFormulaireCategorie: boolean = false;
   afficherFormulaireSousCategorie: boolean = false;
   afficherFormulaireuserprofile: boolean = false;
-
+  afficherFormulaireproducts : boolean = false;
+  afficherFormulaireEdit : boolean = false;
   constructor(private sharedService: SharedService) {}
 
   sideBarToggler() {
@@ -35,5 +36,18 @@ export class DashboardComponent implements OnInit {
     this.sharedService.afficherFormulaireuserprofile$.subscribe((afficher) => {
       this.afficherFormulaireuserprofile = afficher;
     });
-  }
-}
+
+
+
+    this.sharedService.afficherFormulaireproducts$.subscribe((afficher) => {
+      this.afficherFormulaireproducts= afficher;
+    });
+
+
+    this.sharedService.afficherFormulaireEdit$.subscribe((afficher) => {
+      this.afficherFormulaireEdit= afficher;
+    });
+
+
+
+}}

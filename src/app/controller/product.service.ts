@@ -36,7 +36,5 @@ export class ProductService {
     return this.http.delete<any>(`http://localhost:8080/product/${productId}`);
   }
 
-  getProductById(productId: number): Observable<any> {
-    return this.http.delete<any>(`http://localhost:8080/product/${productId}`);
-  }
+ 
   }

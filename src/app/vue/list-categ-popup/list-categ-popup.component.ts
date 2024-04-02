@@ -20,6 +20,10 @@ export class ListCategPopupComponent {
 
 
   ngOnInit(): void {
+    this.getSubCategoryIds();
+  }
+
+  getSubCategoryIds(): void {
     this.categoryService.getSubCategoryIds(this.data.categoryId)
       .subscribe(data => {
         this.subCategory= data;

@@ -7,136 +7,73 @@
           <div class="wrap-slick3 flex-sb flex-w">
             <div class="wrap-slick3-dots"></div>
             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
             <div class="slick3 gallery-lb">
               <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
                 <div class="wrap-pic-w pos-relative">
                   <img [src]="bigImageSrc" alt="IMG-PRODUCT" width="200" height="650" style="margin-top: 20px;">
-
-<!--                  <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="#" style="display: flex; align-items: center;" (click)="openImageDialog()">-->
-<!--    <span style="margin-bottom: 2px; display: inline-block; padding: 20px;">-->
-<!--        <i class="fa fa-expand"></i>-->
-<!--    </span>-->
-<!--                  </a>-->
-
-
-
-                  <div class="small-images">
-                    <img class="small-image" src="./assets/img/detailsproduct1.png" alt="Small Image 3" (click)="changeBigImage('./assets/img/detailsproduct1.png')">
-                    <img class="small-image" src="./assets/img/detailsproduct2.png" alt="Small Image 2" (click)="changeBigImage('./assets/img/detailsproduct2.png')">
-                    <img class="small-image" src="./assets/img/detailsproduct3.png" alt="Small Image 1" (click)="changeBigImage('./assets/img/detailsproduct3.png')">
+                  <div class="small-images" *ngIf="product?.image_name">
+                    <img *ngFor="let imageName of product.image_name; let i = index" class="small-image" [src]="'assets/img/product/' + product.id + product.name + '/' + imageName" [alt]= imageName (click)="changeBigImage('assets/img/product/' + product.id + product.name + '/' + imageName)">  
                   </div>
                 </div>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
 
-
-
-
-
       <div class="col-md-6 col-lg-5 p-b-30">
         <div class="p-r-50 p-t-5 p-lr-0-lg"><br><br>
           <h4 class="mtext-105 cl2 js-name-detail p-b-14">
-            Lightweight Jacket
+            {{ product.name }}
           </h4>
-
-          <span class="mtext-106 cl2">
-							$58.79
-						</span>
-
-          <p class="stext-102 cl3 p-t-23">
-            Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
-          </p>
-
-          <!--  -->
+          <span class="mtext-106 cl2" >
+            <span [ngClass]="{'strike-pink': product.promotion !== 0}">
+              {{ product.price }} DT
+          </span>
+					</span>
+          <div *ngIf="product && product.promotion !== 0" class="stext-102 cl3 p-t-23">
+            On discount
+            <br>
+            {{product.promotion}}% OFF
+            <br>
+            <span class="mtext-106 cl2">
+              New Price: 
+              {{ (product.price - (product.price * (product.promotion / 100))) | number: '1.2-2' }} DT
+            </span>
+          </div>
           <div class="p-t-33">
-            <div class="flex-w flex-r-m p-b-10">
-              <div class="size-203 flex-c-m respon6">
-                Size
-              </div>
-
-              <div class="btn-group ms-auto" role="group" aria-label="Button group with nested dropdown">
-                <div class="btn-group" role="group">
-                  <button type="button" class="btn custom-btn dropdown-toggle dropdown-left" style="width: 10.5cm;" data-bs-toggle="dropdown" aria-expanded="false" [class]="selectedOption ? 'selected-option' : 'custom-btn'">
-                    {{ selectedOption || 'Choose an option' }} <!-- Afficher la valeur sélectionnée ou 'Choose an option' -->
-                  </button>
-                  <ul class="dropdown-menu text-center">
-                    <li *ngFor="let option of options">
-                      <a class="dropdown-item" style="width: 10.5cm;" (click)="selectOption(option)">{{ option }}</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
+            <div class="mtext-106 cl2">
+              Sizes
             </div>
-
-            <div class="flex-w flex-r-m p-b-10">
-              <div class="size-203 flex-c-m respon6">
-                Color
-              </div>
-
-              <div class="btn-group ms-auto" role="group" aria-label="Button group with nested dropdown">
+            <div class="btn-group ms-auto" role="group" aria-label="Button group with nested dropdown">
                 <div class="btn-group" role="group">
-                  <button type="button" class="btn custom-btn dropdown-toggle dropdown-left" style="width: 10.5cm;" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{ selectedColor || 'Choose an option' }}
-                  </button>
-                  <ul class="dropdown-menu text-center">
-                    <li><a class="dropdown-item" style="width: 10.5cm;" (click)="selectColor('Red')">Red</a></li>
-                    <li><a class="dropdown-item" style="width: 10.5cm;" (click)="selectColor('Blue')">Blue</a></li>
-                    <li><a class="dropdown-item" style="width: 10.5cm;" (click)="selectColor('White')">White</a></li>
-                    <li><a class="dropdown-item" style="width: 10.5cm;" (click)="selectColor('Grey')">Grey</a></li>
-                  </ul>
+                    <button type="button" class="btn custom-btn dropdown-toggle dropdown-left" style="width: 10.5cm;" data-bs-toggle="dropdown" aria-expanded="false" [class]="selectedOption ? 'selected-option' : 'custom-btn'">
+                        {{ selectedOption || 'Choose a size' }}
+                    </button>
+                    <ul class="dropdown-menu text-center">
+                        <li *ngFor="let size of sizes">
+                            <a class="dropdown-item" style="width: 10.5cm;" (click)="selectOption(size)">{{ size }}</a>
+                        </li>
+                    </ul>
                 </div>
-              </div>
-
             </div>
-
-            <div class="flex-w flex-r-m p-b-10">
+          </div>
+        </div>
+        <div class="flex-w flex-r-m p-b-10">
               <div class="size-204 flex-w flex-m respon6-next">
                 <div class="wrap-num-product flex-w m-r-20 m-tb-10">
                   <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" color="black"(click)="decreaseQuantity()">
                     <i class="fs-16 zmdi zmdi-minus"></i>
                   </div>
-
-                  <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" [(ngModel)]="quantity" min="1">
-
+                  <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" [(ngModel)]="quantity" min="1" [max]="maxQuantity">
                   <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" color="black" (click)="increaseQuantity()">
                     <i class="fs-16 zmdi zmdi-plus"></i>
                   </div>
                 </div>
-
                 <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                   Add to cart
                 </button>
               </div>
-            </div>
-          </div>
-
-          <!--  -->
-<!--          <div class="flex-w flex-m p-l-100 p-t-40 respon7">-->
-<!--            <div class="flex-m bor9 p-r-10 m-r-11">-->
-<!--              <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">-->
-<!--                <i class="zmdi zmdi-favorite"></i>-->
-<!--              </a>-->
-<!--            </div>-->
-
-<!--            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">-->
-<!--              <i class="fa fa-facebook"></i>-->
-<!--            </a>-->
-
-<!--            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">-->
-<!--              <i class="fa fa-twitter"></i>-->
-<!--            </a>-->
-
-<!--            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">-->
-<!--              <i class="fa fa-google-plus"></i>-->
-<!--            </a>-->
-<!--          </div>-->
         </div>
       </div>
     </div>

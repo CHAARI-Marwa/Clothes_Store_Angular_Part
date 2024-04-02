@@ -1,3 +1,20 @@
+/*Ligne through promotion*/
+.strike-pink {
+  position: relative;
+}
+
+.strike-pink::before {
+  content: '';
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--Pink);
+  z-index: 1;
+}
+/*end Ligne through promotion*/
+
 .container {max-width: 1380px;}
 
 @media (max-width: 1600px) {
@@ -571,7 +588,6 @@
   height: 100%;
   cursor: pointer;
   color: #000 !important; /* Couleur du texte */
-
 }
 
 .num-product {

@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Inject } from '@angular/core';
+import { ProductService } from 'src/app/controller/product.service';
+import { Product } from 'src/app/model/product';
 
 @Component({
   selector: 'app-details-prod-popup',
@@ -6,38 +10,69 @@ import { Component } from '@angular/core';
   styleUrls: ['./details-prod-popup.component.css']
 })
 export class DetailsProdPopupComponent {
+  product: Product;
+  bigImageSrc: string;
+  selectedOption: string;
+  sizes: string[];
+  quantities: number[];
+  maxQuantity: number = 1;
   quantity: number = 1;
 
-  decreaseQuantity() {
-    if (this.quantity > 1) {
-      this.quantity--;
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private productService: ProductService
+  ) { }
+
+  ngOnInit(): void {
+    this.getProduct(this.data.productId);
+  }
+
+  getProduct(id: number): void {
+    this.productService.getProductById(id)
+      .subscribe(
+        (product) => {
+          this.product=product;
+          if (this.product) {
+            this.initializeSizesAndQuantities();
+            if (this.product.image_name && this.product.image_name.length > 0) {
+              this.bigImageSrc = 'assets/img/product/' + this.product.id + this.product.name + '/' + this.product.image_name[0];
+            }
+          }
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+  }
+  
+  initializeSizesAndQuantities(): void {
+    if (this.product && this.product.sizeQuantityMap) {
+      this.sizes = Object.keys(this.product.sizeQuantityMap);
+      this.quantities = Object.values(this.product.sizeQuantityMap);
     }
   }
-
-  increaseQuantity() {
-    this.quantity++;
-  }
-
-  selectedOption: string;
-  options: string[] = ['Size XS', 'Size S', 'Size M', 'Size L', 'Size XL'];
-
-  selectOption(option: string) {
-    this.selectedOption = option; // Mettre à jour la valeur sélectionnée
-  }
-
-  selectedColor: string;
-
-  selectColor(color: string) {
-    this.selectedColor = color; // Mettre à jour la couleur sélectionnée
-  }
-
-  bigImageSrc: string = './assets/img/detailsproduct1.png'; // Source initiale de la grande image
 
   changeBigImage(imageSrc: string) {
     this.bigImageSrc = imageSrc;
   }
 
+  selectOption(option: string) {
+    this.selectedOption = option;
+    this.maxQuantity = this.quantities[this.sizes.indexOf(option)];
+  }
 
+  decreaseQuantity() {
+    if (this.selectedOption && this.quantity > 1) {
+      this.quantity--;
+    }
+    console.log(this.quantity)
+  }
 
+  increaseQuantity() {
+    if (this.selectedOption && this.quantity < this.maxQuantity) {
+      this.quantity++;
+    }
+    console.log(this.quantity)
+  }
 
 }

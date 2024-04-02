@@ -62,8 +62,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  togglePopup() {
+  toggleProductPopup(productId: number) {
     const dialogRef = this.dialog.open(DetailsProdPopupComponent, {
+      data: { productId: productId },
+      width:'1120px',
     });
   }
 

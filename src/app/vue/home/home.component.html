@@ -67,7 +67,7 @@
         <div class="product-item">
           <div class="pi-pic">
             <img class="product-image" [src]="'assets/img/product/' + product.id + product.name+'/'+product.image_name[0]" alt="{{ product.name }}">
-            <button class="quick-view-btn" (click)="togglePopup()">Quick View</button>
+            <button class="quick-view-btn" (click)="toggleProductPopup(product.id)">Quick View</button>
           </div>
           <div class="pi-text">
             <p>{{ product.name }}</p>

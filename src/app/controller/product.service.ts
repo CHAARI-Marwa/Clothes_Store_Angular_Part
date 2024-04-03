@@ -24,6 +24,10 @@ export class ProductService {
     return this.http.get<Product[]>(`http://localhost:8080/product/${x}`);
   }
 
+  getProductsByCategoryId(fcategoryId: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`http://localhost:8080/product/category/${fcategoryId}`); // Corrected URL
+  }
+
   getProductById(x: number): Observable<Product> {
     return this.http.get<Product>(`http://localhost:8080/product/Id${x}`);
   }
@@ -36,5 +40,4 @@ export class ProductService {
     return this.http.delete<any>(`http://localhost:8080/product/${productId}`);
   }
 
- 
   }

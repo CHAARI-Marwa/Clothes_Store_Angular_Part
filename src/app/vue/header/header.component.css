@@ -129,12 +129,19 @@ body{
 .user-panel .up-item i {
   font-family: var(--font-label);
   font-size: 22px;
+  color: var(--darkBlue);
+  font-weight: bold;
 }
 
 .user-panel .up-item a {
   font-family: var(--font-label);
   font-size: 14px;
-  color: #000;
+  color: var(--Blue);
+}
+
+.up-item a:hover {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .user-panel .up-item:first-child {
@@ -183,19 +190,17 @@ body{
   font-family: var(--font-label);
   display: inline-block;
   font-size: 16px;
-  /*color: #ffffff;*/
   margin-right: 50px;
   line-height: 1;
   padding: 17px 0;
   position: relative;
-  color: #282828;
+  color: var(--darkBlue);
   transition: color 0.3s, font-size 0.3s;
   font-size: 16px;
-
 }
 
 .main-menu li a:hover {
-  color: #4C90A6; /* Couleur du texte en bleu au survol */
+  color: var(--Pink);
   font-size: 21px;
 }
 

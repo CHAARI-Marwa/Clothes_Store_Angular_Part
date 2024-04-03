@@ -40,22 +40,27 @@
         </div>
         <div class="col-xl-4 col-lg-5">
           <div class="user-panel">
-            <div class="up-item">
-              <i class="flaticon-profile"></i>
-              <ng-container *ngIf="registrationService.isLoggedIn(); else showSignIn">
-                <a href="#">{{ registrationService.getUserName(registrationService.getToken()!) }}</a>
-              </ng-container>
-              <ng-template #showSignIn>
-                <a href="#">Sign In</a> or <a href="#">Create Account</a>
-              </ng-template>
-            </div>
-            <div class="up-item">
-              <div class="shopping-card">
-                <i class="flaticon-bag"></i>
-                <span>0</span>
+            <div *ngIf="registrationService.isLoggedIn(); else showSignIn">
+              <div class="up-item">
+                <i class="flaticon-profile"></i>
+                  <a (click)="handleUserPopupClick()">{{ registrationService.getUserName(registrationService.getToken()!) }}</a>
               </div>
-              <a href="#">Shopping Cart</a>
+              <div class="up-item">
+                <div class="shopping-card">
+                  <i class="flaticon-bag"></i>
+                  <span>0</span>
+                </div>
+                <a >Shopping Cart</a>
+              </div>
+              <div class="up-item" style="padding-left: 50px;">
+                  <a (click)="logout()">Sign Out</a>
+              </div>
             </div>
+            <ng-template #showSignIn>
+              <div class="up-item">
+                  <a routerLink="/login" >Sign In</a> or <a routerLink="/signup" >Create Account</a>         
+              </div>
+            </ng-template>
           </div>
         </div>
       </div>
@@ -63,10 +68,9 @@
   </div>
   <nav class="main-navbar">
     <div class="container">
-      <!-- menu -->
       <ul class="main-menu">
         <li *ngFor="let category of categories">
-          <a href="#">{{ category.name }}</a>
+          <a (click)="onCategorySelected(category.id)">{{ category.name }}</a>
         </li>
       </ul>
     </div>

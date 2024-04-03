@@ -2,7 +2,7 @@
 <div class="form-container">
   <form id="addsous_category" #Souscategory="ngForm" [formGroup]="souscategoryForm" (ngSubmit)="addsouscategory()">
     <div class="form-group">
-      <label for="name" id="name"><strong>NAME SECOND CATEGORY:</strong></label>
+      <label for="name" id="name"><strong>SECOND CATEGORY NAME:</strong></label>
       <input type="text" id="name" class="form-control" formControlName="name" required>
       <h4>Select categories:</h4>
       <div *ngFor="let category of categories">

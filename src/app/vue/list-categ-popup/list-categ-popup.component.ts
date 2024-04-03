@@ -31,9 +31,9 @@ export class ListCategPopupComponent {
       });
   }
 
-  @Output() categorySelection: EventEmitter<{ categoryId: number, subCategoryId: number }> = new EventEmitter();
+  @Output() subCategorySelection: EventEmitter<{ categoryId: number, subCategoryId: number }> = new EventEmitter();
   selectCategory(subCategoryId: number) {
-    this.categorySelection.emit({ categoryId: this.data.categoryId, subCategoryId: subCategoryId });
+    this.subCategorySelection.emit({ categoryId: this.data.categoryId, subCategoryId: subCategoryId });
     // console.log(this.data.categoryId,subCategoryId);
   }
 

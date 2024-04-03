@@ -1,5 +1,5 @@
 <div>
-<app-header></app-header><br><br><br><br>
+<app-header (categorySelected)="onCategorySelected($event)"></app-header><br><br><br><br>
 <div *ngIf="displayImages" class="content-wrapper">
   <img [src]="images[currentIndex]" class="content-image">
   <div class="content-text">

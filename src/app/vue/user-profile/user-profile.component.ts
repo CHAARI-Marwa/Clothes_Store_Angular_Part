@@ -7,5 +7,7 @@ import { ProductService } from 'src/app/controller/product.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent {
+  edit: boolean = false;
+
   constructor(private productService: ProductService){}
 }

@@ -32,10 +32,10 @@ export class RegistrationService {
     return !!localStorage.getItem('token');
   }
 
-  getUserId(token: string): string | null {
+  getUserId(token: string): number | null {
     try {
       const decodedToken: any = jwtDecode(token);
-      return decodedToken.sub;
+      return Number(decodedToken.sub);
     } catch (error) {
       console.error("Erreur lors du décodage du JWT :", error);
       return null;

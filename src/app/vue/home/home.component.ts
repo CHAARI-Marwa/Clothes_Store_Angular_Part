@@ -35,6 +35,13 @@ export class HomeComponent implements OnInit {
     this.imageChange();
   }
 
+  onCategorySelected(categoryId: number) {
+    this.selectedCategoryId= categoryId;
+    this.selectedSubCategoryId= 0;
+    this.getProducts();
+    // console.log('Category selected:', this.selectedCategoryId);
+  }
+
   imageChange(){
     timer(3000, 3000).subscribe(() => {
       this.currentIndex = (this.currentIndex + 1) % this.images.length;
@@ -48,8 +55,8 @@ export class HomeComponent implements OnInit {
       autoFocus: false
     });
     const closeDialog = () => dialogRef.close();
-    dialogRef.componentInstance.categorySelection.subscribe(() => closeDialog());
-    dialogRef.componentInstance.categorySelection.subscribe((event: { categoryId: number, subCategoryId: number }) => {
+    dialogRef.componentInstance.subCategorySelection.subscribe(() => closeDialog());
+    dialogRef.componentInstance.subCategorySelection.subscribe((event: { categoryId: number, subCategoryId: number }) => {
       this.selectedCategoryId = event.categoryId;
       this.selectedSubCategoryId = event.subCategoryId;
     }); 
@@ -117,6 +124,26 @@ export class HomeComponent implements OnInit {
           console.log(this.products);
         }); 
       }
+      else if(this.selectedCategoryId!=0 && this.selectedSubCategoryId===0 ){
+        this.displayImages = false;
+        this.productService.getProductsByCategoryId(this.selectedCategoryId).subscribe(
+          (data: any[]) => {
+            this.products = data.map(product => ({ 
+              id: product.id, 
+              name: product.name,
+              price: product.price,
+              promotion: product.promotion,
+              fcategory_id: product.fcategory_id,
+              scategory_id: product.scategory_id,
+              image_name: product.image_name,
+              sizeQuantityMap: {}
+            }));
+          },
+          (error: any) => {
+            console.log('Erreur lors de la récupération des produits : ', error);
+          }
+        );
+      } 
       else{
       this.productService.getproducts().subscribe(
         (data: any[]) => {

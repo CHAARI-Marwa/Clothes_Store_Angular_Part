@@ -1,6 +1,6 @@
 /* Style pour le header du panneau */
 .panel-header {
-    background-color: #f4f4f4;
+    background-color: var(--Grey);
     padding: 10px;
   }
   
@@ -11,7 +11,8 @@
   
   /* Style pour les cartes */
   .card {
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    width: 560px;
   }
   
   /* Style pour les images dans les cartes */
@@ -67,12 +68,45 @@
   
   /* Style pour les titres */
   .title {
-    font-size: 20px;
+    font-family: var(--font-h1);
+    font-size: 28px;
     font-weight: bold;
+    color: var(--Pink);
   }
   
   /* Style pour les inputs */
   .form-control {
     margin-bottom: 10px;
   }
-  
+
+  .user-details label{
+    color: var(--Blue);
+    font-size: 18px;
+    font-family: var(--font-label);
+    font-weight: bold;
+    display: inline-block;
+    width: 200px;
+    margin-bottom: 25px;
+  }
+
+  .user-details p {
+    color: var(--darkBlue);
+    font-size: 20px;
+    font-family: var(--font-label);
+    display: inline-block;
+    margin-bottom: 25px;
+  }
+
+  #edit-profile{
+    text-align: center;
+    margin-top: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: var(--font-label);
+    letter-spacing: 0.4px;
+    font-weight: 100;
+  }
+  #edit-profile:hover {
+    text-decoration: underline;
+    color: var(--Pink);
+  }

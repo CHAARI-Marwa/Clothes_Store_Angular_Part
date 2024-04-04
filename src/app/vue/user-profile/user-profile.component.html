@@ -1,15 +1,15 @@
-<div class="panel-header panel-header-sm">
-</div>
+<!-- <div class="panel-header panel-header-sm">
+</div> -->
 <div class="main-content">
   <div class="row">
     <div class="col-md-8">
-      <div class="card">
+      <div *ngIf="edit; else showUserDetails" class="card">
         <div class="card-header">
           <h5 class="title">Edit Profile</h5>
         </div>
         <div class="card-body">
           <form>
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-5 pr-1">
                 <div class="form-group">
                   <label>Company (disabled)</label>
@@ -28,7 +28,7 @@
                   <input name="email" id="email" type="email" class="form-control" placeholder="Email">
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="row">
               <div class="col-md-6 pr-1">
                 <div class="form-group">
@@ -46,7 +46,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label>Address</label>
+                  <label>Email Address</label>
                   <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
                 </div>
               </div>
@@ -54,35 +54,66 @@
             <div class="row">
               <div class="col-md-4 pr-1">
                 <div class="form-group">
-                  <label>City</label>
+                  <label>Phone Number</label>
                   <input type="text" class="form-control" placeholder="City" value="Mike">
                 </div>
               </div>
               <div class="col-md-4 px-1">
                 <div class="form-group">
-                  <label>Country</label>
+                  <label>Gender</label>
                   <input type="text" class="form-control" placeholder="Country" value="Andrew">
                 </div>
               </div>
-              <div class="col-md-4 pl-1">
+              <!-- <div class="col-md-4 pl-1">
                 <div class="form-group">
                   <label>Postal Code</label>
                   <input type="number" class="form-control" placeholder="ZIP Code">
                 </div>
-              </div>
+              </div> -->
             </div>
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
                   <label>About Me</label>
                   <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
                 </div>
               </div>
-            </div>
+            </div> -->
           </form>
         </div>
       </div>
+      <ng-template #showUserDetails >
+        <div class="card">
+          <div class="card-header">
+            <h5 class="title">Profile</h5>
+          </div>
+          <div class="card-body">
+                <div class="user-details">
+                  <label>First Name:</label>
+                  <p>Mike</p>
+                </div>
+                <div class="user-details">
+                  <label>Last Name:</label>
+                  <p>Andrew</p>
+                </div>
+                <div class="user-details">
+                  <label>Email Address:</label>
+                  <p>example@example.com</p>
+                </div>
+                <div class="user-details">
+                  <label>Gender:</label>
+                  <p>Male</p>
+                </div>
+                <div class="user-details">
+                  <label>Phone Number:</label>
+                  <p>1234567890</p>
+                </div>
+                <p id="edit-profile">
+                  <a  style="text-decoration: none;color: var(--Pink);">Edit Profile</a>
+                </p>
+          </div>
+        </div>
+      </ng-template>        
     </div>
-
   </div>
 </div>

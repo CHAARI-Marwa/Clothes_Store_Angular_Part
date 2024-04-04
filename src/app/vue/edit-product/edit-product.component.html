@@ -1,1 +1,29 @@
-<p>edit-product works!</p>
+<div *ngIf="product">
+    <h2>View Product</h2>
+    <form>
+      <div>
+        <label>Name:</label>
+        <input type="text" name="name" [(ngModel)]="product.name" >
+      </div>
+      <div>
+        <label>Price:</label>
+        <input type="number" name="price" [(ngModel)]="product.price" >
+      </div>
+      <div>
+        <label>Promotion:</label>
+        <input type="number" name="promotion" [(ngModel)]="product.promotion" >
+      </div>
+      <div>
+        <label>Subcategory:</label>
+        <select name="scategory_id" [(ngModel)]="product.scategory_id" >
+            <option *ngFor="let subcategory of subcategories" [value]="subcategory.id">{{ subcategory.name }}</option>
+        </select>
+      </div>
+      <div>
+        
+        <label>Category:</label>
+        <input type="text" name="category" [(ngModel)]="product.fcategory_id" >
+      </div>
+      <button type="submit">update</button>
+    </form>
+</div>

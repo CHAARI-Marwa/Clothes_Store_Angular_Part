@@ -38,8 +38,8 @@ export class ViewproductsComponent  implements OnInit  {
   }
 
   editProduct(productId: number) {
-    this.sharedservice.toggleafficherEdit();
-    //this.router.navigate(['/edit-product', productId]);
+    //this.sharedservice.toggleafficherEdit();
+    this.router.navigate(['/edit-product', productId]);
   }
 
   // Méthode pour supprimer un produit

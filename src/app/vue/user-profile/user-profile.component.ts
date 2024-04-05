@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { ProductService } from 'src/app/controller/product.service';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Inject } from '@angular/core';
+import { RegistrationService } from 'src/app/controller/registration.service';
+import { User } from 'src/app/model/user';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,6 +12,87 @@ import { ProductService } from 'src/app/controller/product.service';
 })
 export class UserProfileComponent {
   edit: boolean = false;
+  passworIsTrue: boolean = false;
+  user: User;
+  editUserForm: FormGroup;
 
-  constructor(private productService: ProductService){}
+  ngOnInit(): void {
+    this.getuser();
+    // this.editUserForm = this.fb.group({
+    //   name: [this.user.name, Validators.required],
+    //   surname: [this.user.surname, Validators.required],
+    //   phoneNumber: [this.user.phoneNumber, [Validators.required, Validators.pattern(/^\d{8}$/)]],
+    //   emailId: [this.user.emailId, [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
+    //   password: ['', [Validators.required, Validators.minLength(8)]],
+    //   gender: [this.user.gender, Validators.required]
+    // });
+  }
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private userService: RegistrationService,
+    private fb: FormBuilder,
+    ){ }
+  
+  getuser(): void{  
+    this.userService.getUserById(this.data.userId)
+    .subscribe(
+      (user: User) => {
+        this.user = user;
+        this.initializeForm();
+      },
+      (error: any) => {
+        console.error('Erreur lors de la récupération de l\'utilisateur : ', error);
+      }
+    );
+  }
+
+  showEditProfile(): void{
+    this.edit=true;
+  }
+
+  initializeForm(): void {
+    this.editUserForm = this.fb.group({
+      name: [this.user.name, Validators.required],
+      surname: [this.user.surname, Validators.required],
+      phoneNumber: [this.user.phoneNumber, [Validators.required, Validators.pattern(/^\d{8}$/)]],
+      emailId: [this.user.emailId, [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      gender: [this.user.gender, Validators.required]
+    });
+  }
+
+  showNewPasswordInput(): void{
+    if (document.getElementById('currentPasswordInput')!=null){
+     const currentPasswordInput = (document.getElementById('currentPasswordInput') as HTMLInputElement).value;
+     if (currentPasswordInput === this.user.password) {
+         this.passworIsTrue = true;
+      }
+        //   else {
+        //      console.log("Le mot de passe actuel est incorrect.");
+        //  }
+    }
+  }
+
+  editUser(): void{
+    if (this.editUserForm.valid) {
+      this.user.name = this.editUserForm.value.name;
+      this.user.surname = this.editUserForm.value.surname;
+      this.user.phoneNumber = this.editUserForm.value.phoneNumber;
+      this.user.emailId = this.editUserForm.value.emailId;
+      this.user.password = this.editUserForm.value.password;
+      this.user.gender = this.editUserForm.value.gender;
+      this.userService.updateUser(this.data.userId,this.user).subscribe(
+        data => {
+          // console.log("response received");
+        },
+        error => {
+          // console.error("error:", error);
+        }
+      );
+    } else {
+      // this.msg.message = "Please fill out all required fields correctly.";
+    }
+    }
+  
 }

@@ -15,6 +15,60 @@
 }
 /*end Ligne through promotion*/
 
+.product-item .pi-pic {
+  position: relative;
+  display: block;
+}
+
+.product-item .pi-pic img {
+  max-width: 100%; 
+  height: auto;
+}
+
+.pi-pic {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  overflow: hidden;
+}
+
+.pi-pic img {
+  transition: transform 0.3s ease;
+}
+
+.pi-pic:hover img {
+  transform: scale(1.1);
+}
+
+.pi-pic:hover .quick-view-btn {
+  opacity: 1;
+}
+
+.quick-view-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%; 
+  transform: translateX(-50%);
+  background-color: #E7ECEF; 
+  color: #4C90A6; 
+  padding: 6px 12px; 
+  border: none; 
+  border-radius: 20px; 
+  text-decoration: none;
+  opacity: 0; 
+  transition: opacity 0.3s ease;
+}
+
+.pi-pic:hover .quick-view-btn {
+  opacity: 1; 
+}
+
+.quick-view-btn:hover {
+  background-color: #4C90A6; 
+  color: #E7ECEF;
+}
+
 .container {max-width: 1380px;}
 
 @media (max-width: 1600px) {

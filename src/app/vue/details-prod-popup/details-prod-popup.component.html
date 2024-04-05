@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <div class="col-md-6 col-lg-5 p-b-30">
+      <div class="col-md-6 col-lg-5 p-b-30" *ngIf="product">
         <div class="p-r-50 p-t-5 p-lr-0-lg"><br><br>
           <h4 class="mtext-105 cl2 js-name-detail p-b-14">
             {{ product.name }}
@@ -75,6 +75,19 @@
                 </button>
               </div>
         </div>
+        <div class="row" style="margin-top: 160px; margin-right: 50px; margin-left: 50px;">
+          <p>Similar Products:</p> 
+          <div class="product-item col-lg-6 col-md-6 col-sm-12" *ngFor="let product of similarProducts" > 
+            <div class="pi-pic">
+                  <img class="product-image" [src]="'assets/img/product/' + product.id + product.name+'/'+product.image_name[0]" alt="{{ product.name }}">
+                  <button class="quick-view-btn" (click)="quickView(product.id)">Quick View</button>
+              </div>
+          </div>
+      </div>
+      
+        
+        
+        
       </div>
     </div>
   </div>

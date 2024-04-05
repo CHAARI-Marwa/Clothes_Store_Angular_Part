@@ -29,9 +29,8 @@ export class CategoryService {
     return this.http.get<souscategory[]>(`http://localhost:8080/category/${categoryId}/sousByFirst`);
   }
 
-  getcategorybyid(categoryId:number): Observable<souscategory[]> {
-    return this.http.get<souscategory[]>(`http://localhost:8080/category/ID/${categoryId}`)
+  getCategoryById(categoryId:number): Observable<Category> {
+    return this.http.get<Category>(`http://localhost:8080/category/Id/${categoryId}`)
   }
-
 
 }

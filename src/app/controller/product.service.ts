@@ -24,6 +24,16 @@ export class ProductService {
     return this.http.get<Product[]>(`http://localhost:8080/product/${x}`);
   }
 
+  getSimilarProducts(x: number,productId: number, fcategoryId: number, scategoryId: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`http://localhost:8080/product/similarproducts/${x}`, {
+      params: {
+        productId: productId.toString(),
+        fcategoryId: fcategoryId.toString(),
+        scategoryId: scategoryId.toString()
+      }
+    });
+  }
+
   getProductsByCategoryId(fcategoryId: number): Observable<Product[]> {
     return this.http.get<Product[]>(`http://localhost:8080/product/category/${fcategoryId}`); // Corrected URL
   }

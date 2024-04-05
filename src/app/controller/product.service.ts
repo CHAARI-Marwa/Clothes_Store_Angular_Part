@@ -39,5 +39,8 @@ export class ProductService {
   deleteProduct(productId: number): Observable<any> {
     return this.http.delete<any>(`http://localhost:8080/product/${productId}`);
   }
-
+  updateProduct(productId: number, name: string, price: number, promotion: number): Observable<any> {
+    const url = `http://localhost:8080/product/${productId}?name=${name}&price=${price}&promotion=${promotion}`;
+    return this.http.put(url, null); 
+}
   }

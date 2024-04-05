@@ -4,6 +4,8 @@ import { ProductService } from 'src/app/controller/product.service';
 import { Product } from 'src/app/model/product';
 import { SouscategoryService } from 'src/app/controller/souscategory.service';
 import { CategoryService } from 'src/app/controller/category.service';
+import { SharedService } from 'src/app/controller/shared.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
@@ -12,13 +14,14 @@ import { CategoryService } from 'src/app/controller/category.service';
 export class EditProductComponent implements OnInit {
   productId: number;
   product: Product;
-  images: FileList | File | null = null;
-  subcategories: any[] = [];
-  categories: any[] = [];
+  productUpdated: boolean = false;
+  successMessage: string = '';
+  errorMessage: string = '';
+ 
 
   constructor(private route: ActivatedRoute ,private productService: ProductService , private souscategoryService: SouscategoryService,
    
-    private categoryService: CategoryService
+    private categoryService: CategoryService , private sharedservice : SharedService , private router: Router
     ) { }
   ngOnInit(): void {
     
@@ -34,47 +37,49 @@ export class EditProductComponent implements OnInit {
         }
       );
     });
-
-    this.getSubCategories();
   }
+   // ngOnInit(): void {
+   // this.route.params.subscribe(params => {
+     //   this.productId = params['id'];
+       // console.log(this.productId);
 
- 
+       // this.sharedservice.toggleafficherEdit(this.productId);
+    //});
+//}
 
-  getSubCategories(): void{
-    this.souscategoryService.getSubcategories().subscribe(
-      (data: any) => {
-        this.subcategories = data;
-      },
-      (error: any) => {
-        console.error(error);
-      }
+
+  updateProduct() {
+    this.productService.updateProduct(
+        this.product.id, // Envoyez l'ID du produit comme chemin de paramètre
+        this.product.name,
+        this.product.price,
+        this.product.promotion
+    ).subscribe(
+        (response) => {
+            // Gérer la réponse du backend si nécessaire
+            console.log('Product updated successfully:', response);
+        },
+        (error) => {
+            // Gérer les erreurs si nécessaire
+            console.error('Error updating product:', error);
+        }
     );
-  }
 
-  onSubcategorySelected(event: any) {
-    const subcategoryId = event.target.value;
-    this.categoryService.getCategoriesBySubCategoryId(subcategoryId).subscribe(
-      (data: any) => {
-        this.categories = data;
-      },
-      (error: any) => {
-        console.error(error);
-      }
-    );
-  }
+    const updateSuccess = true;
 
-  onCategorySelected(event: any) {
-    const categoryId = event.target.value;
-    console.log("Catégorie principale sélectionnée :", categoryId);
-    this.product.fcategory_id = categoryId;
-  }
-
-  handleFileInput(event: any) {
-    const files: FileList | null = event.target.files;
-    if (files) {
-        this.images = files;
+    if (updateSuccess) {
+      this.productUpdated = true;
+      this.successMessage = 'Product updated successfully.';
+      this.errorMessage = '';
+      setTimeout(() => {
+        this.router.navigate(['/dashboard']);
+      }, 2000); // Rediriger vers la page /dashboard après 2 secondes (2000 ms)
+    } else {
+      this.productUpdated = false;
+      this.successMessage = '';
+      this.errorMessage = 'Failed to update product.';
     }
   }
-
-  
 }
+
+

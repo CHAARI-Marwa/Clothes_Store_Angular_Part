@@ -41,6 +41,7 @@ import { RegistrationService } from './controller/registration.service';
 import { ViewproductsComponent } from './vue/viewproducts/viewproducts.component';
 import { MatTableModule } from '@angular/material/table';
 import { EditProductComponent } from './vue/edit-product/edit-product.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { EditProductComponent } from './vue/edit-product/edit-product.component'
     ReactiveFormsModule,
     MatCheckboxModule,
     MatTableModule,
+    MatInputModule
   ],
   providers: [
     RegistrationService,

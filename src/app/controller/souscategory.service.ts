@@ -21,4 +21,9 @@ export class SouscategoryService {
   public getSubcategories():Observable<any>{
     return this.http.get<any>('http://localhost:8080/category/sous');
   }
+
+  public getSubcategoryById(x:number):Observable<souscategory>{
+    return this.http.get<souscategory>(`http://localhost:8080/category/subcategory/Id/${x}`);
+  }
+  
 }

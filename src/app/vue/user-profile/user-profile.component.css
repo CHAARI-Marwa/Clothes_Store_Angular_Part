@@ -110,3 +110,22 @@
     text-decoration: underline;
     color: var(--Pink);
   }
+
+  #Submit{
+    display: block; 
+    margin: 0 auto;
+    padding: 10px;
+    border: none;
+    background-color: var(--Blue)  ;
+    color: white;
+  }
+
+  input:focus.has-error {
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.351); 
+    border: 1px solid white;
+  }
+
+  input:focus.has-success {
+    box-shadow: 0 0 5px rgba(119, 201, 119, 0.54);
+    border: 1px solid white;
+  }

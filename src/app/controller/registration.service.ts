@@ -60,5 +60,12 @@ export class RegistrationService {
     return this._http.post<any>("http://localhost:8080/register",user)
   }
 
+  getUserById(x: number): Observable<User> {
+    return this._http.get<User>(`http://localhost:8080/user/Id${x}`);
+  }
+
+  updateUser(x: number, user: User): Observable<User>{
+    return this._http.put<User>(`http://localhost:8080/update/${x}`, user);
+  }
 
 }

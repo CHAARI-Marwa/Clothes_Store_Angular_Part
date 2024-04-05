@@ -27,19 +27,19 @@
     <!-- First Category Column -->
     <ng-container matColumnDef="fcategory_id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> First Category </th>
-      <td mat-cell *matCellDef="let product"> {{product.fcategory_id}} </td>
+      <td mat-cell *matCellDef="let product"> {{ getCategoryName(product.fcategory_id) }} </td>
     </ng-container>
   
     <!-- Second Category Column -->
     <ng-container matColumnDef="scategory_id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Second Category </th>
-      <td mat-cell *matCellDef="let product"> {{product.scategory_id}} </td>
+      <td mat-cell *matCellDef="let product"> {{ getSubcategoryName(product.scategory_id) }} </td>
     </ng-container>
   
     <!-- Price Column -->
     <ng-container matColumnDef="price">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
-      <td mat-cell *matCellDef="let product"> {{product.price}} </td>
+      <td mat-cell *matCellDef="let product"> {{product.price}} DT</td>
     </ng-container>
   
     <!-- Promotion Column -->

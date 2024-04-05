@@ -10,6 +10,7 @@ import { Product } from 'src/app/model/product';
   styleUrls: ['./details-prod-popup.component.css']
 })
 export class DetailsProdPopupComponent {
+  similarProducts: Product[];
   product: Product;
   bigImageSrc: string;
   selectedOption: string;
@@ -27,6 +28,13 @@ export class DetailsProdPopupComponent {
     this.getProduct(this.data.productId);
   }
 
+  loadSimilarProducts(pId: number, fId: number, sId: number): void {
+    this.productService.getSimilarProducts(2, pId, fId, sId)
+      .subscribe(products => {
+          this.similarProducts = products;
+      });
+  }
+
   getProduct(id: number): void {
     this.productService.getProductById(id)
       .subscribe(
@@ -37,6 +45,7 @@ export class DetailsProdPopupComponent {
             if (this.product.image_name && this.product.image_name.length > 0) {
               this.bigImageSrc = 'assets/img/product/' + this.product.id + this.product.name + '/' + this.product.image_name[0];
             }
+            this.loadSimilarProducts(this.product.id, this.product.fcategory_id, this.product.scategory_id);
           }
         },
         (error) => {
@@ -65,14 +74,17 @@ export class DetailsProdPopupComponent {
     if (this.selectedOption && this.quantity > 1) {
       this.quantity--;
     }
-    console.log(this.quantity)
   }
 
   increaseQuantity() {
     if (this.selectedOption && this.quantity < this.maxQuantity) {
       this.quantity++;
     }
-    console.log(this.quantity)
+  }
+
+  quickView(productId: number): void{
+    this.data.productId=productId;
+    this.getProduct(productId);
   }
 
 }

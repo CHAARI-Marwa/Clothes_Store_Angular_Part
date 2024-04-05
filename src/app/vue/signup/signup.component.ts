@@ -9,7 +9,8 @@ import { User } from 'src/app/model/user';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent {userForm: FormGroup;
+export class SignupComponent {
+  userForm: FormGroup;
   msg: { status: number, message: string } = { status: 0, message: '' };
   user: User = new User();
 
@@ -39,11 +40,11 @@ export class SignupComponent {userForm: FormGroup;
 
       this.registrationService.registerUserFromRemote(this.user).subscribe(
         data => {
-          console.log("response received");
+          // console.log("response received");
           this._route.navigate(['login']);
         },
         error => {
-          console.error("error:", error);
+          // console.error("error:", error);
           if (error.status === 400) {
             this.msg.message = "Bad request. Please check your input.";
           } else if (error.status === 401) {

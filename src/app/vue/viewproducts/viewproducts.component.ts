@@ -4,13 +4,13 @@ import { CategoryService } from 'src/app/controller/category.service';
 import { Product } from 'src/app/model/product';
 import { Category } from 'src/app/model/category';
 import { Router } from '@angular/router';
-import { SharedService } from 'src/app/controller/shared.service';
+
 import { SouscategoryService } from 'src/app/controller/souscategory.service';
 import { souscategory } from 'src/app/model/souscategory';
 import { forkJoin } from 'rxjs';
 
 import { MatTableDataSource } from '@angular/material/table';
-import { MatInputModule } from '@angular/material/input';
+
 @Component({
   selector: 'app-viewproducts',
   templateUrl: './viewproducts.component.html',
@@ -34,7 +34,7 @@ export class ViewproductsComponent  implements OnInit  {
     private categoryService: CategoryService,
     private subCategoryService: SouscategoryService,
     private router: Router,
-    private sharedservice : SharedService
+    
   ) { }
 
   ngOnInit(): void {

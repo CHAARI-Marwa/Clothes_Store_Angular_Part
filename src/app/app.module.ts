@@ -42,6 +42,8 @@ import { ViewproductsComponent } from './vue/viewproducts/viewproducts.component
 import { MatTableModule } from '@angular/material/table';
 import { EditProductComponent } from './vue/edit-product/edit-product.component';
 import { MatInputModule } from '@angular/material/input';
+import { ViewcategoriesComponent } from './vue/viewcategories/viewcategories.component';
+import { SubcategoriesComponent } from './vue/subcategories/subcategories.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { MatInputModule } from '@angular/material/input';
     UserProfileComponent,
       ViewproductsComponent,
       EditProductComponent,
+      ViewcategoriesComponent,
+      SubcategoriesComponent,
   ],
   imports: [
     BrowserModule,

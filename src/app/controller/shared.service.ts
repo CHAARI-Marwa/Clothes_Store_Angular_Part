@@ -32,6 +32,12 @@ export class SharedService {
   private  afficherFormulaireEdit = new BehaviorSubject<boolean>(false);
   afficherFormulaireEdit$ = this.afficherFormulaireEdit.asObservable();
 
+  private  afficherFormulairecategories= new BehaviorSubject<boolean>(false);
+  afficherFormulairecategories$ = this.afficherFormulairecategories.asObservable();
+
+  private  afficherFormulairesubcategories = new BehaviorSubject<boolean>(false);
+  afficherFormulairesubcategories$ = this.afficherFormulairesubcategories.asObservable();
+
   constructor( private productService : ProductService , private router: Router ) {}
  
   toggleFormulaireProduit() {
@@ -41,6 +47,8 @@ export class SharedService {
     this.afficherFormulaireSousCategorieSubject.next(false);
     this.afficherFormulaireuserprofileSubject.next(false);
     this. afficherFormulaireproducts.next(false);
+    this.afficherFormulairesubcategories.next(false);
+    this.afficherFormulairecategories.next(false);
   }
 
   toggleFormulaireCategorie() {
@@ -50,6 +58,8 @@ export class SharedService {
     this.afficherFormulaireSousCategorieSubject.next(false);
     this.afficherFormulaireuserprofileSubject.next(false);
     this. afficherFormulaireproducts.next(false);
+    this.afficherFormulairesubcategories.next(false);
+    this.afficherFormulairecategories.next(false);
   }
 
   toggleFormulaireSousCategorie() {
@@ -59,6 +69,8 @@ export class SharedService {
     this.afficherFormulaireCategorieSubject.next(false);
     this.afficherFormulaireuserprofileSubject.next(false);
     this. afficherFormulaireproducts.next(false);
+    this.afficherFormulairesubcategories.next(false);
+    this.afficherFormulairecategories.next(false);
   }
 
   toggleFormulaireuserprofile() {
@@ -68,6 +80,8 @@ export class SharedService {
     this.afficherFormulaireProduitSubject.next(false); 
     this.afficherFormulaireCategorieSubject.next(false);
     this. afficherFormulaireproducts.next(false);
+    this.afficherFormulairesubcategories.next(false);
+    this.afficherFormulairecategories.next(false);
   }
 
 
@@ -78,6 +92,8 @@ export class SharedService {
     this.afficherFormulaireSousCategorieSubject.next(false);
     this.afficherFormulaireProduitSubject.next(false); 
     this.afficherFormulaireCategorieSubject.next(false);
+    this.afficherFormulairesubcategories.next(false);
+    this.afficherFormulairecategories.next(false);
   }
   toggleafficherEdit(productId: number) {
     this.afficherFormulaireEdit.next(true);
@@ -86,20 +102,42 @@ export class SharedService {
     this.afficherFormulaireSousCategorieSubject.next(false);
     this.afficherFormulaireProduitSubject.next(false); 
     this.afficherFormulaireCategorieSubject.next(false);
+    this.afficherFormulairesubcategories.next(false);
+    this.afficherFormulairecategories.next(false);
 
     
-   // this.productService.getProductById(productId).subscribe(
-     //   (product: Product) => {
-       //   this.product = product;
-         // console.log(product);
-          //  this.router.navigate(['/edit-product', productId]);
-        //},
-        //(error) => {
-         // console.error('Une erreur s\'est produite lors de la récupération des données du produit:', error);
-        //}
-    //);
+
 }
   
+toggleaffichercategories() {
+  this.afficherFormulairecategories.next(true);
+  this.afficherFormulaireEdit.next(false);
+  this.afficherFormulaireproducts.next(false);
+  this.afficherFormulaireuserprofileSubject.next(false);
+  this.afficherFormulaireSousCategorieSubject.next(false);
+  this.afficherFormulaireProduitSubject.next(false); 
+  this.afficherFormulaireCategorieSubject.next(false);
+  this.afficherFormulairesubcategories.next(false);
+
+  
+
+}
+
+toggleaffichersubcategories() {
+  this.afficherFormulairecategories.next(false);
+  this.afficherFormulairesubcategories.next(true);
+  this.afficherFormulaireEdit.next(false);
+  this.afficherFormulaireproducts.next(false);
+  this.afficherFormulaireuserprofileSubject.next(false);
+  this.afficherFormulaireSousCategorieSubject.next(false);
+  this.afficherFormulaireProduitSubject.next(false); 
+  this.afficherFormulaireCategorieSubject.next(false);
+
+  
+
+}
+
+
 
 
 

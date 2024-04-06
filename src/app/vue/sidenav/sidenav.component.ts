@@ -24,6 +24,14 @@ export class SidenavComponent {
     else if (type === 'viewproducts') {
       this.sharedService.toggleafficherproducts();
     }
+    else if (type === 'viewcategories') {
+      this.sharedService.toggleaffichercategories();
+    }
+
+    else if (type === 'viewsubcategories') {
+      this.sharedService.toggleaffichersubcategories();
+    }
+
 
   
   }

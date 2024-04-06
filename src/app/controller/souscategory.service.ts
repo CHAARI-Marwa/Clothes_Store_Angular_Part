@@ -2,9 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { souscategory } from '../model/souscategory';
-import { HttpHeaders } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+
 
 
 @Injectable({
@@ -24,6 +22,10 @@ export class SouscategoryService {
 
   public getSubcategoryById(x:number):Observable<souscategory>{
     return this.http.get<souscategory>(`http://localhost:8080/category/subcategory/Id/${x}`);
+  }
+
+  public deletesouscategory(souscategoryId: number): Observable<void> {
+    return this.http.delete<void>(`http://localhost:8080/category/sous/${souscategoryId}`);
   }
   
 }

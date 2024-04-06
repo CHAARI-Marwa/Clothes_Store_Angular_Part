@@ -32,5 +32,8 @@ export class CategoryService {
   getCategoryById(categoryId:number): Observable<Category> {
     return this.http.get<Category>(`http://localhost:8080/category/Id/${categoryId}`)
   }
+  public deletecategory(souscategoryId: number): Observable<void> {
+    return this.http.delete<void>(`http://localhost:8080/category/sous/${souscategoryId}`);
+  }
 
 }

@@ -84,6 +84,8 @@ export class DetailsProdPopupComponent {
 
   quickView(productId: number): void{
     this.data.productId=productId;
+    this.selectedOption = 'Choose a size';
+    this.quantity = 1;
     this.getProduct(productId);
   }
 

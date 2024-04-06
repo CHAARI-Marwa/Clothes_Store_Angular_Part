@@ -84,7 +84,7 @@
   width: 100%;
   height: 100%;
   padding: 10px;
-  background-color: rgba(119, 115, 115, 0.5); /* Fond gris avec transparence */
+  background-color: rgba(119, 115, 115, 0.836); /* Fond gris avec transparence */
   display: none;
 
 }
@@ -95,10 +95,22 @@
 
 .product-item1 .shop-now {
   color: white;
-  text-decoration: underline;
+  text-decoration: none;
   position: absolute;
   bottom: 10px;
   left: 10px;
+}
+
+.product-item1 .location {
+  color: white;
+  text-decoration: none;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.product-item1 .location:hover {
+  text-decoration: underline;
 }
 
 /*bannersection*/

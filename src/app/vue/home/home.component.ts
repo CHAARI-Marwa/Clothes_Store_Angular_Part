@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
   toggleSousCategoriesPopup(categoryId: number) {
     const dialogRef = this.dialog.open(ListCategPopupComponent, {
       data: { categoryId: categoryId },
-      disableClose: true,
+      disableClose: false,
       autoFocus: false
     });
     const closeDialog = () => dialogRef.close();
@@ -61,11 +61,9 @@ export class HomeComponent implements OnInit {
       this.selectedSubCategoryId = event.subCategoryId;
     }); 
     dialogRef.afterClosed().subscribe(result => {
-       // Vérifiez si un résultat est retourné par le popup
-        // this.selectedCategoryId = result.categoryId;
-        // this.selectedSubCategoryId = result.subCategoryId;
-        this.getProducts(); // Appel de la fonction pour récupérer les produits
-     
+        if (this.selectedCategoryId !== 0 && this.selectedSubCategoryId !== 0) {
+        this.getProducts();
+      }
     });
   }
 

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/controller/category.service';
 import { Category } from 'src/app/model/category';
 import { MatTableDataSource } from '@angular/material/table';
+import { DeletemodalService } from 'src/app/controller/deletemodal.service';
+import { ModalService } from 'src/app/controller/modal.service';
 @Component({
   selector: 'app-viewcategories',
   templateUrl: './viewcategories.component.html',
@@ -9,14 +11,16 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ViewcategoriesComponent  implements OnInit {
   categoryData: Category[] = [];
-  displayedColumns: string[] = ['id', 'name','actions'];
+  displayedColumns: string[] = ['id', 'name','action'];
   dataSource: MatTableDataSource<Category>;
 
  
 
   constructor(
   
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private deletemodalService : DeletemodalService,
+    private modalService : ModalService
   
   ) { }
   ngOnInit(): void {
@@ -43,16 +47,20 @@ export class ViewcategoriesComponent  implements OnInit {
   }
 
   deletecategory(souscategoryId: number) {
+    this.deletemodalService.openDeleteConfirmation().then((confirm: any) => {
+      if (confirm) {
     this.categoryService.deletecategory(souscategoryId).subscribe(
       () => {
-        console.log('Produit supprimé avec succès.');
-        // Rafraîchir la liste des produits après suppression
+        console.log('  category supprimé avec succes .');
+        this.modalService.openSuccessModal('delete');
         this.getcategories();
       },
       (error) => {
-        console.error('Une erreur s\'est produite lors de la suppression du produit:', error);
+        console.error('Une erreur s\'est produite lors de la suppression de la category :', error);
       }
     );
   }
+});
 
-}
+
+}}

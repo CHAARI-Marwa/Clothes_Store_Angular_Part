@@ -10,17 +10,25 @@ export class ModalService {
 
   constructor(private dialog: MatDialog) { }
 
-  openSuccessModal(): void {
+  openSuccessModal(action: 'add' | 'delete'): void {
     this.dialog.open(AddProductModalComponent, {
       width: '250px',
-      data: { success: true }
+      data: { success: true, action },
+      disableClose: true,
+      panelClass: 'custom-modal-container',
+      autoFocus: false,
+      backdropClass: 'custom-backdrop'
     });
   }
 
-  openFailureModal(): void {
+  openFailureModal(action: 'add' | 'delete'): void {
     this.dialog.open(AddProductModalComponent, {
       width: '250px',
-      data: { success: false }
+      data: { success: false, action }, // Fusionner les données success et action dans un seul objet data
+      disableClose: true,
+      panelClass: 'custom-modal-container',
+      autoFocus: false,
+      backdropClass: 'custom-backdrop'
     });
   }
 }

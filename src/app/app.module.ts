@@ -44,6 +44,7 @@ import { EditProductComponent } from './vue/edit-product/edit-product.component'
 import { MatInputModule } from '@angular/material/input';
 import { ViewcategoriesComponent } from './vue/viewcategories/viewcategories.component';
 import { SubcategoriesComponent } from './vue/subcategories/subcategories.component';
+import { DeletemodalComponent } from './vue/deletemodal/deletemodal.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { SubcategoriesComponent } from './vue/subcategories/subcategories.compon
       EditProductComponent,
       ViewcategoriesComponent,
       SubcategoriesComponent,
+      DeletemodalComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/controller/category.service';
 import { ProductService } from 'src/app/controller/product.service';
 import { SouscategoryService } from 'src/app/controller/souscategory.service';
-
+import { ModalService } from 'src/app/controller/modal.service';
 @Component({
   selector: 'app-ajout-produit',
   templateUrl: './ajout-produit.component.html',
@@ -18,7 +18,8 @@ export class AjoutProduitComponent implements OnInit {
   constructor(
     private souscategoryService: SouscategoryService,
     private productService: ProductService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private modalService: ModalService 
   ) {}
 
   ngOnInit() {
@@ -187,15 +188,21 @@ export class AjoutProduitComponent implements OnInit {
       formData.append('sizes', sizes[i]);
       formData.append('quantities', quantities[i].toString());
     }
+
     this.productService.addProduct(formData)
-      .subscribe(
-        response => {
-          console.log(response);
-        },
-        error => {
-          console.error(error);
-        }
-      );
+    .subscribe(
+      response => {
+        console.log(response);
+   
+        this.modalService.openSuccessModal('add');
+      },
+      error => {
+        console.error(error);
+       
+        this.modalService.openFailureModal('add');
+      }
+    );
+  
   }
 
   handleFileInput(event: any) {

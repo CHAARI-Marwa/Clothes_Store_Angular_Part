@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { CategoryService } from 'src/app/controller/category.service';
+
+import { DeletemodalService } from 'src/app/controller/deletemodal.service';
+import { ModalService } from 'src/app/controller/modal.service';
 import { SouscategoryService } from 'src/app/controller/souscategory.service';
 import { souscategory } from 'src/app/model/souscategory';
 
@@ -11,13 +13,14 @@ import { souscategory } from 'src/app/model/souscategory';
 })
 export class SubcategoriesComponent  implements OnInit {
   subcategoryData: souscategory[] = [];
-  displayedColumns: string[] = ['id', 'name', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'action'];
   dataSource: MatTableDataSource<souscategory>;
-
+ 
  constructor(
   
-    private souscategoryService: SouscategoryService
-  
+    private souscategoryService: SouscategoryService,
+    private deletemodalService : DeletemodalService,
+    private modalService : ModalService
   ) { }
   ngOnInit(): void {
     this.getSubcategories();
@@ -42,17 +45,20 @@ export class SubcategoriesComponent  implements OnInit {
   }
 
     deletesouscategory(souscategoryId: number) {
+      this.deletemodalService.openDeleteConfirmation().then((confirm: any) => {
+        if (confirm) {
       this.souscategoryService.deletesouscategory(souscategoryId).subscribe(
         () => {
-          console.log('Produit supprimé avec succès.');
-          // Rafraîchir la liste des produits après suppression
+          console.log('sous category supprimé avec succès.');
+          this.modalService.openSuccessModal('delete');
           this.getSubcategories();
         },
         (error) => {
-          console.error('Une erreur s\'est produite lors de la suppression du produit:', error);
+          console.error('Une erreur s\'est produite lors de la suppression  de sous category :', error);
         }
       );
     }
-    
-
-}
+  });
+  
+  
+  }}

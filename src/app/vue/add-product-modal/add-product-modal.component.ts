@@ -8,21 +8,37 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class AddProductModalComponent {
 
+  action: 'add' | 'delete'; 
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<AddProductModalComponent>
-  ) { }
+  ) {
+    this.action = this.data.action; 
+  }
 
   get modalTitle(): string {
-    return this.data.success ? 'add succeeded' : ' problem with the add';
+    if (this.action === 'add') {
+      return this.data.success ? 'Add succeeded' : 'Problem with the add';
+    } else if (this.action === 'delete') {
+      return this.data.success ? 'Delete succeeded' : 'Problem with the delete';
+    }
+  
+    return '';
   }
 
   get modalMessage(): string {
-    return this.data.success ? 'Product added successfully !' : 'An error occurred while adding the product';
+    if (this.action === 'add') {
+      return this.data.success ? ' added successfully !' : 'An error occurred while adding ';
+    } else if (this.action === 'delete') {
+      return this.data.success ? ' deleted successfully !' : 'An error occurred while deleting ';
+    }
+ 
+    return '';
   }
 
   closeModal(): void {
-    // Fermer la fenêtre modale
+   
     this.dialogRef.close();
   }
 }

@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 
 import { SouscategoryService } from 'src/app/controller/souscategory.service';
 import { souscategory } from 'src/app/model/souscategory';
-import {  FormControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {  FormControl,FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { Category } from 'src/app/model/category';
 import { CategoryService } from 'src/app/controller/category.service';
-
+import { ModalService } from 'src/app/controller/modal.service';
 
 @Component({
   selector: 'app-add-sous-category',
@@ -26,6 +26,7 @@ export class AddSousCategoryComponent {
     private fb: FormBuilder,
     private sousCervice: SouscategoryService,
     private categotyService: CategoryService,
+    private modalService : ModalService
   ) {
     this.souscategoryForm = this.fb.group({
       name: ['', Validators.required]
@@ -41,9 +42,13 @@ export class AddSousCategoryComponent {
     };
     this.sousCervice.addsouscategory(newSousCategory).subscribe(
       () => {
+        this.modalService.openSuccessModal('add');
+        this.souscategoryForm.reset();
+        this.selectedCategories = [];
         console.log('Sous-catégorie ajoutée avec succès');
       },
       (error) => {
+        this.modalService.openFailureModal('add');
         console.error('Erreur lors de l\'ajout de la sous-catégorie :', error);
       }
     );}

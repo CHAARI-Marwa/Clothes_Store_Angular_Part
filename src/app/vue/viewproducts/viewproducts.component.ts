@@ -11,6 +11,8 @@ import { forkJoin } from 'rxjs';
 
 import { MatTableDataSource } from '@angular/material/table';
 
+import { DeletemodalService } from 'src/app/controller/deletemodal.service';
+import { ModalService } from 'src/app/controller/modal.service';
 @Component({
   selector: 'app-viewproducts',
   templateUrl: './viewproducts.component.html',
@@ -26,7 +28,7 @@ export class ViewproductsComponent  implements OnInit  {
   fcategory_id :number ;
   categoryNames: { [key: number]: string } = {};
   subcategoryNames: { [key: number]: string } = {};
-
+  
 
  
   constructor(
@@ -34,6 +36,8 @@ export class ViewproductsComponent  implements OnInit  {
     private categoryService: CategoryService,
     private subCategoryService: SouscategoryService,
     private router: Router,
+    private deletemodalService : DeletemodalService,
+    private modalService : ModalService
     
   ) { }
 
@@ -81,7 +85,7 @@ export class ViewproductsComponent  implements OnInit  {
   }
 
   getCategoryName(categoryId: number): string {
-    return this.categoryNames[categoryId] || ''; // Retourne le nom de la sous-catégorie correspondant à l'ID ou une chaîne vide si le nom n'est pas trouvé
+    return this.categoryNames[categoryId] || ''; 
   }
 
   fetchSubcategoryNames() {
@@ -99,27 +103,30 @@ export class ViewproductsComponent  implements OnInit  {
   }
 
   getSubcategoryName(scategoryId: number): string {
-    return this.subcategoryNames[scategoryId] || ''; // Retourne le nom de la sous-catégorie correspondant à l'ID ou une chaîne vide si le nom n'est pas trouvé
+    return this.subcategoryNames[scategoryId] || ''; 
   }
 
   editProduct(productId: number) {
-     // this.sharedservice.toggleafficherEdit(productId);
+ 
     this.router.navigate(['/edit-product', productId]);
   }
 
-  // Méthode pour supprimer un produit
+
   deleteProduct(productId: number) {
-    this.productService.deleteProduct(productId).subscribe(
-      () => {
-        console.log('Produit supprimé avec succès.');
-        // Rafraîchir la liste des produits après suppression
-        this.getproducts();
-      },
-      (error) => {
-        console.error('Une erreur s\'est produite lors de la suppression du produit:', error);
+    this.deletemodalService.openDeleteConfirmation().then((confirm: any) => {
+      if (confirm) {
+        this.productService.deleteProduct(productId).subscribe(
+          () => {
+            console.log('Produit supprimé avec succès.');
+            this.modalService.openSuccessModal('delete');
+            this.getproducts();
+          },
+          (error) => {
+            console.error('Une erreur s\'est produite lors de la suppression du produit:', error);
+          }
+        );
       }
-    );
-  }
+    });
   
 
- }
+ }}

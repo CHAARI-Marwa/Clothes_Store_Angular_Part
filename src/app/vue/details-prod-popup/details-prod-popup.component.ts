@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 import { ProductService } from 'src/app/controller/product.service';
 import { Product } from 'src/app/model/product';
+import { CartService } from 'src/app/controller/cart.service';
 
 @Component({
   selector: 'app-details-prod-popup',
@@ -21,7 +22,8 @@ export class DetailsProdPopupComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private productService: ProductService
+    private productService: ProductService,
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
@@ -88,5 +90,12 @@ export class DetailsProdPopupComponent {
     this.quantity = 1;
     this.getProduct(productId);
   }
+
+  ajouterAuPanier(): void {
+    if (this.product && this.selectedOption && this.quantity > 0) {
+      this.cartService.ajouterAuPanier(this.product, this.selectedOption, this.quantity);
+    }
+    console.log(this.cartService.getPanierProduits())
+  }  
 
 }

@@ -16,7 +16,7 @@ export class RegistrationService {
 
   public loginUser(email: string, password: string):Observable<any>{
     const body = { emailId: email, password: password };
-    return this._http.post<any>("http://localhost:8080/login",body)
+    return this._http.post<any>("http://localhost:8080/login/user",body)
     .pipe(
       tap(response => {
         localStorage.setItem('token', response.token);
@@ -57,7 +57,7 @@ export class RegistrationService {
   }
 
   public registerUserFromRemote(user:User):Observable<any>{
-    return this._http.post<any>("http://localhost:8080/register",user)
+    return this._http.post<any>("http://localhost:8080/register/user",user)
   }
 
   getUserById(x: number): Observable<User> {

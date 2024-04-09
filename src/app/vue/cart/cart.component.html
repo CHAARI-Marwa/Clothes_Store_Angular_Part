@@ -1,7 +1,7 @@
 <div>
   <app-header></app-header>
   <body>
-    <section>
+    <!-- <section>
       <h1 id="cart">Cart</h1>
       <div class="row">
         <div class="column">
@@ -90,6 +90,56 @@
           <h4>Subtotals Shipping &nbsp; &nbsp; 199.90 DT</h4>
           <div class="input-container">
             <input type="text" name="promocode" id="promocode" class="promocode" placeholder="Enter promo code"/>
+          </div>
+          <h4>Totals &nbsp; &nbsp; 1000 DT</h4>
+          <div class="buttons">
+            <a class="button-checkout" href="confirmation.html">Checkout</a>
+            <a class="cancel" href="../HTML/men.html">Continue Shopping</a>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <section>
+      <h1 id="cart">Cart</h1>
+      <div class="row">
+        <div class="column">
+          <h2>Your Order</h2>
+          <table style="width: 100%;">
+            <thead style="text-align: center;">
+              <tr>
+                <th style="width: 16.67%;"></th>
+                <th style="width: 16.67%;">Product</th>
+                <th style="width: 16.67%;">Qte</th>
+                <th style="width: 16.67%;">Size</th>
+                <th style="width: 16.67%;">Price</th>
+                <th style="width: 16.67%;"></th>
+              </tr>
+            </thead>
+            <tbody style="text-align: center;">
+              <tr *ngFor="let produit of panierProducts">
+                <td><img [src]="'assets/img/product/' + produit.id + produit.name+'/'+produit.image_name[0]" alt="{{ produit.name }}" /></td>
+                <td>{{ produit.name }}</td>
+                <td>
+                  <div *ngIf="panier.get(produit)">
+                    <div *ngFor="let sizeAndQty of panier.get(produit) | keyvalue">
+                      <p>Taille: {{ sizeAndQty.key }}</p>
+                      <p>Quantité: {{ sizeAndQty.value }}</p>
+                    </div>
+                  </div>
+                </td>
+                <td></td> <!-- Ajoutez une colonne pour la taille ici -->
+                <td>{{ produit.price }} DT</td>
+                <!-- <td><button id="remove" class="remove" (click)="supprimerDuPanier(produit)">Remove</button></td> -->
+              </tr>
+            </tbody>
+          </table>
+          <hr />
+        </div>
+        <div class="column2">
+          <h2>Cart Totals</h2>
+          <h4>Subtotals Shipping &nbsp; &nbsp; 199.90 DT</h4>
+          <div class="input-container">
+            <input type="text" name="promocode" id="promocode" class="promocode" placeholder="Enter promo code" />
           </div>
           <h4>Totals &nbsp; &nbsp; 1000 DT</h4>
           <div class="buttons">

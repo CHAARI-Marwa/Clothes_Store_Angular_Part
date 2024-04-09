@@ -32,12 +32,29 @@
             <img src="assets/img/logo1.png" alt="">
           </a>
         </div>
+
         <div class="col-xl-6 col-lg-5">
           <form class="header-search-form">
-            <input type="text" placeholder="Search on COZASTORE ....">
-            <button><i class="flaticon-search"></i></button>
+            <input type="text" placeholder="Search on COZASTORE ...." [(ngModel)]="searchTerm" (input)="onSearchChange()" name="search">
+
+            <button type="submit"><i class="flaticon-search"></i></button>
           </form>
+        
+          
+          <div *ngIf="similarProducts.length > 0" class="similar-products">
+         
+            <ul>
+              <li *ngFor="let product of similarProducts" (click)="selectProduct(product)">
+                <img [src]="'assets/img/product/' + product.id + product.name+'/'+product.image_name[0]" alt="{{ product.name }}" width="50" height="50">
+                <span>{{ product.name }}</span>
+              </li>
+            </ul>
+          </div>
         </div>
+        
+        
+
+
         <div class="col-xl-4 col-lg-5">
           <div class="user-panel">
             <div *ngIf="registrationService.isLoggedIn(); else showSignIn">

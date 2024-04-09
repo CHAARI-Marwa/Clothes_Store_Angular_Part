@@ -38,9 +38,13 @@ export class SharedService {
   private  afficherFormulairesubcategories = new BehaviorSubject<boolean>(false);
   afficherFormulairesubcategories$ = this.afficherFormulairesubcategories.asObservable();
 
+  private  affichercommandes = new BehaviorSubject<boolean>(false);
+  affichercommandes$ = this.affichercommandes.asObservable();
+
   constructor( private productService : ProductService , private router: Router ) {}
  
   toggleFormulaireProduit() {
+    this.affichercommandes.next(false);
     this.afficherFormulaireEdit.next(false);
     this.afficherFormulaireProduitSubject.next(true);
     this.afficherFormulaireCategorieSubject.next(false);
@@ -52,6 +56,7 @@ export class SharedService {
   }
 
   toggleFormulaireCategorie() {
+    this.affichercommandes.next(false);
     this.afficherFormulaireEdit.next(false);
     this.afficherFormulaireCategorieSubject.next(true);
     this.afficherFormulaireProduitSubject.next(false); 
@@ -63,6 +68,7 @@ export class SharedService {
   }
 
   toggleFormulaireSousCategorie() {
+    this.affichercommandes.next(false);
     this.afficherFormulaireEdit.next(false);
     this.afficherFormulaireSousCategorieSubject.next(true);
     this.afficherFormulaireProduitSubject.next(false); 
@@ -74,6 +80,7 @@ export class SharedService {
   }
 
   toggleFormulaireuserprofile() {
+    this.affichercommandes.next(false);
     this.afficherFormulaireEdit.next(false);
     this.afficherFormulaireuserprofileSubject.next(true);
     this.afficherFormulaireSousCategorieSubject.next(false);
@@ -86,6 +93,7 @@ export class SharedService {
 
 
   toggleafficherproducts() {
+    this.affichercommandes.next(false);
     this.afficherFormulaireEdit.next(false);
     this. afficherFormulaireproducts.next(true);
     this.afficherFormulaireuserprofileSubject.next(false);
@@ -96,6 +104,7 @@ export class SharedService {
     this.afficherFormulairecategories.next(false);
   }
   toggleafficherEdit(productId: number) {
+    this.affichercommandes.next(false);
     this.afficherFormulaireEdit.next(true);
     this.afficherFormulaireproducts.next(false);
     this.afficherFormulaireuserprofileSubject.next(false);
@@ -110,6 +119,7 @@ export class SharedService {
 }
   
 toggleaffichercategories() {
+  this.affichercommandes.next(false);
   this.afficherFormulairecategories.next(true);
   this.afficherFormulaireEdit.next(false);
   this.afficherFormulaireproducts.next(false);
@@ -124,6 +134,7 @@ toggleaffichercategories() {
 }
 
 toggleaffichersubcategories() {
+  this.affichercommandes.next(false);
   this.afficherFormulairecategories.next(false);
   this.afficherFormulairesubcategories.next(true);
   this.afficherFormulaireEdit.next(false);
@@ -137,6 +148,18 @@ toggleaffichersubcategories() {
 
 }
 
+toggleaffichercommandes(){
+  this.affichercommandes.next(true);
+  this.afficherFormulairecategories.next(false);
+  this.afficherFormulairesubcategories.next(false);
+  this.afficherFormulaireEdit.next(false);
+  this.afficherFormulaireproducts.next(false);
+  this.afficherFormulaireuserprofileSubject.next(false);
+  this.afficherFormulaireSousCategorieSubject.next(false);
+  this.afficherFormulaireProduitSubject.next(false); 
+  this.afficherFormulaireCategorieSubject.next(false);
+
+}
 
 
 

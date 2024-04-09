@@ -45,6 +45,8 @@ import { MatInputModule } from '@angular/material/input';
 import { ViewcategoriesComponent } from './vue/viewcategories/viewcategories.component';
 import { SubcategoriesComponent } from './vue/subcategories/subcategories.component';
 import { DeletemodalComponent } from './vue/deletemodal/deletemodal.component';
+import { ViewcommandesComponent } from './vue/viewcommandes/viewcommandes.component';
+
 
 @NgModule({
   declarations: [
@@ -72,6 +74,8 @@ import { DeletemodalComponent } from './vue/deletemodal/deletemodal.component';
       ViewcategoriesComponent,
       SubcategoriesComponent,
       DeletemodalComponent,
+      ViewcommandesComponent
+      
   ],
   imports: [
     BrowserModule,

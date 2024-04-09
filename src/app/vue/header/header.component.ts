@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/controller/category.service';
 import { RegistrationService } from 'src/app/controller/registration.service';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
-
+import { ProductService } from 'src/app/controller/product.service';
+import { DetailsProdPopupComponent } from '../details-prod-popup/details-prod-popup.component';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,20 +14,55 @@ import { UserProfileComponent } from '../user-profile/user-profile.component';
 })
 export class HeaderComponent {
   categories: any[] = [];
+  products: any[] = [];
+  searchTerm: string = '';
+  similarProducts: any[] = [];
+
 
   ngOnInit(): void {
     this.getCategories();
-  //   if(this.registrationService.getToken()!=null){
-  //   console.log(this.registrationService.getUserId(this.registrationService.getToken()))
-  // }
+    this.loadProducts();
   }
+
+
 
   constructor(
     public dialog: MatDialog,
     public registrationService: RegistrationService, 
     private categoryService: CategoryService, 
-    private router: Router
+    private router: Router,
+    private productservice : ProductService,
+  
     ) {}
+
+    loadProducts() {
+      this.productservice.getproducts().subscribe(products => {
+        this.products = products;
+      });
+    }
+
+    onSearchChange() {
+      // Filtrer les produits similaires en utilisant searchTerm
+      this.similarProducts = this.products.filter(product =>
+        product.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+
+      if (this.searchTerm.trim() === '') {
+        this.similarProducts = [];
+      }
+    }
+
+    selectProduct(product: any) {
+      console.log("Produit sélectionné :", product);
+      // Ouvrir le pop-up avec les détails du produit sélectionné
+      this.openDetailsPopup(product.id);
+    }
+  
+    openDetailsPopup(productId: number): void {
+      const dialogRef = this.dialog.open(DetailsProdPopupComponent, {
+        data: { productId: productId }
+      });
+    }
   
   toggleUserPopup(userId: number) {
     const dialogRef = this.dialog.open(UserProfileComponent, {

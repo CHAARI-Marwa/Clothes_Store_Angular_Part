@@ -32,6 +32,9 @@ export class SidenavComponent {
       this.sharedService.toggleaffichersubcategories();
     }
 
+    else if (type === 'viewcommandes') {
+      this.sharedService.toggleaffichercommandes();
+    }
 
   
   }

@@ -1,0 +1,37 @@
+<div id="container">
+  <div id="Order_Form">
+    <form id="orderForm" (ngSubmit)="onSubmit()" [formGroup]="orderForm">
+      <h1>ORDER FORM</h1>
+      <label for="firstName">FIRST NAME</label>
+      <div>
+        <input type="text" id="firstName" formControlName="firstName" class="input-style small" required >
+      </div>
+      <label for="lastName">LAST NAME</label>
+      <div>
+        <input type="text" id="lastName" formControlName="lastName" class="input-style small" required>
+      </div>
+      <label for="address">ADDRESS</label>
+      <div>
+        <input type="text" id="address" formControlName="address" class="input-style small" required>
+      </div>
+      <label for="postalCode">POSTAL CODE</label>
+      <div>
+        <input type="text" id="postalCode" formControlName="postalCode" class="input-style small" required>
+      </div>
+      <label for="phoneNumber">PHONE NUMBER</label>
+      <div>
+        <input type="tel" id="phoneNumber" formControlName="phoneNumber" class="input-style small" pattern="[0-9]{8}" required>
+      </div>
+      <label for="paymentType">PAYMENT TYPE</label>
+      <div>
+        <select id="paymentType" formControlName="paymentType" class="input-style small" required>
+          <option value="" selected disabled hidden style="color: #888;">Choose Payment Type</option>
+          <option value="cheque">By Check</option>
+          <option value="espece">By Cash</option>
+        </select>
+      </div>
+
+      <button type="submit" [disabled]="orderForm.invalid" class="submit-btn small">SUBMIT</button>
+    </form>
+  </div>
+</div>

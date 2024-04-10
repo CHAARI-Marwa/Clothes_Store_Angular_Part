@@ -46,7 +46,7 @@ import { ViewcategoriesComponent } from './vue/viewcategories/viewcategories.com
 import { SubcategoriesComponent } from './vue/subcategories/subcategories.component';
 import { DeletemodalComponent } from './vue/deletemodal/deletemodal.component';
 import { ViewcommandesComponent } from './vue/viewcommandes/viewcommandes.component';
-
+import { FormulaireCommandePopupComponent } from './vue/formulaire-commande-popup/formulaire-commande-popup.component';
 
 @NgModule({
   declarations: [
@@ -74,8 +74,8 @@ import { ViewcommandesComponent } from './vue/viewcommandes/viewcommandes.compon
       ViewcategoriesComponent,
       SubcategoriesComponent,
       DeletemodalComponent,
-      ViewcommandesComponent
-      
+      ViewcommandesComponent,
+      FormulaireCommandePopupComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +109,7 @@ import { ViewcommandesComponent } from './vue/viewcommandes/viewcommandes.compon
     MatInputModule
   ],
   providers: [
-    RegistrationService,
+    RegistrationService
   ],
   bootstrap: [AppComponent]
 })

@@ -8,6 +8,7 @@ import { CartComponent } from './vue/cart/cart.component';
 import { UserProfileComponent } from './vue/user-profile/user-profile.component';
 import { EditProductComponent } from './vue/edit-product/edit-product.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -16,7 +17,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   {path:'cart', component:CartComponent} ,
   {path:'profile', component:UserProfileComponent} ,
-  { path: 'edit-product/:id', component: EditProductComponent } 
+  { path: 'edit-product/:id', component: EditProductComponent },
 ];
 
 @NgModule({

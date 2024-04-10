@@ -33,8 +33,8 @@ export class UserProfileComponent {
     private userService: RegistrationService,
     private fb: FormBuilder,
     ){ }
-  
-  getuser(): void{  
+
+  getuser(): void{
     this.userService.getUserById(this.data.userId)
     .subscribe(
       (user: User) => {
@@ -94,5 +94,5 @@ export class UserProfileComponent {
       // this.msg.message = "Please fill out all required fields correctly.";
     }
     }
-  
+
 }

@@ -21,11 +21,19 @@
         </div>
       </div>
 
+      
       <div class="col-md-6 col-lg-5 p-b-30" *ngIf="product">
         <div class="p-r-50 p-t-5 p-lr-0-lg"><br><br>
           <h4 class="mtext-105 cl2 js-name-detail p-b-14">
             {{ product.name }}
+            <span class="favorite-icon" [class.favorite-icon-red]="isFavorite" (click)="addToFavorites(product)">
+              <mat-icon>favorite</mat-icon>
+            </span>
+            
           </h4>
+         
+       
+          
           <span class="mtext-106 cl2" >
             <span [ngClass]="{'strike-pink': product.promotion !== 0}">
               {{ product.price }} DT
@@ -73,6 +81,9 @@
                 <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" (click)="ajouterAuPanier()">
                   Add to cart
                 </button>
+
+               
+
               </div>
         </div>
         <div class="row" style="margin-top: 160px; margin-right: 50px; margin-left: 50px;">

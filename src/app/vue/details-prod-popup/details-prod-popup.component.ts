@@ -4,7 +4,7 @@ import { Inject } from '@angular/core';
 import { ProductService } from 'src/app/controller/product.service';
 import { Product } from 'src/app/model/product';
 import { CartService } from 'src/app/controller/cart.service';
-
+import { FavoriteService } from 'src/app/controller/favorite.service';
 @Component({
   selector: 'app-details-prod-popup',
   templateUrl: './details-prod-popup.component.html',
@@ -19,12 +19,23 @@ export class DetailsProdPopupComponent {
   quantities: number[];
   maxQuantity: number = 1;
   quantity: number = 1;
+  favorites: any[] = [];
+  isFavorite: boolean = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private favoritesService: FavoriteService
   ) { }
+
+
+
+  addToFavorites(product: any) {
+    this.favoritesService.addToFavorites(product);
+    this.isFavorite = !this.isFavorite;
+    console.log('Product added to favorites:', product);
+  }
 
   ngOnInit(): void {
     this.getProduct(this.data.productId);

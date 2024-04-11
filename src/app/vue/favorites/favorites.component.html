@@ -1,0 +1,50 @@
+<div>
+    <app-header></app-header>
+    <div class="container">
+      <div class="spacer"></div>
+      <section>
+        <h1 id="cart">Favorites</h1>
+     
+        <div *ngIf="favorites.length === 0" class="no-favorites-message">
+            <br>
+            <br>
+            <br>
+            <br>
+            <p>There are no favorite products.</p>
+          </div>
+          
+        <div *ngIf="favorites.length > 0">
+          <div class="row">
+            <div class="column">
+              <h2></h2>
+              <br>
+              <br>
+              <br>
+              <br>
+              <table class="favorites-table">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let favorite of favorites">
+                    <td><img [src]="'assets/img/product/' + favorite.id + favorite.name + '/' + favorite.image_name[0]" alt="{{ favorite.name }}" width="200" height="200" /></td>
+                    <td>{{ favorite.name }}</td>
+                    <td>{{ favorite.price }} DT</td>
+                    <td><button class="custom-button" (click)="removeFromFavorites(favorite)">Retirer des favoris</button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <hr />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <app-footer></app-footer>
+  </div>
+  

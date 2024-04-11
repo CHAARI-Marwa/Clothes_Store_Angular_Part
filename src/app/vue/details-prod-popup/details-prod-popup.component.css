@@ -1,4 +1,15 @@
-/*Ligne through promotion*/
+.favorite-icon {
+  display: inline-block;
+  border: 1px solid #ccc; 
+  padding: 5px; 
+  border-radius: 5px; 
+  margin-left: 40px;
+}
+.favorite-icon-red {
+  color: red; 
+}
+
+
 .strike-pink {
   position: relative;
 }

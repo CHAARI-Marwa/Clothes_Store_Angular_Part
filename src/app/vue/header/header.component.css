@@ -1,3 +1,24 @@
+.user-panel {
+  display: flex;
+  align-items: center; }
+
+.favorite-icon-container {
+  margin-left: 20px; 
+  font-size: 20px !important;
+  color: #4C90A6;
+}
+
+.favorite-icon-container a:hover {
+  font-weight: bold;
+  text-decoration: underline;/* Souligner lors du survol */
+}
+
+
+
+
+
+
+
 body{
   overflow: hidden;
 }

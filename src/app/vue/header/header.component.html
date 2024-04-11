@@ -31,6 +31,7 @@
           <a href="./index.html" class="site-logo">
             <img src="assets/img/logo1.png" alt="">
           </a>
+          
         </div>
 
         <div class="col-xl-6 col-lg-5">
@@ -38,6 +39,7 @@
             <input type="text" placeholder="Search on COZASTORE ...." [(ngModel)]="searchTerm" (input)="onSearchChange()" name="search">
 
             <button type="submit"><i class="flaticon-search"></i></button>
+           
           </form>
         
           
@@ -72,12 +74,21 @@
               <div class="up-item" style="padding-left: 50px;">
                   <a (click)="logout()">Sign Out</a>
               </div>
+              <div class="up-item favorite-icon-container">
+                <a routerLink="/favorites" routerLinkActive="active">
+                  <mat-icon>favorite</mat-icon>
+                </a>
+              </div>
+              
+           
             </div>
             <ng-template #showSignIn>
               <div class="up-item">
                   <a routerLink="/login" >Sign In</a> or <a routerLink="/signup" >Create Account</a>         
               </div>
             </ng-template>
+
+           
           </div>
         </div>
       </div>

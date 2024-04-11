@@ -7,6 +7,7 @@ import { DashboardComponent } from './vue/dashboard/dashboard.component';
 import { CartComponent } from './vue/cart/cart.component';
 import { UserProfileComponent } from './vue/user-profile/user-profile.component';
 import { EditProductComponent } from './vue/edit-product/edit-product.component';
+import { FavoritesComponent } from './vue/favorites/favorites.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   {path:'cart', component:CartComponent} ,
   {path:'profile', component:UserProfileComponent} ,
-  { path: 'edit-product/:id', component: EditProductComponent } 
+  { path: 'edit-product/:id', component: EditProductComponent } ,
+  { path: 'favorites', component: FavoritesComponent },
 ];
 
 @NgModule({

@@ -17,7 +17,7 @@ export class HeaderComponent {
   products: any[] = [];
   searchTerm: string = '';
   similarProducts: any[] = [];
-
+  favorites: any[] = [];
 
   ngOnInit(): void {
     this.getCategories();
@@ -83,7 +83,14 @@ export class HeaderComponent {
   
   logout(): void {
     localStorage.removeItem('token');
+    this.clearFavorites();
     this.router.navigate(['/home']);
+
+  }
+  clearFavorites() {
+  
+    this.favorites = [];
+    sessionStorage.removeItem('favorites'); 
   }
 
   getCategories(): void {

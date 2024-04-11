@@ -1,104 +1,6 @@
 <div>
   <app-header></app-header>
   <body>
-    <!-- <section>
-      <h1 id="cart">Cart</h1>
-      <div class="row">
-        <div class="column">
-          <h2>Your Order</h2>
-          <table style="width: 100%;" >
-            <thead style="text-align: center;">
-                <tr>
-                    <th style="width: 16.67%;"></th>
-                    <th style="width: 16.67%;">Product</th>
-                    <th style="width: 16.67%;">Qte</th>
-                    <th style="width: 16.67%;">Size</th>
-                    <th style="width: 16.67%;">Price</th>
-                    <th style="width: 16.67%;"></th>
-                </tr>
-            </thead>
-            <tbody style="text-align: center;">
-                <tr>
-                    <td ><img src="assets/img/bg.jpg" alt="" /></td>
-                    <td >Red Pull Over</td>
-                    <td ><input
-                      type="number"
-                      name="quantity"
-                      id="no-of-items"
-                      value="1"
-                      min="1"
-                      max="6"
-                      step="1"
-                      class="quantity"
-                    /></td>
-                    <td >Size M</td>
-                    <td >59.900 DT</td>
-                    <td >
-                      <button id="remove" class="remove">
-                        Remove
-                      </button>
-                    </td>
-                </tr>
-                <tr>
-                  <td ><img src="assets/img/bg.jpg" alt="" /></td>
-                  <td >Red Pull Over</td>
-                  <td ><input
-                    type="number"
-                    name="quantity"
-                    id="no-of-items"
-                    value="1"
-                    min="1"
-                    max="6"
-                    step="1"
-                    class="quantity"
-                  /></td>
-                  <td >Size M</td>
-                  <td >59.900 DT</td>
-                  <td >
-                    <button id="remove" class="remove">
-                      Remove
-                    </button>
-                  </td>
-              </tr>
-              <tr>
-                <td ><img src="assets/img/bg-2.jpg" alt="" /></td>
-                <td >Red Pull Over</td>
-                <td ><input
-                  type="number"
-                  name="quantity"
-                  id="no-of-items"
-                  value="1"
-                  min="1"
-                  max="6"
-                  step="1"
-                  class="quantity"
-                /></td>
-                <td >Size M</td>
-                <td >59.900 DT</td>
-                <td >
-                  <button id="remove" class="remove">
-                    Remove
-                  </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-          <hr />
-        </div>
-        <div class="column2">
-          <h2>Cart Totals</h2>
-          <h4>Subtotals Shipping &nbsp; &nbsp; 199.90 DT</h4>
-          <div class="input-container">
-            <input type="text" name="promocode" id="promocode" class="promocode" placeholder="Enter promo code"/>
-          </div>
-          <h4>Totals &nbsp; &nbsp; 1000 DT</h4>
-          <div class="buttons">
-            <a class="button-checkout" href="confirmation.html">Checkout</a>
-            <a class="cancel" href="../HTML/men.html">Continue Shopping</a>
-          </div>
-        </div>
-      </div>
-    </section> -->
     <section>
       <h1 id="cart">Cart</h1>
       <div class="row">
@@ -109,41 +11,57 @@
               <tr>
                 <th style="width: 16.67%;"></th>
                 <th style="width: 16.67%;">Product</th>
-                <th style="width: 16.67%;">Qte</th>
                 <th style="width: 16.67%;">Size</th>
+                <th style="width: 16.67%;">Quantity</th>
+                <th style="width: 16.67%;">Actions</th>
                 <th style="width: 16.67%;">Price</th>
                 <th style="width: 16.67%;"></th>
               </tr>
+              <tr>
+                <th colspan="2"></th>
+                <th colspan="3"></th>
+              </tr>
             </thead>
             <tbody style="text-align: center;">
-              <tr *ngFor="let produit of panierProducts">
-                <td><img [src]="'assets/img/product/' + produit.id + produit.name+'/'+produit.image_name[0]" alt="{{ produit.name }}" /></td>
-                <td>{{ produit.name }}</td>
+              <tr *ngFor="let product of cartProducts">
+                <td><img [src]="'assets/img/product/' + product.id + product.name+'/'+product.image_name[0]" alt="{{ product.name }}" /></td>
+                <td>{{ product.name }}</td>
                 <td>
-                  <div *ngIf="panier.get(produit)">
-                    <div *ngFor="let sizeAndQty of panier.get(produit) | keyvalue">
-                      <p>Taille: {{ sizeAndQty.key }}</p>
-                      <p>Quantité: {{ sizeAndQty.value }}</p>
+                  <ng-container *ngIf="cart.get(product)">
+                    <div *ngFor="let sizeAndQty of cart.get(product) | keyvalue" class="size">
+                      {{ sizeAndQty.key }}
                     </div>
-                  </div>
+                  </ng-container>
                 </td>
-                <td></td> <!-- Ajoutez une colonne pour la taille ici -->
-                <td>{{ produit.price }} DT</td>
-                <!-- <td><button id="remove" class="remove" (click)="supprimerDuPanier(produit)">Remove</button></td> -->
+                <td>
+                  <ng-container *ngIf="cart.get(product)">
+                    <div *ngFor="let sizeAndQty of cart.get(product) | keyvalue">
+                      <input type="number" name="quantity" id="no-of-items" [value]="sizeAndQty.value" min="1" [max]="getMaxQuantity(product, sizeAndQty.key)" step="1" class="quantity"  (input)="handleInput($event, product, sizeAndQty.key)">
+                    </div>
+                  </ng-container>
+                </td>
+                <td>
+                  <ng-container *ngIf="cart.get(product)">
+                    <div *ngFor="let sizeAndQty of cart.get(product) | keyvalue">
+                      <button id="remove" class="remove" (click)="removeSizeQuantity(product,sizeAndQty.key)">Remove</button>
+                    </div>
+                  </ng-container>
+                </td>
+                <td>{{ calculateProductPrice(product) }} DT</td>
               </tr>
             </tbody>
-          </table>
-          <hr />
+          </table>  
+        <hr />
         </div>
         <div class="column2">
           <h2>Cart Totals</h2>
-          <h4>Subtotals Shipping &nbsp; &nbsp; 199.90 DT</h4>
+          <h4>Subtotals Shipping &nbsp; &nbsp; {{calculateTotalPrice()}} DT</h4>
           <div class="input-container">
             <input type="text" name="promocode" id="promocode" class="promocode" placeholder="Enter promo code" />
           </div>
-          <h4>Totals &nbsp; &nbsp; 1000 DT</h4>
+          <h4>Totals &nbsp; &nbsp; {{ calculateFinalPrice() }} DT</h4>
           <div class="buttons">
-            <a class="button-checkout" (click)="toggleProductPopup()">Checkout</a>
+            <a class="button-checkout" (click)="toggleCommandePopup()">Checkout</a>
             <a class="cancel" href="../HTML/men.html">Continue Shopping</a>
           </div>
         </div>

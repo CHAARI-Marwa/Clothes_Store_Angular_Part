@@ -1,4 +1,4 @@
-export interface Product {
+export class Product {
     id:number;
     name: string;
     price: number;
@@ -8,4 +8,3 @@ export interface Product {
     image_name: string[];
     sizeQuantityMap: { [key: string]: number };
   }
-  

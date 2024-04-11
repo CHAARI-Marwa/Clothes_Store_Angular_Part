@@ -18,14 +18,6 @@ export class UserProfileComponent {
 
   ngOnInit(): void {
     this.getuser();
-    // this.editUserForm = this.fb.group({
-    //   name: [this.user.name, Validators.required],
-    //   surname: [this.user.surname, Validators.required],
-    //   phoneNumber: [this.user.phoneNumber, [Validators.required, Validators.pattern(/^\d{8}$/)]],
-    //   emailId: [this.user.emailId, [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
-    //   password: ['', [Validators.required, Validators.minLength(8)]],
-    //   gender: [this.user.gender, Validators.required]
-    // });
   }
 
   constructor(
@@ -68,9 +60,6 @@ export class UserProfileComponent {
      if (currentPasswordInput === this.user.password) {
          this.passworIsTrue = true;
       }
-        //   else {
-        //      console.log("Le mot de passe actuel est incorrect.");
-        //  }
     }
   }
 

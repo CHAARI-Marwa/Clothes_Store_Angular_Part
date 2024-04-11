@@ -5,78 +5,91 @@ import { Product } from '../model/product';
   providedIn: 'root'
 })
 export class CartService {
-  private readonly STORAGE_KEY = 'panier';
+  private readonly CART_KEY = 'cart';
+  private cart: Map<Product, Map<string, number>> = this.getCartFromSessionStorage();
 
-  constructor() {}
+  constructor() { }
 
-  private getPanierFromStorage(): Map<Product, Map<string, number>> {
-    const panierString = localStorage.getItem(this.STORAGE_KEY);
-    return panierString ? new Map(JSON.parse(panierString)) : new Map<Product, Map<string, number>>();
+  private getCartFromSessionStorage(): Map<Product, Map<string, number>> {
+    const cartString = sessionStorage.getItem(this.CART_KEY);
+    let cart = new Map<Product, Map<string, number>>();
+    if (cartString) {
+      const cartArray = JSON.parse(cartString);
+      cartArray.forEach(([product, sizeQuantityMap]: [any, Map<string, number>]) => {
+        cart.set(product, new Map(Object.entries(sizeQuantityMap)));
+      });
+    }
+    return cart;
   }
 
-  private savePanierToStorage(panier: Map<Product, Map<string, number>>): void {
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(Array.from(panier.entries())));
-    console.log("Données enregistrées dans le stockage local :");
-    console.log(localStorage.getItem(this.STORAGE_KEY));
+  private saveCartToSessionStorage(): void {
+    const cartArray = Array.from(this.cart.entries()).map(([product, sizeQuantityMap]) => {
+      return [product, Object.fromEntries(sizeQuantityMap.entries())];
+    });
+    sessionStorage.setItem(this.CART_KEY, JSON.stringify(cartArray));
   }
+
+  public addToCart(article: Product, size: string, quantite: number = 1): void {
+    let articleExiste = false;
   
-
-  public ajouterAuPanier(article: Product, size: string, quantite: number = 1): void {
-    let panier = this.getPanierFromStorage();
-    let articleTailles = panier.get(article);
-    if (!articleTailles) {
-      articleTailles = new Map<string, number>();
-      panier.set(article, articleTailles);
-    }
-    if (articleTailles.has(size)) {
-      articleTailles.set(size, articleTailles.get(size)! + quantite);
-    } else {
-      articleTailles.set(size, quantite);
-    }
-    this.savePanierToStorage(panier);
-    console.log("ajouté",panier)
-  }
-
-  public getPanierProduits(): Map<Product, Map<string, number>> {
-    return this.getPanierFromStorage();
-  }
+    // Parcourt chaque entrée dans le panier
+    this.cart.forEach((value, key) => {
+      // Vérifie si l'article est déjà dans le panier
+      if (key.id === article.id) {
+        // Si l'article existe dans le panier, vérifie si la taille correspondante est déjà présente
+        if (value.has(size)) {
+          // Si la taille existe déjà, incrémente simplement la quantité
+          value.set(size, value.get(size)! + quantite);
+        } else {
+          // Sinon, ajoute une nouvelle entrée pour cette taille avec la quantité spécifiée
+          value.set(size, quantite);
+        }
+        articleExiste = true;
+      }
+    });
   
-  public incrementerQuantite(article: Product, size: string): void {
-    let panier = this.getPanierFromStorage();
-    const articleTailles = panier.get(article);
-    if (articleTailles && articleTailles.has(size)) {
-      articleTailles.set(size, articleTailles.get(size)! + 1);
-      this.savePanierToStorage(panier);
+    // Si l'article n'existe pas déjà dans le panier, ajoute-le avec la taille spécifiée
+    if (!articleExiste) {
+      const newSizeMap = new Map<string, number>();
+      newSizeMap.set(size, quantite);
+      this.cart.set(article, newSizeMap);
     }
+  
+    // Sauvegarde le panier mis à jour dans le stockage de session
+    this.saveCartToSessionStorage();
   }
 
-  public decrementerQuantite(article: Product, size: string): void {
-    let panier = this.getPanierFromStorage();
-    const articleTailles = panier.get(article);
-    if (articleTailles && articleTailles.has(size)) {
-      const quantite = articleTailles.get(size)!;
-      if (quantite > 1) {
-        articleTailles.set(size, quantite - 1);
-      } else {
-        articleTailles.delete(size);
-        if (articleTailles.size === 0) {
-          panier.delete(article);
+  clearSession(): void {
+    sessionStorage.removeItem(this.CART_KEY);
+  }
+
+  public setQuantite(article: Product, size: string, quantity: number): void {
+    this.cart.forEach((value, key) => {
+      if (key.id === article.id) {
+        if (value.has(size)) {
+          value.set(size, quantity);
         }
       }
-      this.savePanierToStorage(panier);
-    }
+    });
+    this.saveCartToSessionStorage();
   }
 
-  public supprimerDuPanier(article: Product, size: string): void {
-    let panier = this.getPanierFromStorage();
-    const articleTailles = panier.get(article);
-    if (articleTailles) {
-      articleTailles.delete(size);
-      if (articleTailles.size === 0) {
-        panier.delete(article);
-      }
-      this.savePanierToStorage(panier);
-    }
+  public removeSizeQuantity(article: Product, size: string): void {
+    this.cart.forEach((value, key) => {
+        if (key.id === article.id) {
+            if (value.has(size)) {
+                value.delete(size); // Supprimer la taille spécifique de l'article
+                if (value.size === 0) {
+                    this.cart.delete(key); // Si l'article n'a plus de tailles, le supprimer du panier
+                }
+            }
+        }
+    });
+    this.saveCartToSessionStorage(); // Enregistrer le panier dans sessionStorage après les modifications
+}
+
+  public getCartProduits(): Map<Product, Map<string, number>> {
+    return this.getCartFromSessionStorage();
   }
   
 }

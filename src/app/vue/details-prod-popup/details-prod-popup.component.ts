@@ -104,9 +104,8 @@ export class DetailsProdPopupComponent {
 
   ajouterAuPanier(): void {
     if (this.product && this.selectedOption && this.quantity > 0) {
-      this.cartService.ajouterAuPanier(this.product, this.selectedOption, this.quantity);
+      this.cartService.addToCart(this.product, this.selectedOption, this.quantity);
     }
-    console.log(this.cartService.getPanierProduits())
   }  
 
 }

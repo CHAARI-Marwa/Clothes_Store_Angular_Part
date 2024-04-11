@@ -24,6 +24,26 @@ export class RegistrationService {
     );
   }
 
+  public loginAdmin(email: string, password: string):Observable<any>{
+    const body = { emailId: email, password: password };
+    return this._http.post<any>("http://localhost:8080/login/admin",body)
+    .pipe(
+      tap(response => {
+        localStorage.setItem('token', response.token);
+      })
+    );
+  }
+
+  public loginDeliveryPerson(email: string, password: string):Observable<any>{
+    const body = { emailId: email, password: password };
+    return this._http.post<any>("http://localhost:8080/login/deliveryperson",body)
+    .pipe(
+      tap(response => {
+        localStorage.setItem('token', response.token);
+      })
+    );
+  }
+
   getToken(): string | null {
     return localStorage.getItem('token');
   }

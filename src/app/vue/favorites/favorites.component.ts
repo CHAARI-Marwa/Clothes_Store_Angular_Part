@@ -15,13 +15,9 @@ export class FavoritesComponent implements OnInit{
     this.favorites = this.favoritesService.getFavorites();
   }
   removeFromFavorites(product: any): void {
- 
-    const index = this.favorites.findIndex(favorite => favorite.id === product.id);
-    if (index !== -1) {
-      this.favorites.splice(index, 1);
-     
-      this.favoritesService.updateFavorites(this.favorites);
-    }
+    this.favoritesService.removeFromFavorites(product);
+    this.favorites = this.favoritesService.getFavorites(); // Mettre à jour la liste des favoris après la suppression
   }
+  
 
 }

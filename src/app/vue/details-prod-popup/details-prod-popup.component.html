@@ -27,8 +27,9 @@
           <h4 class="mtext-105 cl2 js-name-detail p-b-14">
             {{ product.name }}
             <span class="favorite-icon" [class.favorite-icon-red]="isFavorite" (click)="addToFavorites(product)">
-              <mat-icon>favorite</mat-icon>
+              <mat-icon>{{ isFavorite ? 'favorite' : 'favorite_border' }}</mat-icon>
             </span>
+            
             
           </h4>
          

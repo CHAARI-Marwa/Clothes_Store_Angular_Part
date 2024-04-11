@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 import { ProductService } from 'src/app/controller/product.service';
 import { Product } from 'src/app/model/product';
 import { CartService } from 'src/app/controller/cart.service';
 import { FavoriteService } from 'src/app/controller/favorite.service';
+
 @Component({
   selector: 'app-details-prod-popup',
   templateUrl: './details-prod-popup.component.html',
   styleUrls: ['./details-prod-popup.component.css']
 })
-export class DetailsProdPopupComponent {
+export class DetailsProdPopupComponent implements OnInit {
   similarProducts: Product[];
   product: Product;
   bigImageSrc: string;
@@ -19,9 +20,8 @@ export class DetailsProdPopupComponent {
   quantities: number[];
   maxQuantity: number = 1;
   quantity: number = 1;
-  favorites: any[] = [];
   isFavorite: boolean = false;
-
+ 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private productService: ProductService,
@@ -29,36 +29,23 @@ export class DetailsProdPopupComponent {
     private favoritesService: FavoriteService
   ) { }
 
-
-
-  addToFavorites(product: any) {
-    this.favoritesService.addToFavorites(product);
-    this.isFavorite = !this.isFavorite;
-    console.log('Product added to favorites:', product);
-  }
-
   ngOnInit(): void {
     this.getProduct(this.data.productId);
-  }
-
-  loadSimilarProducts(pId: number, fId: number, sId: number): void {
-    this.productService.getSimilarProducts(2, pId, fId, sId)
-      .subscribe(products => {
-          this.similarProducts = products;
-      });
+    
   }
 
   getProduct(id: number): void {
     this.productService.getProductById(id)
       .subscribe(
         (product) => {
-          this.product=product;
+          this.product = product;
           if (this.product) {
             this.initializeSizesAndQuantities();
             if (this.product.image_name && this.product.image_name.length > 0) {
               this.bigImageSrc = 'assets/img/product/' + this.product.id + this.product.name + '/' + this.product.image_name[0];
             }
             this.loadSimilarProducts(this.product.id, this.product.fcategory_id, this.product.scategory_id);
+            this.isFavorite = this.favoritesService.isFavorite(this.product); // Mettre à jour isFavorite
           }
         },
         (error) => {
@@ -66,7 +53,25 @@ export class DetailsProdPopupComponent {
         }
       );
   }
-  
+
+  addToFavorites(product: Product) {
+    if (!this.isFavorite) {
+      this.favoritesService.addToFavorites(product);
+      this.isFavorite = true; // Définir la variable sur true lorsque le produit est ajouté aux favoris
+      console.log('Product added to favorites:', product);
+    } else {
+      this.favoritesService.removeFromFavorites(product);
+      this.isFavorite = false; // Définir la variable sur false lorsque le produit est supprimé des favoris
+      console.log('Product removed from favorites:', product);
+    }
+  }
+  loadSimilarProducts(pId: number, fId: number, sId: number): void {
+    this.productService.getSimilarProducts(2, pId, fId, sId)
+      .subscribe(products => {
+          this.similarProducts = products;
+      });
+  }
+
   initializeSizesAndQuantities(): void {
     if (this.product && this.product.sizeQuantityMap) {
       this.sizes = Object.keys(this.product.sizeQuantityMap);
@@ -107,5 +112,4 @@ export class DetailsProdPopupComponent {
       this.cartService.addToCart(this.product, this.selectedOption, this.quantity);
     }
   }  
-
 }

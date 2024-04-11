@@ -29,16 +29,24 @@
     margin: 10px 0px 30px;
     border: 1px solid var(--Grey);
 }
-#Log_in #Submit{
-    width: 97%;
+.buttons-container {
+    margin: 10px 0px 30px;
+    width: 95%;
+    display: flex;
+  }
+#Log_in .login-button{
+    flex: 1;
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 50px;
     background-color: var(--Blue)  ;
     color: white;
     letter-spacing: 5px;
-    cursor: pointer;
+    border: none;
 }
 #Signup{
     text-align: center;
-    margin-top: -15px;
+    margin-top: 10px;
     cursor: pointer;
     font-size: 18px;
     font-family: var(--font-label);

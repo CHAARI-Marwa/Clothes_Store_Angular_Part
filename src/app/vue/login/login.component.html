@@ -12,18 +12,22 @@
   <header id="head">      
   </header>
   <div id="Customer_Account">
-    <form id="Log_in" #loginform="ngForm" (ngSubmit)="loginUser()">
+    <form id="Log_in" #loginform="ngForm" >
       <h1 id="Login_Account">SIGN IN</h1>
         <label for="Email">EMAIL</label>
         <div>
-          <input type="text" id="Email" name="emailId" [(ngModel)]="user.emailId">
+          <input type="text" id="Email" name="emailId" [(ngModel)]="emailId">
         </div>
         <label for="Password">PASSWORD</label>
         <div>
-          <input type="password" id="Password" name="password" [(ngModel)]="user.password">
+          <input type="password" id="Password" name="password" [(ngModel)]="password">
         </div>
         <div *ngIf="msg"><p *ngFor="let line of msg.split('\n')">{{ line }}</p></div> 
-        <input type="submit" value="SIGN IN" id="Submit">
+        <div class="buttons-container">
+          <button type="button" class="login-button" (click)="loginUser()">User</button>
+          <button type="button" class="login-button" (click)="loginAdmin()">Admin</button>
+          <button type="button" class="login-button" (click)="loginDeliveryPerson()">Delivery Person</button>
+        </div>
         <p id="Signup">
           <a routerLink="/signup" style="text-decoration: none;color: var(--darkBlue);">New user? Create account!</a>
         </p>         

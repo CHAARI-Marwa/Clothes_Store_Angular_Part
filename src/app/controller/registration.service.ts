@@ -71,7 +71,7 @@ export class RegistrationService {
       return null;
     }
   }
-  
+
   logout(): void {
     localStorage.removeItem('token');
   }
@@ -87,5 +87,14 @@ export class RegistrationService {
   updateUser(x: number, user: User): Observable<User>{
     return this._http.put<User>(`http://localhost:8080/update/${x}`, user);
   }
+
+  getCurrentUserId(): any {
+    const token = this.getToken();
+    if (token) {
+      return this.getUserId(token);
+    }
+    return null;
+  }
+
 
 }

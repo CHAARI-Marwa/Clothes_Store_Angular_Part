@@ -31,7 +31,7 @@ export class CartComponent {
 
   toggleCommandePopup() {
     const dialogRef = this.dialog.open(FormulaireCommandePopupComponent, {
-      width:'900px', height:'650px'
+      width:'900px', height:'690px'
     });
   }
   getMaxQuantity(product: Product, size: string): number{
@@ -75,7 +75,7 @@ export class CartComponent {
     const newValueStr = (event.target as HTMLInputElement).value;
     const newValue = parseInt(newValueStr, 10);
     if (!isNaN(newValue)) {
-      if(newValue<=this.getMaxQuantity(article,size)){ 
+      if(newValue<=this.getMaxQuantity(article,size)){
         this.setQuantity(article, size, newValue);
         window.location.reload();
       }

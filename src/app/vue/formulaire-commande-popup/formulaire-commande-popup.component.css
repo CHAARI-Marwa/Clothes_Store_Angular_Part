@@ -15,7 +15,7 @@
 
 #Order_Form {
   width: 740px; /* Largeur de la popup */
-  height: 580px; /* Hauteur de la popup */
+  height: 640px; /* Hauteur de la popup */
   padding: 20px;
   background-color: #f9f9f9; /* Ajouter une couleur de fond pour le formulaire */
   border: 1px solid #ddd; /* Ajouter une bordure au formulaire */

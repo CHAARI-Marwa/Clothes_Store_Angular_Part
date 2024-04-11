@@ -9,6 +9,7 @@ import { UserProfileComponent } from './vue/user-profile/user-profile.component'
 import { EditProductComponent } from './vue/edit-product/edit-product.component';
 import { FavoritesComponent } from './vue/favorites/favorites.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },

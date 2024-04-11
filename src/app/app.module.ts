@@ -48,6 +48,7 @@ import { DeletemodalComponent } from './vue/deletemodal/deletemodal.component';
 import { ViewcommandesComponent } from './vue/viewcommandes/viewcommandes.component';
 import { FavoritesComponent } from './vue/favorites/favorites.component';
 
+import { FormulaireCommandePopupComponent } from './vue/formulaire-commande-popup/formulaire-commande-popup.component';
 
 @NgModule({
   declarations: [
@@ -76,8 +77,9 @@ import { FavoritesComponent } from './vue/favorites/favorites.component';
       SubcategoriesComponent,
       DeletemodalComponent,
       ViewcommandesComponent,
-      FavoritesComponent
+      FavoritesComponent,
       
+      FormulaireCommandePopupComponent
   ],
   imports: [
     BrowserModule,
@@ -111,7 +113,7 @@ import { FavoritesComponent } from './vue/favorites/favorites.component';
     MatInputModule
   ],
   providers: [
-    RegistrationService,
+    RegistrationService
   ],
   bootstrap: [AppComponent]
 })

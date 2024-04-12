@@ -50,6 +50,7 @@ import { FavoritesComponent } from './vue/favorites/favorites.component';
 
 import { FormulaireCommandePopupComponent } from './vue/formulaire-commande-popup/formulaire-commande-popup.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +80,8 @@ import { FormulaireCommandePopupComponent } from './vue/formulaire-commande-popu
       ViewcommandesComponent,
       FavoritesComponent,
       
-      FormulaireCommandePopupComponent
+      FormulaireCommandePopupComponent,
+           
   ],
   imports: [
     BrowserModule,

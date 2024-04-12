@@ -1,1 +1,60 @@
-<p>viewcommandes works!</p>
+<br>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+   
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id command  </th>
+      <td mat-cell *matCellDef="let command"> {{command.id}} </td>
+    </ng-container>
+  
+    <!-- user_id -->
+    <ng-container matColumnDef="user_id">
+      <th mat-header-cell *matHeaderCellDef> user_id </th>
+      <td mat-cell *matCellDef="let command"> {{command.user_id}} </td>
+    </ng-container>
+  
+    <!-- date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> date </th>
+      <td mat-cell *matCellDef="let command"> {{command.date}} </td>
+    </ng-container>
+  
+    <!-- adresse Column -->
+    <ng-container matColumnDef="adresse">
+      <th mat-header-cell *matHeaderCellDef> adress </th>
+      <td mat-cell *matCellDef="let command"> {{command.adresse}} </td>
+    </ng-container>
+  
+
+     <!-- adresse Column -->
+     <ng-container matColumnDef="postal_code">
+        <th mat-header-cell *matHeaderCellDef> postal code  </th>
+        <td mat-cell *matCellDef="let command"> {{command.postal_code}} </td>
+      </ng-container>
+
+         <!-- total price  Column -->
+     <ng-container matColumnDef="total_price">
+        <th mat-header-cell *matHeaderCellDef> Total price </th>
+        <td mat-cell *matCellDef="let command"> {{command.total_price}} </td>
+      </ng-container>
+
+
+<ng-container matColumnDef="selectLivreur">
+  <th mat-header-cell *matHeaderCellDef> choose a delivery person </th>
+  <td mat-cell *matCellDef="let command">
+    <mat-select>
+      <mat-option *ngFor="let delivery_person of delivery_persons" [value]="delivery_person.id">
+        {{ delivery_person.name }}
+      </mat-option>
+    </mat-select>
+  </td>
+</ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  

@@ -30,8 +30,8 @@ export class DetailsProdPopupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getProduct(this.data.productId);
-    
+    this.getProduct(this.data.productId),this.isFavorite;
+    console.log(this.isFavorite)
   }
 
   getProduct(id: number): void {
@@ -57,7 +57,7 @@ export class DetailsProdPopupComponent implements OnInit {
   addToFavorites(product: Product) {
     if (!this.isFavorite) {
       this.favoritesService.addToFavorites(product);
-      this.isFavorite = true; // Définir la variable sur true lorsque le produit est ajouté aux favoris
+      this.isFavorite = true; 
       console.log('Product added to favorites:', product);
     } else {
       this.favoritesService.removeFromFavorites(product);

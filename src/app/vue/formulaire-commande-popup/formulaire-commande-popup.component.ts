@@ -43,7 +43,7 @@ export class FormulaireCommandePopupComponent implements OnInit {
       paymentType: ['', Validators.required]
     });
 
-    const userId = this.registrationService.getCurrentUserId();
+    const userId = this.registrationService.getUserId(this.registrationService.getToken()!);
     if (userId) {
       this.registrationService.getUserById(userId).subscribe(
         (user) => {

@@ -5,6 +5,7 @@ import { ProductService } from 'src/app/controller/product.service';
 import { Product } from 'src/app/model/product';
 import { CartService } from 'src/app/controller/cart.service';
 import { FavoriteService } from 'src/app/controller/favorite.service';
+import { RegistrationService } from 'src/app/controller/registration.service';
 
 @Component({
   selector: 'app-details-prod-popup',
@@ -26,7 +27,8 @@ export class DetailsProdPopupComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private productService: ProductService,
     private cartService: CartService,
-    private favoritesService: FavoriteService
+    private favoritesService: FavoriteService,
+    private registrationService: RegistrationService
   ) { }
 
   ngOnInit(): void {
@@ -108,8 +110,8 @@ export class DetailsProdPopupComponent implements OnInit {
   }
 
   ajouterAuPanier(): void {
-    if (this.product && this.selectedOption && this.quantity > 0) {
-      this.cartService.addToCart(this.product, this.selectedOption, this.quantity);
-    }
+      if (this.product && this.selectedOption && this.quantity > 0) {
+        this.cartService.addToCart(this.product, this.selectedOption, this.quantity);
+      }
   }  
 }

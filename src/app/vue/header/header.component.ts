@@ -7,6 +7,7 @@ import { RegistrationService } from 'src/app/controller/registration.service';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { ProductService } from 'src/app/controller/product.service';
 import { DetailsProdPopupComponent } from '../details-prod-popup/details-prod-popup.component';
+import { CartService } from 'src/app/controller/cart.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -18,10 +19,12 @@ export class HeaderComponent {
   searchTerm: string = '';
   similarProducts: any[] = [];
   favorites: any[] = [];
+  cartTotalQuantity: number=0;
 
   ngOnInit(): void {
     this.getCategories();
     this.loadProducts();
+    this.cartTotalQuantity=this.getCartTotalQuantity();
   }
 
 
@@ -31,8 +34,8 @@ export class HeaderComponent {
     public registrationService: RegistrationService, 
     private categoryService: CategoryService, 
     private router: Router,
-    private productservice : ProductService,
-  
+    private productservice: ProductService,
+    private cartService: CartService,
     ) {}
 
     loadProducts() {
@@ -42,7 +45,6 @@ export class HeaderComponent {
     }
 
     onSearchChange() {
-      // Filtrer les produits similaires en utilisant searchTerm
       this.similarProducts = this.products.filter(product =>
         product.name.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
@@ -63,6 +65,9 @@ export class HeaderComponent {
         data: { productId: productId }
       });
     }
+  getCartTotalQuantity(): number{
+    return this.cartService.getTotalCartQuantity()
+  }
   
   toggleUserPopup(userId: number) {
     const dialogRef = this.dialog.open(UserProfileComponent, {
@@ -88,9 +93,12 @@ export class HeaderComponent {
 
   }
   clearFavorites() {
-  
     this.favorites = [];
     sessionStorage.removeItem('favorites'); 
+  }
+
+  isHomePage(): boolean {
+    return this.router.url === '/home';
   }
 
   getCategories(): void {

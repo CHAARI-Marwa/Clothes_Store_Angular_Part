@@ -88,14 +88,4 @@ export class RegistrationService {
     return this._http.put<User>(`http://localhost:8080/update/${x}`, user);
   }
 
-  getCurrentUserId(): any {
-    const token = this.getToken();
-    if (token) {
-      return this.getUserId(token);
-    }
-    return null;
-  }
-  
-
-
 }

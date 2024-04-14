@@ -88,7 +88,7 @@ export class CartService {
         }
     });
     this.saveCartToSessionStorage(); // Enregistrer le panier dans sessionStorage après les modifications
-}
+  }
 
   public getCartProduits(): Map<Product, Map<string, number>> {
     return this.getCartFromSessionStorage();
@@ -100,7 +100,7 @@ export class CartService {
     //     this.totalCartQuantity+=value
     //   })
     // })
-    console.log(CartService.totalCartQuantity);
+    // console.log(CartService.totalCartQuantity);
     return CartService.totalCartQuantity;
   }
   

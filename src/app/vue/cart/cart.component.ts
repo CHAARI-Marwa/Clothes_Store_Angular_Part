@@ -15,9 +15,9 @@ export class CartComponent {
   cartProducts: Product[]=[];
   promotion: number=0;
 
-
   constructor(private cartService: CartService,
-              public dialog: MatDialog) {}
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.getCartProduits();
@@ -30,9 +30,11 @@ export class CartComponent {
 
   toggleCommandePopup() {
     const dialogRef = this.dialog.open(FormulaireCommandePopupComponent, {
+      data: { finalPrice: this.calculateFinalPrice() },
       width:'900px', height:'690px'
     });
   }
+  
   getMaxQuantity(product: Product, size: string): number{
     let sizes = Object.keys(product.sizeQuantityMap);
     let quantities = Object.values(product.sizeQuantityMap);

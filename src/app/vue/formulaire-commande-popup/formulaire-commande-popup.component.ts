@@ -44,7 +44,7 @@ export class FormulaireCommandePopupComponent implements OnInit {
       address: ['', Validators.required],
       postalCode: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.pattern('[0-9]{8}')]],
-      paymentType: ['', Validators.required]
+      town: ['', Validators.required]
     });
 
     const userId = this.registrationService.getUserId(this.registrationService.getToken()!);
@@ -76,7 +76,9 @@ export class FormulaireCommandePopupComponent implements OnInit {
     if (this.orderForm.valid) {
     const formData = this.orderForm.value;
     const command: any = {
-      user_id: userId, 
+      user_id: userId,
+      state: "on hold",
+      town: formData.town, 
       date: new Date(),
       adresse: formData.address,
       postal_code: formData.postalCode,

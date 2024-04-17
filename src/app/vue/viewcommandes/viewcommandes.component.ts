@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CommandService } from 'src/app/controller/command.service';
 import { Command } from 'src/app/model/command';
-import { DeliveryPersonService } from 'src/app/controller/delivery-person.service';
-import { ChangeDetectorRef } from '@angular/core';
-import { Delivery_person } from 'src/app/model/deliveryPerson';
+import { RegistrationService } from 'src/app/controller/registration.service';
+import { User } from 'src/app/model/user';
+import {MatDialog} from "@angular/material/dialog";
+import { CommandDetailsComponent } from '../command-details/command-details.component';
 @Component({
   selector: 'app-viewcommandes',
   templateUrl: './viewcommandes.component.html',
@@ -12,70 +13,55 @@ import { Delivery_person } from 'src/app/model/deliveryPerson';
 })
 export class ViewcommandesComponent implements OnInit{
   
-  commands: any[] = [];
-  delivery_persons: Delivery_person[] = [];
+  commands: Command[] = [];
+  users_name: string[] = [];
+  users_surname: string[] = [];
   dataSource: MatTableDataSource<Command>;
-  displayedColumns: string[] = ['id', 'user_id', 'date', 'adresse', 'postal_code',   'total_price','selectLivreur', 'actions'];
+  displayedColumns: string[] = [ 'user_name','user_surname', 'date', 'state', 'view_details'];
   
-  constructor(private commandeService: CommandService,
-    private deliveryperson : DeliveryPersonService,
-    private cdr: ChangeDetectorRef
+  constructor(
+    private commandeService: CommandService,
+    private userService: RegistrationService,
+    public dialog: MatDialog,
     ) { }
-
-    ngAfterViewInit(): void {
-      this.cdr.detectChanges(); // Force une nouvelle détection des modifications après l'affichage des vues
-    }
 
   ngOnInit(): void {
     this.getCommands();
-    this.getdeliverypersons();
-    
   }
+
   getCommands() {
     this.commandeService.getAllCommands().subscribe((data: any[]) => {
       this.commands = data;
-      this.dataSource = new MatTableDataSource(data); 
-    });
-  }
-  getdeliverypersons() {
-    this.deliveryperson.getdeliverypersons().subscribe((data: Delivery_person[]) => {
-      this.delivery_persons = data;
-      console.log(this.delivery_persons);
-    });
-  }
-
-
-  getDeliveryByAddress(address: string): string[] {
-      let deliveryPeople: string[] = [];
-      for (const person of this.delivery_persons) {
-          if (person.town === address) {
-              deliveryPeople.push(person.name);
+      this.dataSource = new MatTableDataSource(data);
+      // let user_recovered : User;
+      for (let i = 0; i < this.commands.length; i++) {
+        const command = this.commands[i];
+        const userId = command.user_id;
+        this.userService.getUserById(userId)
+        .subscribe(
+          (user: User) => {
+            // user_recovered = user;
+            this.users_name[i]=user.name;
+            this.users_surname[i]=user.surname;
+          },
+          (error: any) => {
+            console.error('Error: ', error);
           }
-      }
-      return deliveryPeople;
-    }
- 
-  
-
-  
-
-  
-  setDeliveryPersonInCOmmand(id_person: number,id_command: number){
-    console.log(id_person,id_command)
+        );
+      } 
+    });
   }
 
-  onSelectDelivery(deliveryPerson: any) {
-    console.log('Selected delivery person:', deliveryPerson);
-    this.cdr.detectChanges();
+  formatDateTime(dateTime: string): string {
+    const date = new Date(dateTime);
+    return date.toLocaleString();
   }
-  assignDeliveryPerson(commandId: number) {
-    const foundCommand = this.dataSource.data.find(command => command.id === commandId);
-    if (foundCommand) {
-      const selectedDeliveryPersonId = foundCommand.deliveryPersonId;
-      this.setDeliveryPersonInCOmmand(selectedDeliveryPersonId, commandId);
 
-    } else {
-      console.error("Command not found with ID:", commandId);
-    }
+  toggleCommandPopup(command: Command) {
+    const dialogRef = this.dialog.open(CommandDetailsComponent, {
+      data: { command: command },
+      // height:'900px',
+    });
   }
+
 }

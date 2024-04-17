@@ -37,6 +37,19 @@ export class ViewcommandesComponent implements OnInit{
     });
   }
 
+
+  getDeliveryByAddress(address: string): string[] {
+      let deliveryPeople: string[] = [];
+      for (const person of this.delivery_persons) {
+          if (person.town === address) {
+              deliveryPeople.push(person.name);
+          }
+      }
+      return deliveryPeople;
+    }
+ 
+  
+
   
 
   

@@ -45,8 +45,8 @@
   <th mat-header-cell *matHeaderCellDef> choose a delivery person </th>
   <td mat-cell *matCellDef="let command">
     <mat-select>
-      <mat-option *ngFor="let delivery_person of delivery_persons" [value]="delivery_person.id">
-        {{ delivery_person.name }}
+      <mat-option >
+        {{ getDeliveryByAddress(command.adresse)}}
       </mat-option>
     </mat-select>
   </td>

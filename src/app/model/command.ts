@@ -11,5 +11,5 @@ export class Command {
   total_price: number;
   products: Product[];
   command_lines: CommandLine[];
-
+  deliveryPersonId: number;
 }

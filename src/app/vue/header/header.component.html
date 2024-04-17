@@ -53,10 +53,6 @@
             </ul>
           </div>
         </div>
-        
-        
-
-
         <div class="col-xl-4 col-lg-5">
           <div class="user-panel">
             <div *ngIf="registrationService.isLoggedIn(); else showSignIn">
@@ -67,7 +63,7 @@
               <div class="up-item">
                 <div class="shopping-card">
                   <i class="flaticon-bag"></i>
-                  <span>0</span>
+                  <span>{{getCartTotalQuantity()}}</span>
                 </div>
                 <a routerLink="/cart">Shopping Cart</a>
               </div>
@@ -79,21 +75,25 @@
                   <mat-icon>favorite</mat-icon>
                 </a>
               </div>
-              
-           
             </div>
             <ng-template #showSignIn>
               <div class="up-item">
                   <a routerLink="/login" >Sign In</a> or <a routerLink="/signup" >Create Account</a>         
               </div>
+              <div class="up-item">
+                <div class="shopping-card">
+                  <i class="flaticon-bag"></i>
+                  <span>{{getCartTotalQuantity()}}</span>
+                </div>
+                <a routerLink="/cart">Shopping Cart</a>
+              </div>
             </ng-template>
-
-           
           </div>
         </div>
       </div>
     </div>
   </div>
+  <ng-container *ngIf="isHomePage()">
   <nav class="main-navbar">
     <div class="container">
       <ul class="main-menu">
@@ -103,6 +103,7 @@
       </ul>
     </div>
   </nav>
+</ng-container>
 </header>
 </body>
 </html>

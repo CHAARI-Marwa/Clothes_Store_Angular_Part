@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistrationService } from "../../controller/registration.service";
 import { User } from "../../model/user";
 import { Router } from "@angular/router";
+import { HttpClient } from '@angular/common/http';
+import { CartService } from 'src/app/controller/cart.service';
+import { Product } from 'src/app/model/product';
+import { CommandLine } from 'src/app/model/commandline';
+import { CommandService } from 'src/app/controller/command.service';
 
 @Component({
   selector: 'app-formulaire-commande-popup',
@@ -15,25 +22,22 @@ export class FormulaireCommandePopupComponent implements OnInit {
   userForm: FormGroup;
   msg: { status: number, message: string } = { status: 0, message: '' };
   user: User = new User();
-
+  userId:number;
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    // private http: HttpClient,
     private formBuilder: FormBuilder,
-    private fb: FormBuilder,
-    private _route: Router,
+    // private fb: FormBuilder,
+    private cartService:CartService,
+    private commandService: CommandService,
+    // private _route: Router,
     private registrationService: RegistrationService // Injection du service
   ) {
-    this.userForm = this.fb.group({
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
-      phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{8}$/)]],
-      emailId: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      gender: ['', Validators.required]
-    });
   }
 
   ngOnInit() {
+    this.extractCommandLinesFromCart(this.cartService.getCartProduits()),
     this.orderForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -43,7 +47,7 @@ export class FormulaireCommandePopupComponent implements OnInit {
       paymentType: ['', Validators.required]
     });
 
-    const userId = this.registrationService.getCurrentUserId();
+    const userId = this.registrationService.getUserId(this.registrationService.getToken()!);
     if (userId) {
       this.registrationService.getUserById(userId).subscribe(
         (user) => {
@@ -64,35 +68,48 @@ export class FormulaireCommandePopupComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.userForm.valid) {
-      this.user = new User(); // Création d'une nouvelle instance de User
-      this.user.name = this.userForm.value.name;
-      this.user.surname = this.userForm.value.surname;
-      this.user.phoneNumber = this.userForm.value.phoneNumber;
-      this.user.emailId = this.userForm.value.emailId;
-      this.user.password = this.userForm.value.password;
-      this.user.gender = this.userForm.value.gender;
+   this.addCommand(this.cartService.getCartProduits()); 
+  }
 
-      this.registrationService.registerUserFromRemote(this.user).subscribe(
-        data => {
-          // console.log("response received");
-          this._route.navigate(['login']);
-        },
-        error => {
-          // console.error("error:", error);
-          if (error.status === 400) {
-            this.msg.message = "Bad request. Please check your input.";
-          } else if (error.status === 401) {
-            this.msg.message = "Unauthorized. Please check your credentials.";
-          } else if (error.status === 409){
-            this.msg.message = error.error.message;
-          } else{
-            this.msg.message = "An error occurred. Please try again later.";
-          }
-        }
-      );
-    } else {
-      this.msg.message = "Please fill out all required fields correctly.";
+  addCommand(cart: Map<Product, Map<string, number>>): void {
+    const userId = this.registrationService.getUserId(this.registrationService.getToken()!);
+    if (this.orderForm.valid) {
+    const formData = this.orderForm.value;
+    const command: any = {
+      user_id: userId, 
+      date: new Date(),
+      adresse: formData.address,
+      postal_code: formData.postalCode,
+      total_price: this.data.finalPrice,
+      delivery_person_id: null,
+      products: this.extractProductsFromCart(cart),
+      command_lines: this.extractCommandLinesFromCart(cart)
+    };
+    this.commandService.addCommand(command).subscribe(response => {
+      this.cartService.clearSession();
+      // console.log('Command added successfully', response);
+    });
     }
+  }
+
+  extractProductsFromCart(cart: Map<Product, Map<string, number>>): Product[] {
+    const products: Product[] = [];
+    for (const product of cart.keys()) {
+      products.push(product);
+    }
+    console.log(products)
+    return products;
+  }
+
+  extractCommandLinesFromCart(cart: Map<Product, Map<string, number>>): CommandLine[] {
+    const commandLines: CommandLine[] = [];
+    cart.forEach((sizes, product) => {
+      sizes.forEach((quantity, size) => {
+        const commandLine = new CommandLine(product, size, quantity);
+        commandLines.push(commandLine);
+      });
+    });
+    console.log(commandLines)
+    return commandLines;
   }
 }

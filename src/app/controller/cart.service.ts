@@ -5,6 +5,7 @@ import { Product } from '../model/product';
   providedIn: 'root'
 })
 export class CartService {
+  public static totalCartQuantity: number =0;
   private readonly CART_KEY = 'cart';
   private cart: Map<Product, Map<string, number>> = this.getCartFromSessionStorage();
 
@@ -30,6 +31,7 @@ export class CartService {
   }
 
   public addToCart(article: Product, size: string, quantite: number = 1): void {
+    CartService.totalCartQuantity+=quantite;
     let articleExiste = false;
   
     // Parcourt chaque entrée dans le panier
@@ -86,10 +88,20 @@ export class CartService {
         }
     });
     this.saveCartToSessionStorage(); // Enregistrer le panier dans sessionStorage après les modifications
-}
+  }
 
   public getCartProduits(): Map<Product, Map<string, number>> {
     return this.getCartFromSessionStorage();
+  }
+
+  public getTotalCartQuantity(): number{
+    // this.cart.forEach((value, key) => {
+    //   value.forEach((value,key) =>{
+    //     this.totalCartQuantity+=value
+    //   })
+    // })
+    // console.log(CartService.totalCartQuantity);
+    return CartService.totalCartQuantity;
   }
   
 }

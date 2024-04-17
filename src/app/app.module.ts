@@ -47,12 +47,14 @@ import { SubcategoriesComponent } from './vue/subcategories/subcategories.compon
 import { DeletemodalComponent } from './vue/deletemodal/deletemodal.component';
 import { ViewcommandesComponent } from './vue/viewcommandes/viewcommandes.component';
 import { FavoritesComponent } from './vue/favorites/favorites.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { FormulaireCommandePopupComponent } from './vue/formulaire-commande-popup/formulaire-commande-popup.component';
-
+import { DashPageComponent } from './vue/dash-page/dash-page.component';
 
 @NgModule({
   declarations: [
+   
     AppComponent,
     LoginComponent,
     SignupComponent,
@@ -81,9 +83,11 @@ import { FormulaireCommandePopupComponent } from './vue/formulaire-commande-popu
       FavoritesComponent,
       
       FormulaireCommandePopupComponent,
+      DashPageComponent,
            
   ],
   imports: [
+    MatTabsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

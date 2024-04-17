@@ -87,5 +87,8 @@ export class RegistrationService {
   updateUser(x: number, user: User): Observable<User>{
     return this._http.put<User>(`http://localhost:8080/update/${x}`, user);
   }
+  getallusers(): Observable<User[]> { 
+    return this._http.get<User[]>('http://localhost:8080/user'); 
+  }
 
 }

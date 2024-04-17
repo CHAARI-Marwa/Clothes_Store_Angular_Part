@@ -36,6 +36,10 @@ export class SidenavComponent {
       this.sharedService.toggleaffichercommandes();
     }
 
+    else if (type === 'dash') {
+      this.sharedService.toggleafficherdash();
+    }
+
   
   }
 }

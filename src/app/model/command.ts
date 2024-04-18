@@ -5,8 +5,10 @@ import { Product } from "./product";
 export class Command {
   id: number;
   user_id: number;
+  state: string;
   date: Date;
   adresse: string;
+  town: string;
   postal_code: number;
   total_price: number;
   products: Product[];

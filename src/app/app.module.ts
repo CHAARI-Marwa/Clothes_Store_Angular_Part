@@ -51,6 +51,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 
 import { FormulaireCommandePopupComponent } from './vue/formulaire-commande-popup/formulaire-commande-popup.component';
 import { DashPageComponent } from './vue/dash-page/dash-page.component';
+import { CommandDetailsComponent } from './vue/command-details/command-details.component';
+
 
 @NgModule({
   declarations: [
@@ -84,6 +86,7 @@ import { DashPageComponent } from './vue/dash-page/dash-page.component';
       
       FormulaireCommandePopupComponent,
       DashPageComponent,
+             CommandDetailsComponent,
            
   ],
   imports: [

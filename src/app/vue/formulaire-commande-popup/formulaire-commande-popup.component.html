@@ -10,6 +10,23 @@
       <div>
         <input type="text" id="lastName" formControlName="lastName" class="input-style small" required readonly>
       </div>
+      <label for="phoneNumber">PHONE NUMBER</label>
+      <div>
+        <input type="tel" id="phoneNumber" formControlName="phoneNumber" class="input-style small" pattern="[0-9]{8}" required >
+      </div>
+      <label for="Town">Town</label>
+      <div>
+        <select id="town" formControlName="town" class="input-style small" required>
+          <option value="" selected disabled hidden style="color: #888;">Choose your town</option>
+          <option value="Monastir">Monastir</option>
+          <option value="Tunis">Tunis</option>
+          <option value="Sfax">Sfax</option>
+          <option value="Sousse">Sousse</option>
+        </select>
+        <div *ngIf="orderForm.get('paymentType')?.invalid && orderForm.get('paymentType')?.touched">
+          <span *ngIf="orderForm.get('paymentType')?.errors?.['required']">Payment Type is required</span>
+        </div>
+      </div>
       <label for="address">ADDRESS</label>
       <div>
         <input type="text" id="address" formControlName="address" class="input-style small" required>
@@ -24,22 +41,6 @@
           <span *ngIf="orderForm.get('postalCode')?.errors?.['required']">Postal Code is required</span>
         </div>
       </div>
-      <label for="phoneNumber">PHONE NUMBER</label>
-      <div>
-        <input type="tel" id="phoneNumber" formControlName="phoneNumber" class="input-style small" pattern="[0-9]{8}" required >
-      </div>
-      <label for="paymentType">PAYMENT TYPE</label>
-      <div>
-        <select id="paymentType" formControlName="paymentType" class="input-style small" required>
-          <option value="" selected disabled hidden style="color: #888;">Choose Payment Type</option>
-          <option value="cheque">By Check</option>
-          <option value="espece">By Cash</option>
-        </select>
-        <div *ngIf="orderForm.get('paymentType')?.invalid && orderForm.get('paymentType')?.touched">
-          <span *ngIf="orderForm.get('paymentType')?.errors?.['required']">Payment Type is required</span>
-        </div>
-      </div>
-
       <button type="submit" [disabled]="orderForm.invalid" class="submit-btn small">SUBMIT</button>
     </form>
   </div>

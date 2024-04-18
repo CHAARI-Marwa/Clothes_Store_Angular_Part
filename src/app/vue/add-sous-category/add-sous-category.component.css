@@ -16,7 +16,7 @@ input[type="number"] {
 }
 
 button.CREATE {
-  background-color: #B97989;
+  background-color: var(--Pink);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -27,5 +27,5 @@ button.CREATE {
 }
 
 button.CREATE:hover {
-  background-color: #B97989;
+  background-color: var(--Pink);
 }

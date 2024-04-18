@@ -1,0 +1,13 @@
+.custom-button {
+    background-color: var(--Pink);
+  color: white;
+  padding: 5px 5px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.custom-button :hover {
+    background-color: var(--Pink);
+  }
+  

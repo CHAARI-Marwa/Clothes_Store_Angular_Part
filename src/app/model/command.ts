@@ -11,7 +11,8 @@ export class Command {
   town: string;
   postal_code: number;
   total_price: number;
-  products: Product[];
+  phone_number: number;
+  // products: Product[];
   command_lines: CommandLine[];
   deliveryPersonId: number;
 }

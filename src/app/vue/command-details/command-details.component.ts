@@ -87,11 +87,9 @@ export class CommandDetailsComponent implements OnInit{
       .subscribe(
         () => {
           console.log('Command updated successfully');
-          // Ajoutez ici le code pour gérer la réponse de l'API en cas de succès
         },
         error => {
           console.error('Failed to update command', error);
-          // Ajoutez ici le code pour gérer les erreurs lors de l'appel de l'API
         }
       );
   }

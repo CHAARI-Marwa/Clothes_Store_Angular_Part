@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { jwtDecode } from "jwt-decode";
 import { User } from '../model/user';
+import { Delivery_person } from '../model/deliveryPerson';
 
 
 @Injectable({
@@ -78,6 +79,10 @@ export class RegistrationService {
 
   public registerUserFromRemote(user:User):Observable<any>{
     return this._http.post<any>("http://localhost:8080/register/user",user)
+  }
+
+  public registerDeliveryPersonFromRemote(deliveryPerson:Delivery_person):Observable<any>{
+    return this._http.post<any>("http://localhost:8080/register/deliveryperson",deliveryPerson)
   }
 
   getUserById(x: number): Observable<User> {

@@ -39,7 +39,6 @@ export class DeliveryInterfaceComponent implements OnInit{
   }
 
   getDeliveryPersonName(): string | null {
-    // let token =this.registrationService.getToken();
     if (this.token!=null){
       return this.registrationService.getUserName(this.token);
     }
@@ -65,7 +64,6 @@ export class DeliveryInterfaceComponent implements OnInit{
           this.userService.getUserById(userId)
           .subscribe(
             (user: User) => {
-              // user_recovered = user;
               this.users_name[i]=user.name;
               this.users_surname[i]=user.surname;
             },
@@ -81,6 +79,18 @@ export class DeliveryInterfaceComponent implements OnInit{
   formatDateTime(dateTime: string): string {
     const date = new Date(dateTime);
     return date.toLocaleString();
+  }
+
+  validateCommand(commandId: number): void{
+      this.commandeService.validateCommand(commandId)
+        .subscribe(
+          () => {
+            console.log('Command validated successfully');
+          },
+          error => {
+            console.error('Failed to update command', error);
+          }
+        );
   }
 
 }

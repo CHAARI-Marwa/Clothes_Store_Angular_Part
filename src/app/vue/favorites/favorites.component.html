@@ -3,7 +3,7 @@
     <div class="container">
       <div class="spacer"></div>
 
-      <section>     
+      <section>
 
         <div *ngIf="favorites.length === 0" class="no-favorites-message">
             <br>
@@ -12,7 +12,7 @@
             <br>
             <p>There are no favorite products.</p>
           </div>
-          
+
         <div *ngIf="favorites.length > 0">
           <div class="row">
             <div class="column">
@@ -35,7 +35,10 @@
                     <td><img [src]="'assets/img/product/' + favorite.id + favorite.name + '/' + favorite.image_name[0]" alt="{{ favorite.name }}" width="200" height="200" /></td>
                     <td>{{ favorite.name }}</td>
                     <td>{{ favorite.price }} DT</td>
-                    <td><button class="custom-button" (click)="removeFromFavorites(favorite)">delete from favoris </button></td>
+                    <td >
+                      <button class="custom-button" (click)="removeFromFavorites(favorite)">delete from favoris </button>
+                      <button class="custom-button" (click)="viewMoreDetails(favorite)">Quick view </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -47,4 +50,3 @@
     </div>
     <app-footer></app-footer>
   </div>
-  

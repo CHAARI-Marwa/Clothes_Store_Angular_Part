@@ -41,7 +41,7 @@
           <span *ngIf="orderForm.get('postalCode')?.errors?.['required']">Postal Code is required</span>
         </div>
       </div>
-      <button type="submit" [disabled]="orderForm.invalid" class="submit-btn small">SUBMIT</button>
+      <button type="submit" [disabled]="orderForm.invalid" class="submit-btn small" (click)="SubmitCommandPopup()" >SUBMIT</button>
     </form>
   </div>
 </div>

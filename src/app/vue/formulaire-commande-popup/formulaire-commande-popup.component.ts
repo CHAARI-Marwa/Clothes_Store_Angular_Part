@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistrationService } from "../../controller/registration.service";
@@ -10,6 +10,8 @@ import { CartService } from 'src/app/controller/cart.service';
 import { Product } from 'src/app/model/product';
 import { CommandLine } from 'src/app/model/commandline';
 import { CommandService } from 'src/app/controller/command.service';
+import {AddToCartPopupComponent} from "../add-to-cart-popup/add-to-cart-popup.component";
+import {SubmitCommandPopupComponent} from "../submit-command-popup/submit-command-popup.component";
 
 @Component({
   selector: 'app-formulaire-commande-popup',
@@ -25,6 +27,9 @@ export class FormulaireCommandePopupComponent implements OnInit {
   userId:number;
 
   constructor(
+    public dialogRef: MatDialogRef<SubmitCommandPopupComponent>,
+    private router: Router,
+    public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any,
     // private http: HttpClient,
     private formBuilder: FormBuilder,
@@ -68,7 +73,7 @@ export class FormulaireCommandePopupComponent implements OnInit {
   }
 
   onSubmit() {
-   this.addCommand(this.cartService.getCartProduits()); 
+   this.addCommand(this.cartService.getCartProduits());
   }
 
   addCommand(cart: Map<Product, Map<string, number>>): void {
@@ -78,7 +83,7 @@ export class FormulaireCommandePopupComponent implements OnInit {
     const command: any = {
       user_id: userId,
       state: "on hold",
-      town: formData.town, 
+      town: formData.town,
       date: new Date(),
       adresse: formData.address,
       postal_code: formData.postalCode,
@@ -115,4 +120,14 @@ export class FormulaireCommandePopupComponent implements OnInit {
     console.log(commandLines)
     return commandLines;
   }
+
+  SubmitCommandPopup() {
+    const dialogRef = this.dialog.open(SubmitCommandPopupComponent, {
+      width:'800px',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.dialogRef.close();
+    });
+  }
+
 }

@@ -12,7 +12,7 @@
                 <div class="wrap-pic-w pos-relative">
                   <img [src]="bigImageSrc" alt="IMG-PRODUCT" width="200" height="650" style="margin-top: 20px;">
                   <div class="small-images" *ngIf="product?.image_name">
-                    <img *ngFor="let imageName of product.image_name; let i = index" class="small-image" [src]="'assets/img/product/' + product.id + product.name + '/' + imageName" [alt]= imageName (click)="changeBigImage('assets/img/product/' + product.id + product.name + '/' + imageName)">  
+                    <img *ngFor="let imageName of product.image_name; let i = index" class="small-image" [src]="'assets/img/product/' + product.id + product.name + '/' + imageName" [alt]= imageName (click)="changeBigImage('assets/img/product/' + product.id + product.name + '/' + imageName)">
                   </div>
                 </div>
               </div>
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      
+
       <div class="col-md-6 col-lg-5 p-b-30" *ngIf="product">
         <div class="p-r-50 p-t-5 p-lr-0-lg"><br><br>
           <h4 class="mtext-105 cl2 js-name-detail p-b-14">
@@ -29,12 +29,12 @@
             <span class="favorite-icon" [class.favorite-icon-red]="isFavorite" (click)="addToFavorites(product)">
               <mat-icon>{{ isFavorite ? 'favorite' : 'favorite_border' }}</mat-icon>
             </span>
-            
-            
+
+
           </h4>
-         
-       
-          
+
+
+
           <span class="mtext-106 cl2" >
             <span [ngClass]="{'strike-pink': product.promotion !== 0}">
               {{ product.price }} DT
@@ -46,7 +46,7 @@
             {{product.promotion}}% OFF
             <br>
             <span class="mtext-106 cl2">
-              New Price: 
+              New Price:
               {{ (product.price - (product.price * (product.promotion / 100))) | number: '1.2-2' }} DT
             </span>
           </div>
@@ -79,27 +79,27 @@
                       <i class="fa fa-plus"></i>
                   </button>
                 </div>
-                <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" (click)="ajouterAuPanier()">
+                <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" (click)="ajouterAuPanier()" (click)="toggleAddToCartPopup()">
                   Add to cart
                 </button>
 
-               
+
 
               </div>
         </div>
         <div class="row" style="margin-top: 160px; margin-right: 50px; margin-left: 50px;">
-          <p>Similar Products:</p> 
-          <div class="product-item col-lg-6 col-md-6 col-sm-12" *ngFor="let product of similarProducts" > 
+          <p>Similar Products:</p>
+          <div class="product-item col-lg-6 col-md-6 col-sm-12" *ngFor="let product of similarProducts" >
             <div class="pi-pic">
                   <img class="product-image" [src]="'assets/img/product/' + product.id + product.name+'/'+product.image_name[0]" alt="{{ product.name }}">
                   <button class="quick-view-btn" (click)="quickView(product.id)">Quick View</button>
               </div>
           </div>
       </div>
-      
-        
-        
-        
+
+
+
+
       </div>
     </div>
   </div>

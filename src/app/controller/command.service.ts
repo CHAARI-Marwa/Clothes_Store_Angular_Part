@@ -25,4 +25,8 @@ export class CommandService {
     return this.http.get<any[]>(`http://localhost:8080/commande/delivery/person/${deliveryPersonId}?`);
   }
   
+  validateCommand(commandId: number): Observable<any>{
+    return this.http.put(`http://localhost:8080/commande/update/delivery/person/${commandId}?`,{});
+  }
+  
 }

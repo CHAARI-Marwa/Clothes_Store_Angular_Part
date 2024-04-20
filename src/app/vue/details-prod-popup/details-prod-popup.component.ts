@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 import { ProductService } from 'src/app/controller/product.service';
 import { Product } from 'src/app/model/product';
 import { CartService } from 'src/app/controller/cart.service';
 import { FavoriteService } from 'src/app/controller/favorite.service';
 import { RegistrationService } from 'src/app/controller/registration.service';
+import {AddToCartPopupComponent} from "../add-to-cart-popup/add-to-cart-popup.component";
 
 @Component({
   selector: 'app-details-prod-popup',
@@ -22,8 +23,9 @@ export class DetailsProdPopupComponent implements OnInit {
   maxQuantity: number = 1;
   quantity: number = 1;
   isFavorite: boolean = false;
- 
+
   constructor(
+    public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private productService: ProductService,
     private cartService: CartService,
@@ -59,7 +61,7 @@ export class DetailsProdPopupComponent implements OnInit {
   addToFavorites(product: Product) {
     if (!this.isFavorite) {
       this.favoritesService.addToFavorites(product);
-      this.isFavorite = true; 
+      this.isFavorite = true;
       console.log('Product added to favorites:', product);
     } else {
       this.favoritesService.removeFromFavorites(product);
@@ -113,5 +115,11 @@ export class DetailsProdPopupComponent implements OnInit {
       if (this.product && this.selectedOption && this.quantity > 0) {
         this.cartService.addToCart(this.product, this.selectedOption, this.quantity);
       }
-  }  
+  }
+
+  toggleAddToCartPopup() {
+    const dialogRef = this.dialog.open(AddToCartPopupComponent, {
+      width:'800px',
+    });
+  }
 }

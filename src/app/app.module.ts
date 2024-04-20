@@ -52,13 +52,17 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { FormulaireCommandePopupComponent } from './vue/formulaire-commande-popup/formulaire-commande-popup.component';
 import { DashPageComponent } from './vue/dash-page/dash-page.component';
 import { CommandDetailsComponent } from './vue/command-details/command-details.component';
+import {AddToCartPopupComponent} from "./vue/add-to-cart-popup/add-to-cart-popup.component";
+
 import { DeliveryInterfaceComponent } from './vue/delivery-interface/delivery-interface.component';
 import { AddDeliveryPersonComponent } from './vue/add-delivery-person/add-delivery-person.component';
+import { SubmitCommandPopupComponent } from './vue/submit-command-popup/submit-command-popup.component';
+import { CheckoutButtonCartPopupComponent } from './vue/checkout-button-cart-popup/checkout-button-cart-popup.component';
 
 
 @NgModule({
   declarations: [
-   
+
     AppComponent,
     LoginComponent,
     SignupComponent,
@@ -85,13 +89,17 @@ import { AddDeliveryPersonComponent } from './vue/add-delivery-person/add-delive
       DeletemodalComponent,
       ViewcommandesComponent,
       FavoritesComponent,
-      
+
       FormulaireCommandePopupComponent,
       DashPageComponent,
              CommandDetailsComponent,
+             AddToCartPopupComponent,
+
              DeliveryInterfaceComponent,
              AddDeliveryPersonComponent,
-           
+             SubmitCommandPopupComponent,
+             CheckoutButtonCartPopupComponent,
+
   ],
   imports: [
     MatTabsModule,

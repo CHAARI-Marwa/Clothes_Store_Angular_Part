@@ -3,6 +3,9 @@ import { CartService } from 'src/app/controller/cart.service';
 import { Product } from 'src/app/model/product';
 import {MatDialog} from "@angular/material/dialog";
 import {FormulaireCommandePopupComponent} from "../formulaire-commande-popup/formulaire-commande-popup.component";
+import {RegistrationService} from "../../controller/registration.service";
+import {CheckoutButtonCartPopupComponent} from "../checkout-button-cart-popup/checkout-button-cart-popup.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cart',
@@ -14,13 +17,17 @@ export class CartComponent {
   cart: Map<Product, Map<string, number>>;
   cartProducts: Product[]=[];
   promotion: number=0;
+  isLoggedIn: boolean = false;
 
   constructor(private cartService: CartService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+              private registrationService: RegistrationService,
+
   ) {}
 
   ngOnInit() {
     this.getCartProduits();
+    this.isLoggedIn = this.registrationService.isLoggedIn();
   }
 
   getCartProduits() {
@@ -28,13 +35,6 @@ export class CartComponent {
     this.cartProducts = Array.from(this.cart.keys());
   }
 
-  toggleCommandePopup() {
-    const dialogRef = this.dialog.open(FormulaireCommandePopupComponent, {
-      data: { finalPrice: this.calculateFinalPrice() },
-      width:'900px', height:'690px'
-    });
-  }
-  
   getMaxQuantity(product: Product, size: string): number{
     let sizes = Object.keys(product.sizeQuantityMap);
     let quantities = Object.values(product.sizeQuantityMap);
@@ -90,4 +90,24 @@ export class CartComponent {
     window.location.reload();
   }
 
+  toggleCheckoutPopup() {
+    const dialogRef = this.dialog.open(CheckoutButtonCartPopupComponent, {
+      width: '600px',
+    });
+  }
+
+  toggleCommandePopup() {
+    const dialogRef = this.dialog.open(FormulaireCommandePopupComponent, {
+      data: { finalPrice: this.calculateFinalPrice() },
+      width:'900px', height:'690px'
+    });
+  }
+
+  toggleCheckout() {
+    if (!this.registrationService.isLoggedIn()) {
+      this.toggleCheckoutPopup();
+    } else {
+      this.toggleCommandePopup();
+    }
+  }
 }

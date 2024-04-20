@@ -43,7 +43,10 @@
                 <td>
                   <ng-container *ngIf="cart.get(product)">
                     <div *ngFor="let sizeAndQty of cart.get(product) | keyvalue">
-                      <button id="remove" class="remove" (click)="removeSizeQuantity(product,sizeAndQty.key)">Remove</button>
+                      <button id="remove" class="remove-button" (click)="removeSizeQuantity(product, sizeAndQty.key)">
+                        <mat-icon class="delete-icon">delete</mat-icon> <!-- Utilisation de l'icône de suppression -->
+                      </button>
+
                     </div>
                   </ng-container>
                 </td>

@@ -53,7 +53,7 @@ h4{
 }
 
 img {
-    max-width: 100%; 
+    max-width: 100%;
 }
 
 .quantity{
@@ -133,3 +133,17 @@ img {
 .remove:hover {
     color: var(--Blue);
 }
+
+.remove-button {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.delete-icon {
+  color: #B97989;
+  font-size: 27px;
+}
+

@@ -1,0 +1,29 @@
+<form  enctype="multipart/form-data">
+    <div>
+      <label>Name:</label>
+      <input type="text" name="name"  required>
+    </div>
+    <div>
+      <label>Surname:</label>
+      <input type="number" name="price"  required>
+    </div>
+    <div>
+        <label>Phone Number:</label>
+        <input type="number" name="promotion"  required>
+      </div>
+    <div>
+      <label>Email:</label>
+      <input type="number" name="promotion"  required>
+    </div>
+    <div>
+      <label>Town:</label>
+      <select id="town" formControlName="town" class="input-style small" required>
+        <option value="" selected disabled hidden style="color: #888;">Choose your town</option>
+        <option value="Monastir">Monastir</option>
+        <option value="Tunis">Tunis</option>
+        <option value="Sfax">Sfax</option>
+        <option value="Sousse">Sousse</option>
+      </select>
+    </div>
+    <button type="submit">Add new delivery person</button>
+</form>

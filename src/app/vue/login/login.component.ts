@@ -56,7 +56,7 @@ export class LoginComponent {
       .subscribe(
         data => {
           if (data && typeof data === 'object') {
-            this._route.navigate(['home']);
+            this._route.navigate(['deliveryInterface']);
           } else {
             console.error("Invalid JSON response"/*, data*/);
           }

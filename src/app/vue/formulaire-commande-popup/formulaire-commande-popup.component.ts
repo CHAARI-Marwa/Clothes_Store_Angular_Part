@@ -83,8 +83,9 @@ export class FormulaireCommandePopupComponent implements OnInit {
       adresse: formData.address,
       postal_code: formData.postalCode,
       total_price: this.data.finalPrice,
+      phone_number: formData.phoneNumber,
       delivery_person_id: null,
-      products: this.extractProductsFromCart(cart),
+      // products: this.extractProductsFromCart(cart),
       command_lines: this.extractCommandLinesFromCart(cart)
     };
     this.commandService.addCommand(command).subscribe(response => {

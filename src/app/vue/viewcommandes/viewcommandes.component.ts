@@ -17,7 +17,7 @@ export class ViewcommandesComponent implements OnInit{
   users_name: string[] = [];
   users_surname: string[] = [];
   dataSource: MatTableDataSource<Command>;
-  displayedColumns: string[] = [ 'user_name','user_surname', 'date', 'state', 'view_details'];
+  displayedColumns: string[] = ['id_commad', 'user_name','user_surname', 'date', 'state', 'view_details'];
   
   constructor(
     private commandeService: CommandService,

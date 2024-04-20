@@ -8,6 +8,7 @@ import { CartComponent } from './vue/cart/cart.component';
 import { UserProfileComponent } from './vue/user-profile/user-profile.component';
 import { EditProductComponent } from './vue/edit-product/edit-product.component';
 import { FavoritesComponent } from './vue/favorites/favorites.component';
+import { DeliveryInterfaceComponent } from './vue/delivery-interface/delivery-interface.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:'profile', component:UserProfileComponent} ,
   { path: 'edit-product/:id', component: EditProductComponent } ,
   { path: 'favorites', component: FavoritesComponent },
+  { path: 'deliveryInterface', component: DeliveryInterfaceComponent}
 ];
 
 @NgModule({

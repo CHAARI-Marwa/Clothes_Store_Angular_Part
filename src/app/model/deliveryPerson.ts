@@ -6,5 +6,5 @@ export class Delivery_person {
     password: string;
     phoneNumber: string;
     town: string;
-    deliveries_per_day: number;
+    // deliveries_per_day: number;
 }

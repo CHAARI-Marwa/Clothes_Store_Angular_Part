@@ -18,28 +18,23 @@ export class SidenavComponent {
     else if (type === 'souscategory') {
       this.sharedService.toggleFormulaireSousCategorie();
     }
-
-    
-
+    else if (type === 'deliveryperson') {
+      this.sharedService.toggleFormulaireLivreur();
+    }
     else if (type === 'viewproducts') {
       this.sharedService.toggleafficherproducts();
     }
     else if (type === 'viewcategories') {
       this.sharedService.toggleaffichercategories();
     }
-
     else if (type === 'viewsubcategories') {
       this.sharedService.toggleaffichersubcategories();
     }
-
     else if (type === 'viewcommandes') {
       this.sharedService.toggleaffichercommandes();
     }
-
     else if (type === 'dash') {
       this.sharedService.toggleafficherdash();
-    }
-
-  
+    }  
   }
 }

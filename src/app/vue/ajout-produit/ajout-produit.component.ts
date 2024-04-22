@@ -3,6 +3,7 @@ import { CategoryService } from 'src/app/controller/category.service';
 import { ProductService } from 'src/app/controller/product.service';
 import { SouscategoryService } from 'src/app/controller/souscategory.service';
 import { ModalService } from 'src/app/controller/modal.service';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-ajout-produit',
   templateUrl: './ajout-produit.component.html',
@@ -105,7 +106,7 @@ export class AjoutProduitComponent implements OnInit {
     }
   }
   
-  onSubmit() {
+  onSubmit(produitform: NgForm) {
     const formData = new FormData();
     formData.append('name', this.product.name);
     formData.append('price', this.product.price.toString());
@@ -119,10 +120,10 @@ export class AjoutProduitComponent implements OnInit {
     } else if (this.images instanceof File) {
         formData.append('images', this.images, this.images.name);
     }
-    // Créer des listes pour les tailles sélectionnées et les quantités
+   
     const sizes: string[] = [];
     const quantities: number[] = [];
-    // Ajouter les tailles sélectionnées et les quantités correspondantes aux listes
+    
     if (this.product.sizeS) {
       sizes.push('S');
       quantities.push(this.product.quantityS);
@@ -195,6 +196,7 @@ export class AjoutProduitComponent implements OnInit {
         console.log(response);
    
         this.modalService.openSuccessModal('add');
+        produitform.reset();
       },
       error => {
         console.error(error);

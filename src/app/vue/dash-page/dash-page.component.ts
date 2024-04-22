@@ -5,7 +5,7 @@ import { CommandService } from 'src/app/controller/command.service';
 import { DeliveryPersonService } from 'src/app/controller/delivery-person.service';
 import { ProductService } from 'src/app/controller/product.service';
 import { RegistrationService } from 'src/app/controller/registration.service';
-import { Category } from 'src/app/model/category';
+
 import { Command } from 'src/app/model/command';
 import { Delivery_person } from 'src/app/model/deliveryPerson';
 import { Product } from 'src/app/model/product';

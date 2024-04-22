@@ -4,7 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 40px;
+  padding: 40px; /* Augmentation de la taille du padding */
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -15,17 +15,17 @@
 }
 
 .success-message {
-  font-size: 25px;
+  font-size: 25px; /* Augmentation de la taille de la police */
   font-weight: bold;
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Augmentation de l'espace en bas */
 }
 
 .close-button {
   background-color: #B97989;
   color: white;
   border: none;
-  padding: 12px 24px;
+  padding: 12px 24px; /* Augmentation de la taille du padding */
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;

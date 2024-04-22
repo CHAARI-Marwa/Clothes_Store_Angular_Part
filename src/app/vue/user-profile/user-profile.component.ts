@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 import { RegistrationService } from 'src/app/controller/registration.service';
 import { User } from 'src/app/model/user';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {AddToCartPopupComponent} from "../add-to-cart-popup/add-to-cart-popup.component";
+import {EditProfilePopupComponent} from "../edit-profile-popup/edit-profile-popup.component";
 
 @Component({
   selector: 'app-user-profile',
@@ -21,6 +23,7 @@ export class UserProfileComponent {
   }
 
   constructor(
+    public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private userService: RegistrationService,
     private fb: FormBuilder,
@@ -73,6 +76,7 @@ export class UserProfileComponent {
       this.user.gender = this.editUserForm.value.gender;
       this.userService.updateUser(this.data.userId,this.user).subscribe(
         data => {
+
           // console.log("response received");
         },
         error => {
@@ -83,5 +87,11 @@ export class UserProfileComponent {
       // this.msg.message = "Please fill out all required fields correctly.";
     }
     }
+
+  toggleEditPopup() {
+    const dialogRef = this.dialog.open(EditProfilePopupComponent, {
+      width:'800px',
+    });
+  }
 
 }

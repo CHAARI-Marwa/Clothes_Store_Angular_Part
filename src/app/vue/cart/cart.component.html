@@ -44,7 +44,7 @@
                   <ng-container *ngIf="cart.get(product)">
                     <div *ngFor="let sizeAndQty of cart.get(product) | keyvalue">
                       <button id="remove" class="remove-button" (click)="removeSizeQuantity(product, sizeAndQty.key)">
-                        <mat-icon class="delete-icon">delete</mat-icon> <!-- Utilisation de l'icône de suppression -->
+                        <mat-icon class="delete-icon">delete</mat-icon>
                       </button>
 
                     </div>

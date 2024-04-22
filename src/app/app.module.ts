@@ -58,6 +58,8 @@ import { DeliveryInterfaceComponent } from './vue/delivery-interface/delivery-in
 import { AddDeliveryPersonComponent } from './vue/add-delivery-person/add-delivery-person.component';
 import { SubmitCommandPopupComponent } from './vue/submit-command-popup/submit-command-popup.component';
 import { CheckoutButtonCartPopupComponent } from './vue/checkout-button-cart-popup/checkout-button-cart-popup.component';
+import { EditProfilePopupComponent } from './vue/edit-profile-popup/edit-profile-popup.component';
+import { AddDeliveryPersonPopupComponent } from './vue/add-delivery-person-popup/add-delivery-person-popup.component';
 
 
 @NgModule({
@@ -99,6 +101,8 @@ import { CheckoutButtonCartPopupComponent } from './vue/checkout-button-cart-pop
              AddDeliveryPersonComponent,
              SubmitCommandPopupComponent,
              CheckoutButtonCartPopupComponent,
+             EditProfilePopupComponent,
+             AddDeliveryPersonPopupComponent,
 
   ],
   imports: [

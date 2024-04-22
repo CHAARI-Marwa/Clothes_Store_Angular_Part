@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Delivery_person } from 'src/app/model/deliveryPerson';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistrationService } from 'src/app/controller/registration.service';
+import {AddToCartPopupComponent} from "../add-to-cart-popup/add-to-cart-popup.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-add-delivery-person',
@@ -14,6 +16,7 @@ export class AddDeliveryPersonComponent {
   deliveryPerson: Delivery_person= new Delivery_person();
 
   constructor(
+    public dialog: MatDialog,
     private fb: FormBuilder,
     private registrationService: RegistrationService,
   ) {
@@ -56,6 +59,12 @@ export class AddDeliveryPersonComponent {
     } else {
       this.msg.message = "Please fill out all required fields correctly.";
     }
+  }
+
+  toggleAddDeliveryPersonPopup() {
+    const dialogRef = this.dialog.open(AddToCartPopupComponent, {
+      width:'800px',
+    });
   }
 
 }

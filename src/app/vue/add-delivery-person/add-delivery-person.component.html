@@ -45,9 +45,9 @@
     <div *ngIf="msg.message">
       <p *ngFor="let line of msg.message.split('\n')">{{ line }}</p>
     </div>
-    <button type="submit">Add new delivery person</button>
+    <button type="submit" (click)="toggleAddDeliveryPersonPopup()" >Add new delivery person</button>
 </form>
 
 
 <!-- <class="input-style small" required> -->
-  
+

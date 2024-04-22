@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
-import {Router} from "@angular/router";
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-edit-profile-popup',
@@ -9,11 +9,14 @@ import {Router} from "@angular/router";
 })
 export class EditProfilePopupComponent {
 
-  constructor(public dialogRef: MatDialogRef<EditProfilePopupComponent>,
-              private router: Router) { }
+  closeEvent: EventEmitter<void> = new EventEmitter<void>();
 
-  closeAndRedirectToHome(): void {
+  constructor(public dialogRef: MatDialogRef<EditProfilePopupComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private dialog: MatDialog) { }
+
+  closePopup(): void {
     this.dialogRef.close();
-    this.router.navigateByUrl('/home');
+    this.dialog.closeAll();
   }
 }

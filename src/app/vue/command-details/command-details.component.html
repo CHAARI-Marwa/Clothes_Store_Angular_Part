@@ -39,7 +39,7 @@
                   </td>
                 </tr>
               </tbody>
-            </table>  
+            </table>
             <hr />
             </div>
             <div class="column2" *ngIf="this.data.command">
@@ -52,7 +52,7 @@
                   <option *ngFor="let person of delivery_persons" [value]="person.id">{{person.name}}</option>
                 </select>
               <div class="buttons">
-                <a class="button-checkout" (click)="updateCommand()">Validate</a>
+                <a class="button-checkout" (click)="updateCommand()" (click)="togglevalidatePopup()">Validate</a>
               </div>
               </div>
             </div>

@@ -95,6 +95,7 @@ export class FormulaireCommandePopupComponent implements OnInit {
     };
     this.commandService.addCommand(command).subscribe(response => {
       this.cartService.clearSession();
+      this.SubmitCommandPopup();
       // console.log('Command added successfully', response);
     });
     }

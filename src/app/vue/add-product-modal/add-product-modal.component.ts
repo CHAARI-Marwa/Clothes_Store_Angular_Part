@@ -33,12 +33,10 @@ export class AddProductModalComponent {
     } else if (this.action === 'delete') {
       return this.data.success ? ' deleted successfully !' : 'An error occurred while deleting ';
     }
- 
     return '';
   }
 
   closeModal(): void {
-   
     this.dialogRef.close();
   }
 }

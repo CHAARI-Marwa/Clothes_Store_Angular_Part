@@ -76,7 +76,7 @@ export class UserProfileComponent {
       this.user.gender = this.editUserForm.value.gender;
       this.userService.updateUser(this.data.userId,this.user).subscribe(
         data => {
-
+          this.toggleEditPopup();
           // console.log("response received");
         },
         error => {

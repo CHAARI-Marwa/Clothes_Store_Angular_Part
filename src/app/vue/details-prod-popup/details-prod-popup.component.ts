@@ -38,6 +38,10 @@ export class DetailsProdPopupComponent implements OnInit {
     console.log(this.isFavorite)
   }
 
+  isLoggedIn():Boolean{
+    return this.registrationService.isLoggedIn()
+  }
+
   getProduct(id: number): void {
     this.productService.getProductById(id)
       .subscribe(

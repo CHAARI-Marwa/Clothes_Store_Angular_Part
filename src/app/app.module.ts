@@ -60,6 +60,7 @@ import { SubmitCommandPopupComponent } from './vue/submit-command-popup/submit-c
 import { CheckoutButtonCartPopupComponent } from './vue/checkout-button-cart-popup/checkout-button-cart-popup.component';
 import { EditProfilePopupComponent } from './vue/edit-profile-popup/edit-profile-popup.component';
 import { AddDeliveryPersonPopupComponent } from './vue/add-delivery-person-popup/add-delivery-person-popup.component';
+import { ValidateCommandPopupComponent } from './vue/validate-command-popup/validate-command-popup.component';
 
 
 @NgModule({
@@ -103,6 +104,7 @@ import { AddDeliveryPersonPopupComponent } from './vue/add-delivery-person-popup
              CheckoutButtonCartPopupComponent,
              EditProfilePopupComponent,
              AddDeliveryPersonPopupComponent,
+             ValidateCommandPopupComponent,
 
   ],
   imports: [

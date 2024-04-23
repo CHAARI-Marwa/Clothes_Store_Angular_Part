@@ -1,10 +1,12 @@
 import { Component, OnInit} from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 import { Product } from 'src/app/model/product';
 import { Delivery_person } from 'src/app/model/deliveryPerson';
 import { DeliveryPersonService } from 'src/app/controller/delivery-person.service';
 import { CommandService } from 'src/app/controller/command.service';
+import {EditProfilePopupComponent} from "../edit-profile-popup/edit-profile-popup.component";
+import {ValidateCommandPopupComponent} from "../validate-command-popup/validate-command-popup.component";
 
 @Component({
   selector: 'app-command-details',
@@ -21,6 +23,7 @@ export class CommandDetailsComponent implements OnInit{
   selectedDeliveryPersonId: number;
 
   constructor(
+    public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private deliveryPersonService: DeliveryPersonService,
     private commandeService: CommandService
@@ -70,7 +73,7 @@ export class CommandDetailsComponent implements OnInit{
   this.getCommandProduits();
     console.log(this.productsMap);
   }
-  
+
   getCommandProduits() {
     this.commandProducts = Array.from(this.productsMap.keys());
   }
@@ -93,5 +96,11 @@ export class CommandDetailsComponent implements OnInit{
         }
       );
   }
-  
+
+  togglevalidatePopup() {
+    const dialogRef = this.dialog.open(ValidateCommandPopupComponent, {
+      width:'800px',
+    });
+  }
+
 }

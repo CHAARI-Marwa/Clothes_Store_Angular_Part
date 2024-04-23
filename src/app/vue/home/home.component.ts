@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
     dialogRef.componentInstance.subCategorySelection.subscribe((event: { categoryId: number, subCategoryId: number }) => {
       this.selectedCategoryId = event.categoryId;
       this.selectedSubCategoryId = event.subCategoryId;
-    }); 
+    });
     dialogRef.afterClosed().subscribe(result => {
         if (this.selectedCategoryId !== 0 && this.selectedSubCategoryId !== 0) {
         this.getProducts();
@@ -120,14 +120,14 @@ export class HomeComponent implements OnInit {
         .subscribe(products => {
           this.products = products;
           console.log(this.products);
-        }); 
+        });
       }
       else if(this.selectedCategoryId!=0 && this.selectedSubCategoryId===0 ){
         this.displayImages = false;
         this.productService.getProductsByCategoryId(this.selectedCategoryId).subscribe(
           (data: any[]) => {
-            this.products = data.map(product => ({ 
-              id: product.id, 
+            this.products = data.map(product => ({
+              id: product.id,
               name: product.name,
               price: product.price,
               promotion: product.promotion,
@@ -141,12 +141,12 @@ export class HomeComponent implements OnInit {
             console.log('Erreur lors de la récupération des produits : ', error);
           }
         );
-      } 
+      }
       else{
       this.productService.getproducts().subscribe(
         (data: any[]) => {
-          this.products = data.map(product => ({ 
-            id: product.id, 
+          this.products = data.map(product => ({
+            id: product.id,
             name: product.name,
             price: product.price,
             promotion: product.promotion,
@@ -162,5 +162,6 @@ export class HomeComponent implements OnInit {
       );
       }
     }
-  }   
+  }
+
 }

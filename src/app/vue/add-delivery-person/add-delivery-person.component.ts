@@ -41,6 +41,7 @@ export class AddDeliveryPersonComponent {
 
       this.registrationService.registerDeliveryPersonFromRemote(this.deliveryPerson).subscribe(
         data => {
+          this.resetForm();
           // console.log("response received");
         },
         error => {
@@ -65,6 +66,15 @@ export class AddDeliveryPersonComponent {
     const dialogRef = this.dialog.open(AddToCartPopupComponent, {
       width:'800px',
     });
+    dialogRef.afterClosed().subscribe(result => {
+      // Reset form after closing the popup
+      this.resetForm();
+    });
   }
 
+  resetForm() {
+    // Reset form and message
+    this.deliveryPersonForm.reset();
+    this.msg.message = '';
+  }
 }

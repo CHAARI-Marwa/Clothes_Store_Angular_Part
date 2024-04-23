@@ -14,6 +14,9 @@ export class SubmitCommandPopupComponent {
 
   closeAndRedirectToHome(): void {
     this.dialogRef.close();
+    this.dialogRef.afterClosed().subscribe(result => {
+      window.location.reload()
+    });
     this.router.navigateByUrl('/home');
   }
 }

@@ -6,6 +6,9 @@ import { RegistrationService } from 'src/app/controller/registration.service';
 import { User } from 'src/app/model/user';
 import {MatDialog} from "@angular/material/dialog";
 import { Router } from '@angular/router'
+import {
+  DeliveryValidateCommandPopupComponent
+} from "../delivery-validate-command-popup/delivery-validate-command-popup.component";
 
 @Component({
   selector: 'app-delivery-interface',
@@ -13,7 +16,7 @@ import { Router } from '@angular/router'
   styleUrls: ['./delivery-interface.component.css']
 })
 export class DeliveryInterfaceComponent implements OnInit{
-  
+
   commands: Command[] = [];
   users_name: string[] = [];
   users_surname: string[] = [];
@@ -71,7 +74,7 @@ export class DeliveryInterfaceComponent implements OnInit{
               console.error('Error: ', error);
             }
           );
-        } 
+        }
       });
     }
   }
@@ -91,6 +94,15 @@ export class DeliveryInterfaceComponent implements OnInit{
             console.error('Failed to update command', error);
           }
         );
+  }
+
+  togglevalidatePopup() {
+    const dialogRef = this.dialog.open(DeliveryValidateCommandPopupComponent, {
+      width:'800px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      window.location.reload()
+    });
   }
 
 }
